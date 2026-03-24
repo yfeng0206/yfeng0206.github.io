@@ -1,14 +1,14 @@
 ---
 title: "SLIViT for Glaucoma Classification on 3D OCT"
 date: 2025-11-01
-excerpt: "Nov – Dec 2025 — Reproducing SLIViT for binary glaucoma classification on Harvard FairVision OCT data. Achieved 0.869 test AUC."
+excerpt: "Nov – Dec 2025 - Reproducing SLIViT for binary glaucoma classification on Harvard FairVision OCT data. Achieved 0.869 test AUC."
 header:
   teaser: /assets/images/slivit-teaser.png
 sidebar:
   - title: "Tech Stack"
     text: "Python, PyTorch, ConvNeXt, ViT, DDP, fp16"
   - title: "Dataset"
-    text: "Harvard FairVision — 10K OCT volumes"
+    text: "Harvard FairVision - 10K OCT volumes"
   - title: "Best Result"
     text: "0.869 Test AUC"
 ---
@@ -21,9 +21,9 @@ Reproducing the [SLIViT](https://github.com/cozygene/SLIViT) architecture for bi
 
 SLIViT classifies 3D medical volumes without a full 3D CNN by slicing the volume into 2D images and processing them in stages:
 
-1. **ConvNeXt-Tiny (feature extractor)** — processes each OCT slice independently. Pretrained on ImageNet, then on the Kermany OCT dataset (84K retinal OCT images).
-2. **ViT (integrator)** — takes per-slice features and learns cross-slice relationships.
-3. **Classification head** — `LayerNorm + Linear(256, 1)`, outputs a single logit.
+1. **ConvNeXt-Tiny (feature extractor)** - processes each OCT slice independently. Pretrained on ImageNet, then on the Kermany OCT dataset (84K retinal OCT images).
+2. **ViT (integrator)** - takes per-slice features and learns cross-slice relationships.
+3. **Classification head** - `LayerNorm + Linear(256, 1)`, outputs a single logit.
 
 ## Architecture
 
@@ -59,7 +59,7 @@ Total: 77.8M params (27.8M ConvNeXt, 50M ViT + projections + head).
 | 64     | 1e-6 / 5e-6 / 5e-5  | 0.866    | 9          |
 | 32     | 1e-6 / 5e-6 / 5e-5  | 0.864    | 7          |
 
-**32 slices is enough** — running controlled experiments with gradient accumulation showed negligible difference between 32 and 64 slices (0.866 vs 0.864).
+**32 slices is enough** - running controlled experiments with gradient accumulation showed negligible difference between 32 and 64 slices (0.866 vs 0.864).
 
 ## Training Setup
 

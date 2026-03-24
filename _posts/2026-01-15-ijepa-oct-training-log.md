@@ -60,9 +60,9 @@ We use ViT-B instead of ViT-H because our dataset is 6–160x smaller than Image
 
 Three key design choices for slice-level:
 
-1. **Joint predictor processing** — mask tokens from all 4 target blocks attend to each other, making prediction a joint reasoning task
-2. **Sampled context block** — a contiguous 75–90% block (not all non-target positions) to prevent trivial interpolation
-3. **Block-wise batch repetition** — maintains correct alignment across the multi-mask training loop
+1. **Joint predictor processing** - mask tokens from all 4 target blocks attend to each other, making prediction a joint reasoning task
+2. **Sampled context block** - a contiguous 75–90% block (not all non-target positions) to prevent trivial interpolation
+3. **Block-wise batch repetition** - maintains correct alignment across the multi-mask training loop
 
 ## Results
 
@@ -76,7 +76,7 @@ Collapsed within 1–2 epochs across all configurations:
 | 2 | 0.0006 | 0.0003 | 1.0000 | 0.9993 |
 | 3 | 0.0000 | 0.0000 | 1.0000 | 0.9992 |
 
-**Root cause:** 32 tokens is too few, and adjacent OCT slices produce highly correlated ConvNeXt features — prediction becomes trivially solvable by interpolation.
+**Root cause:** 32 tokens is too few, and adjacent OCT slices produce highly correlated ConvNeXt features - prediction becomes trivially solvable by interpolation.
 
 ### Patch-Level Run 1: LR=0.0005 (Too High)
 
@@ -89,7 +89,7 @@ Collapsed within 1–2 epochs across all configurations:
 | 15 | 0.2153 | 0.2187 | 0.68 | 0.0005 (peak) |
 | 25 | 0.3047 | 0.3059 | 0.58 | ~0.0004 |
 
-The model learned well during warmup (epochs 1–11) but **destabilized at peak LR**. OCT images are less diverse than ImageNet, producing more correlated gradients — the effective learning rate is higher than sqrt scaling predicted.
+The model learned well during warmup (epochs 1–11) but **destabilized at peak LR**. OCT images are less diverse than ImageNet, producing more correlated gradients - the effective learning rate is higher than sqrt scaling predicted.
 
 ### Patch-Level Run 2: LR=0.00025 (In Progress)
 

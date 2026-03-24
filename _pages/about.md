@@ -5,17 +5,17 @@ permalink: /about/
 
 ML Engineer at Microsoft in Seattle. Georgia Tech ECE '22.
 
-My interests are in machine learning, computer vision, and visual perception — building systems that can see, understand, and act on the world. At work I ship production ML services at scale. On the side I work on medical imaging, multi-object tracking, and robotics.
+My interests are in machine learning, computer vision, and visual perception. I like building systems that can see, understand, and act on the world. At work I ship production ML services at scale. On the side I work on medical imaging, multi-object tracking, and robotics.
 
 ## What I Do at Microsoft
 
 **ML Engineer (Sep 2024 – Present)**
 - Shipped a cross-encoder reranking service: +12% CTR via A/B test, serving 500 RPS at 90ms
 - Launched a news-intelligence agent that ingests daily sources, clusters/dedupes events, and generates ranked summaries
-- Built ScoreCard Agent — automated A/B experiment health analyzer with 25+ statistical checks (SRM, guardrails, Simpson's paradox, novelty effects), produces SHIP/NO-SHIP verdicts with full audit trails
+- Built ScoreCard Agent, an automated A/B experiment health analyzer with 25+ statistical checks (SRM, guardrails, Simpson's paradox, novelty effects), produces SHIP/NO-SHIP verdicts with full audit trails
 - Deployed a personality-based eval harness using Prometheus-2 (7B LLM) to score Copilot suggestion-pill at scale, improving offline/online alignment by 8%
 - Developed advanced RAG systems integrating BM25 and vector search with LlamaIndex
-- Distilled large language models — optimizing Phi-2 into a BERT-based model for faster inference
+- Distilled large language models, optimizing Phi-2 into a BERT-based model for faster inference
 
 **Software Engineer (Jul 2022 – Sep 2024)**
 - Designed and maintained a Kubernetes-based forecasting service (GA Product) serving 15,000+ clients, including Dynamics 365 CRM and Microsoft 365 Support Center

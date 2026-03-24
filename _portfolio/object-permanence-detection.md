@@ -1,7 +1,7 @@
 ---
 title: "Object Permanence Detection"
 date: 2026-02-01
-excerpt: "Feb 2026 — Video analysis pipeline detecting physically impossible events using SAM2, RT-DETR, and DINOv2."
+excerpt: "Feb 2026 - Video analysis pipeline detecting physically impossible events using SAM2, RT-DETR, and DINOv2."
 header:
   teaser: /assets/images/objperm-teaser.png
 sidebar:
@@ -11,7 +11,7 @@ sidebar:
     text: "10 objects, 24 events detected"
 ---
 
-A video analysis pipeline that detects **object permanence anomalies** — physically impossible events like a red ball going into a cup but a yellow ball coming out.
+A video analysis pipeline that detects **object permanence anomalies** - physically impossible events like a red ball going into a cup but a yellow ball coming out.
 
 [View on GitHub](https://github.com/yfeng0206/object-permanence-detection){: .btn .btn--primary}
 
@@ -36,11 +36,11 @@ Outputs: tracked video, event log, narrative log, per-object galleries
 
 ## Key Features
 
-- **SAM2 mask tracking** — pixel-level object segmentation through every frame
-- **DINOv2 re-identification** — multi-frame gallery embedding with EMA prototypes
-- **Disappearance classification** — `ExitedFrame`, `ContainedLikely`, `CoveredBy`, `OccludedLikely`
-- **Narrative event log** — natural language descriptions for LLM evaluation
-- **Per-object descriptions** — auto-generated profiles with color, shape, size, lifecycle
+- **SAM2 mask tracking** - pixel-level object segmentation through every frame
+- **DINOv2 re-identification** - multi-frame gallery embedding with EMA prototypes
+- **Disappearance classification** - `ExitedFrame`, `ContainedLikely`, `CoveredBy`, `OccludedLikely`
+- **Narrative event log** - natural language descriptions for LLM evaluation
+- **Per-object descriptions** - auto-generated profiles with color, shape, size, lifecycle
 
 ## Sample Results
 
@@ -54,4 +54,4 @@ On a 308-frame sample video (640x480 @ 30fps):
 
 ## LLM Evaluation
 
-The narrative log is designed to be fed directly to an LLM to detect violations: identity mismatches, unexplained appearances, impossible events. The sample video passes — same ball in, same ball out.
+The narrative log is designed to be fed directly to an LLM to detect violations: identity mismatches, unexplained appearances, impossible events. The sample video passes - same ball in, same ball out.

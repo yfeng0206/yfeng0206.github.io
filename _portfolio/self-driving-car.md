@@ -1,7 +1,7 @@
 ---
 title: "Self-Driving DC Motor Car"
 date: 2021-02-01
-excerpt: "Feb – Jun 2021 — Autonomous DC motor car with Raspberry Pi + Arduino using OpenCV for lane detection and PID-based steering control."
+excerpt: "Feb – Jun 2021 - Autonomous DC motor car with Raspberry Pi + Arduino using OpenCV for lane detection and PID-based steering control."
 header:
   teaser: /assets/images/DC_Car-teaser.png
 sidebar:
@@ -17,9 +17,9 @@ An autonomous DC motor car that uses computer vision for real-time lane detectio
 
 ## System Architecture
 
-- **Raspberry Pi 4** — runs the camera and OpenCV processing pipeline
-- **Arduino** — handles low-level motor control via H-bridge circuitry
-- **Pi Camera** — captures the road ahead in real time
+- **Raspberry Pi 4** - runs the camera and OpenCV processing pipeline
+- **Arduino** - handles low-level motor control via H-bridge circuitry
+- **Pi Camera** - captures the road ahead in real time
 
 ## Computer Vision Pipeline
 

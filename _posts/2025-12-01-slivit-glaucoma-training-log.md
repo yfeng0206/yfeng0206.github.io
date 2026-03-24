@@ -89,11 +89,11 @@ Unfroze the ConvNeXt with a low LR (5e-6) to preserve the Kermany pretrained wei
 
 ### More Slices and Lower LR (Run 4)
 
-Tried 64 slices for denser coverage. Dropped LRs and bumped dropout to 0.15 to combat overfitting. Had to reduce batch to 1/GPU due to VRAM. Result: 0.868 test AUC — essentially the same as 32 slices, but confounded by multiple simultaneous changes.
+Tried 64 slices for denser coverage. Dropped LRs and bumped dropout to 0.15 to combat overfitting. Had to reduce batch to 1/GPU due to VRAM. Result: 0.868 test AUC - essentially the same as 32 slices, but confounded by multiple simultaneous changes.
 
 ### Fixing the Batch Size Confound (Runs 5–6)
 
-Used gradient accumulation with bs=2/GPU for an effective batch of 16. Ran 32 and 64 slices with identical hyperparameters. Results: 0.866 vs 0.864 — negligible difference. **32 slices is enough.**
+Used gradient accumulation with bs=2/GPU for an effective batch of 16. Ran 32 and 64 slices with identical hyperparameters. Results: 0.866 vs 0.864 - negligible difference. **32 slices is enough.**
 
 ### Best Run Was Our First Phase 2 Attempt
 
@@ -118,10 +118,10 @@ Every run follows the same pattern: val loss starts climbing after epoch 4–6. 
 
 ## What's Next
 
-- **16 attention heads instead of 20** — eliminates projection layers, drops trainable params from 50M to ~15M
-- **Data augmentation** — random flips, intensity jitter, random slice offsets (we used none)
-- **Label smoothing** — soft targets (0.05/0.95) to prevent overconfidence
-- **Fairness analysis** — per-group AUC using the demographic metadata
+- **16 attention heads instead of 20** - eliminates projection layers, drops trainable params from 50M to ~15M
+- **Data augmentation** - random flips, intensity jitter, random slice offsets (we used none)
+- **Label smoothing** - soft targets (0.05/0.95) to prevent overconfidence
+- **Fairness analysis** - per-group AUC using the demographic metadata
 
 ## References
 

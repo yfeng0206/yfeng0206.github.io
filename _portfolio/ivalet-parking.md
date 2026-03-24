@@ -1,7 +1,7 @@
 ---
-title: "iValet — Intelligent Parking Lot Management System"
+title: "iValet - Intelligent Parking Lot Management System"
 date: 2022-01-01
-excerpt: "Jan – May 2022 — ML-powered parking system that detects vacant spots via camera + segmentation, with a React web UI and path planning."
+excerpt: "Jan – May 2022 - ML-powered parking system that detects vacant spots via camera + segmentation, with a React web UI and path planning."
 header:
   teaser: /assets/images/ivalet-teaser.png
 sidebar:
@@ -18,7 +18,7 @@ sidebar:
 Senior capstone project at Georgia Tech, advised by Dr. Patricio Vela. Built over two semesters as part of ECE 4872.
 
 [Project Page (Georgia Tech)](https://eceseniordesign2022spring.ece.gatech.edu/sd22p37/){: .btn .btn--primary}
-[GitHub — iValetUpdate](https://github.com/Robuddies/iValetUpdate){: .btn .btn--info}
+[GitHub - iValetUpdate](https://github.com/Robuddies/iValetUpdate){: .btn .btn--info}
 
 ## Overview
 
@@ -33,10 +33,10 @@ iValet is an intelligent parking lot management system that uses computer vision
 
 ## System Components
 
-- **Computer vision backend** — Python + OpenCV for spot detection and segmentation
-- **Database** — PostgreSQL for parking state persistence
-- **Web frontend** — React app showing live lot status and navigation
-- **Hardware** — Raspberry Pi camera module for video capture
+- **Computer vision backend** - Python + OpenCV for spot detection and segmentation
+- **Database** - PostgreSQL for parking state persistence
+- **Web frontend** - React app showing live lot status and navigation
+- **Hardware** - Raspberry Pi camera module for video capture
 
 ## Team
 

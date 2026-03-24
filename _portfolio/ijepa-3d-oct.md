@@ -1,7 +1,7 @@
 ---
 title: "I-JEPA for OCT Glaucoma Classification"
 date: 2026-01-15
-excerpt: "Jan 2026 – Present — Self-supervised pretraining with I-JEPA on Harvard FairVision OCT data. Patch-level and slice-level approaches."
+excerpt: "Jan 2026 – Present - Self-supervised pretraining with I-JEPA on Harvard FairVision OCT data. Patch-level and slice-level approaches."
 header:
   teaser: /assets/images/ijepa-teaser.png
 sidebar:
@@ -21,7 +21,7 @@ Self-supervised pretraining using [I-JEPA](https://github.com/facebookresearch/i
 
 Our SLIViT experiments reached 0.869 test AUC but hit two bottlenecks: ConvNeXt features pretrained on a different task (not glaucoma), and the ViT integrator trained from scratch on only 6K labeled volumes.
 
-I-JEPA addresses both by learning representations directly from **unlabeled** OCT data through masked prediction in representation space — no hand-crafted augmentations needed.
+I-JEPA addresses both by learning representations directly from **unlabeled** OCT data through masked prediction in representation space - no hand-crafted augmentations needed.
 
 ## Two Approaches
 
@@ -37,14 +37,14 @@ Standard I-JEPA applied to individual 256x256 OCT slices. Each slice is patchifi
 
 ### Slice-Level I-JEPA (Experimental)
 
-Applied to sequences of slice features within each volume. **Result: representation collapse** — adjacent OCT slices produce highly correlated features, making masked prediction trivially solvable.
+Applied to sequences of slice features within each volume. **Result: representation collapse** - adjacent OCT slices produce highly correlated features, making masked prediction trivially solvable.
 
 ## Preliminary Results
 
-### Patch-Level Run 1 (LR=0.0005 — too high)
+### Patch-Level Run 1 (LR=0.0005 - too high)
 
 The model learned well during warmup but destabilized at peak LR. OCT images are less diverse than ImageNet, producing more correlated gradients.
 
-### Patch-Level Run 2 (LR=0.00025 — in progress)
+### Patch-Level Run 2 (LR=0.00025 - in progress)
 
 Reduced peak LR by half based on Run 1 findings. Training ongoing.

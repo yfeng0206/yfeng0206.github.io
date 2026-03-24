@@ -1,7 +1,7 @@
 ---
 title: "MOT17 Multi-Object Tracking"
 date: 2026-01-01
-excerpt: "Jan 2026 — YOLOv8 + ByteTrack on MOT17 pedestrian data, improving tracking accuracy by 8% over base YOLOv8."
+excerpt: "Jan 2026 - YOLOv8 + ByteTrack on MOT17 pedestrian data, improving tracking accuracy by 8% over base YOLOv8."
 header:
   teaser: /assets/images/mot17-teaser.png
 sidebar:
@@ -21,8 +21,8 @@ Trained on MOT17 data to track pedestrians with YOLOv8 + ByteTrack, improving tr
 
 This project provides a sanity check and baseline evaluation pipeline for multi-object detection and tracking on the MOT17 dataset:
 
-1. **YOLOv8 Sanity Check** — verifies inference runs end-to-end
-2. **Baseline Single-Frame Eval** — evaluates one frame against ground truth with configurable IoU thresholds
+1. **YOLOv8 Sanity Check** - verifies inference runs end-to-end
+2. **Baseline Single-Frame Eval** - evaluates one frame against ground truth with configurable IoU thresholds
 
 ## Matching Rules
 
