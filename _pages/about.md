@@ -3,28 +3,30 @@ title: "About"
 permalink: /about/
 ---
 
-ML Engineer at Microsoft in Seattle. I build production ML systems and ship experiments at scale.
+ML Engineer at Microsoft in Seattle. Georgia Tech ECE '22.
 
-## Microsoft
+## What I Do at Microsoft
 
 **ML Engineer (Sep 2024 – Present)**
-- Cross-encoder reranking service: +12% CTR, 500 RPS at 90ms p99
-- News-intelligence agent — ingests daily sources, clusters/dedupes events, generates ranked summaries
-- ScoreCard Agent — automated A/B experiment health analyzer with 25+ statistical checks (SRM, guardrails, Simpson's paradox, novelty effects), produces SHIP/NO-SHIP verdicts with full audit trails
-- Personality-based eval harness using Prometheus-2 (7B) to score Copilot suggestion-pill, +8% offline/online alignment
-- RAG systems with BM25 + vector search via LlamaIndex
-- LLM distillation: Phi-2 into BERT for faster inference
-- Azure ML data pipelines for model training and deployment
+- Shipped a cross-encoder reranking service: +12% CTR via A/B test, serving 500 RPS at 90ms
+- Launched a news-intelligence agent that ingests daily sources, clusters/dedupes events, and generates ranked summaries
+- Built ScoreCard Agent — automated A/B experiment health analyzer with 25+ statistical checks (SRM, guardrails, Simpson's paradox, novelty effects), produces SHIP/NO-SHIP verdicts with full audit trails
+- Deployed a personality-based eval harness using Prometheus-2 (7B LLM) to score Copilot suggestion-pill at scale, improving offline/online alignment by 8%
+- Developed advanced RAG systems integrating BM25 and vector search with LlamaIndex
+- Distilled large language models — optimizing Phi-2 into a BERT-based model for faster inference
 
 **Software Engineer (Jul 2022 – Sep 2024)**
-- Kubernetes-based forecasting service (GA) serving 15,000+ clients including Dynamics 365 CRM and M365 Support Center
-- Multi-region recommendation platform on Azure/Docker, 20K+ daily clicks
-- Led cross-functional A/B refinement, on-call support
+- Designed and maintained a Kubernetes-based forecasting service (GA Product) serving 15,000+ clients, including Dynamics 365 CRM and Microsoft 365 Support Center
+- Built a multi-region recommendation platform accommodating 20K+ daily clicks
+- Led a cross-functional team to refine model outputs using A/B insights
 
-## Education
+## Research Interests
 
-B.S. Computer Engineering, Georgia Institute of Technology (2022)
+- **Medical AI**: Glaucoma classification on 3D OCT scans using SLIViT and I-JEPA self-supervised learning
+- **Computer Vision**: Multi-object tracking, object permanence detection with SAM2 + DINOv2
+- **Robotics**: Humanoid locomotion control (co-authoring a Science Robotics review)
+- **Embedded Systems**: Self-driving cars and gesture-controlled robots with Raspberry Pi + Arduino
 
 ## Skills
 
-Python, C/C++, C#, Azure, Kubernetes, Docker, LlamaIndex, PyTorch, Azure ML, SQL, ROS 2, Unix, IoT
+C/C++, C#, Python, Azure, Kubernetes, Docker, LlamaIndex, Unix, SQL, ROS 2, IoT, PyTorch, Azure ML
