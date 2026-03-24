@@ -39,10 +39,22 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.005em;
 }
 
-// Author bio
+// Author sidebar — keep readable
+.author__name {
+  font-size: 1.1em;
+}
+
 .author__bio {
   font-weight: 400;
-  font-size: 0.9em;
+  font-size: 1em;
+}
+
+.author__urls-wrapper {
+  font-size: 0.95em;
+}
+
+.sidebar .author__avatar img {
+  max-width: 150px;
 }
 
 // Navigation
