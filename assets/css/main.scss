@@ -1,0 +1,69 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+$sans-serif: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+$monospace: "Fira Code", "Consolas", "Monaco", "Courier New", monospace;
+$global-font-family: $sans-serif;
+$header-font-family: $sans-serif;
+$caption-font-family: $sans-serif;
+
+$type-size-1: 1.75em;
+$type-size-2: 1.3em;
+$type-size-3: 1.1em;
+$type-size-4: 1em;
+$type-size-5: 0.9em;
+$type-size-6: 0.75em;
+
+@import "minimal-mistakes/skins/dark";
+@import "minimal-mistakes";
+
+// Improve overall typography
+html {
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+// Body text
+.page__content p,
+.page__content li {
+  font-weight: 400;
+  line-height: 1.75;
+  letter-spacing: -0.005em;
+}
+
+// Author bio
+.author__bio {
+  font-weight: 400;
+  font-size: 0.9em;
+}
+
+// Navigation
+.greedy-nav a {
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+// Code blocks
+code {
+  font-size: 0.85em;
+}
+
+// Feature row text
+.archive__item-excerpt {
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+// Splash page headline
+.page__hero--overlay .page__title {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
