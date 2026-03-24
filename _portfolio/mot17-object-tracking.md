@@ -2,7 +2,7 @@
 title: "MOT17 Multi-Object Tracking"
 excerpt: "YOLOv8 + ByteTrack on MOT17 pedestrian data, improving tracking accuracy by 8% over base YOLOv8."
 header:
-  teaser: /assets/images/mot17-teaser.jpg
+  teaser: /assets/images/mot17-teaser.png
 sidebar:
   - title: "Tech Stack"
     text: "Python, YOLOv8, ByteTrack, Ultralytics"

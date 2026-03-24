@@ -19,7 +19,7 @@ enable_copy_code_button: true
 author:
   name: "Gary Feng"
   avatar: "/assets/images/bio-photo.jpg"
-  bio: "ML Engineer at Microsoft. Georgia Tech CompE '22. Building intelligent systems — from LLM agents to self-driving robots."
+  bio: "ML Engineer @ Microsoft | ECE Georgia Tech 2022"
   location: "Seattle, WA"
   links:
     - label: "Email"

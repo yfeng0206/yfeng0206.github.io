@@ -2,7 +2,7 @@
 title: "SLIViT for Glaucoma Classification on 3D OCT"
 excerpt: "Reproducing SLIViT for binary glaucoma classification on Harvard FairVision OCT data. Achieved 0.869 test AUC."
 header:
-  teaser: /assets/images/slivit-teaser.jpg
+  teaser: /assets/images/slivit-teaser.png
 sidebar:
   - title: "Tech Stack"
     text: "Python, PyTorch, ConvNeXt, ViT, DDP, fp16"

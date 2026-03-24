@@ -2,7 +2,7 @@
 title: "Object Permanence Detection"
 excerpt: "Video analysis pipeline detecting physically impossible events using SAM2, RT-DETR, and DINOv2."
 header:
-  teaser: /assets/images/objperm-teaser.jpg
+  teaser: /assets/images/objperm-teaser.png
 sidebar:
   - title: "Tech Stack"
     text: "Python, SAM2, RT-DETR, DINOv2, PyTorch"

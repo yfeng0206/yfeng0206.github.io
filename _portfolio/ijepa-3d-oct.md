@@ -2,7 +2,7 @@
 title: "I-JEPA for OCT Glaucoma Classification"
 excerpt: "Self-supervised pretraining with I-JEPA on Harvard FairVision OCT data. Patch-level and slice-level approaches."
 header:
-  teaser: /assets/images/ijepa-teaser.jpg
+  teaser: /assets/images/ijepa-teaser.png
 sidebar:
   - title: "Tech Stack"
     text: "Python, PyTorch, ViT-B/16, I-JEPA, DDP"
