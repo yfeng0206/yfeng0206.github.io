@@ -39,17 +39,21 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.005em;
 }
 
-// Author sidebar — keep readable
+// Author sidebar - bigger than before but smaller than page content
 .author__name {
-  font-size: 1.1em;
+  font-size: 1.25em;
 }
 
 .author__bio {
   font-weight: 400;
-  font-size: 1em;
+  font-size: 1.05em;
 }
 
 .author__urls-wrapper {
+  font-size: 1.05em;
+}
+
+.author__content {
   font-size: 0.95em;
 }
 
