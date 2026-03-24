@@ -1,7 +1,7 @@
 ---
 title: "I-JEPA for OCT Glaucoma Classification"
-date: 2026-01-15
-excerpt: "Jan 2026 – Present - Self-supervised pretraining with I-JEPA on Harvard FairVision OCT data. Patch-level and slice-level approaches."
+date: 2026-03-18
+excerpt: "Mar 2026 – Present - Self-supervised pretraining with I-JEPA on Harvard FairVision OCT data. Patch-level and slice-level approaches."
 header:
   teaser: /assets/images/ijepa-teaser.png
 sidebar:

@@ -1,7 +1,7 @@
 ---
 title: "SLIViT for Glaucoma Classification on 3D OCT"
-date: 2025-11-01
-excerpt: "Nov – Dec 2025 - Reproducing SLIViT for binary glaucoma classification on Harvard FairVision OCT data. Achieved 0.869 test AUC."
+date: 2026-03-12
+excerpt: "Mar 2026 - Reproducing SLIViT for binary glaucoma classification on Harvard FairVision OCT data. Achieved 0.869 test AUC."
 header:
   teaser: /assets/images/slivit-teaser.png
 sidebar:

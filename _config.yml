@@ -52,10 +52,10 @@ collections:
     output: true
     permalink: /:collection/:path/
     order:
-      - object-permanence-detection.md
       - ijepa-3d-oct.md
-      - mot17-object-tracking.md
       - slivit-3d-oct-glaucoma.md
+      - object-permanence-detection.md
+      - mot17-object-tracking.md
       - ivalet-parking.md
       - gesture-car.md
       - self-driving-car.md

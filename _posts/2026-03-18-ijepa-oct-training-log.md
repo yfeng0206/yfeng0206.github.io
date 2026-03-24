@@ -1,6 +1,6 @@
 ---
 title: "Training Log: I-JEPA Self-Supervised Pretraining for OCT Glaucoma"
-date: 2026-01-15
+date: 2026-03-18
 categories:
   - research
 tags:

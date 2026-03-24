@@ -1,7 +1,7 @@
 ---
 title: "Gesture-Controlled Robot Car"
-date: 2021-10-01
-excerpt: "Oct – Dec 2021 - Hand gesture-controlled DC motor car using OpenCV, MediaPipe, Raspberry Pi 4, and Mbed over IoT."
+date: 2021-12-14
+excerpt: "Dec 2021 - Hand gesture-controlled DC motor car using OpenCV, MediaPipe, Raspberry Pi 4, and Mbed over IoT."
 header:
   teaser: /assets/images/gesture-car-teaser.jpg
 sidebar:

@@ -1,7 +1,7 @@
 ---
 title: "iValet - Intelligent Parking Lot Management System"
-date: 2022-01-01
-excerpt: "Jan – May 2022 - ML-powered parking system that detects vacant spots via camera + segmentation, with a React web UI and path planning."
+date: 2022-03-16
+excerpt: "Mar – Apr 2022 - ML-powered parking system that detects vacant spots via camera + segmentation, with a React web UI and path planning."
 header:
   teaser: /assets/images/ivalet-teaser.png
 sidebar:

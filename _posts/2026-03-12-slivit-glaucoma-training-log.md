@@ -1,6 +1,6 @@
 ---
 title: "Training Log: SLIViT for Glaucoma Classification on 3D OCT"
-date: 2025-12-01
+date: 2026-03-12
 categories:
   - research
 tags:

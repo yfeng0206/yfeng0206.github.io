@@ -5,7 +5,7 @@ permalink: /publications/
 
 ## In Progress
 
-**I-JEPA Foundation Model for 3D OCT Medical Imaging** *(Jan 2026 – Present)*
+**I-JEPA Foundation Model for 3D OCT Medical Imaging** *(Mar 2026 – Present)*
 
 Training a foundation model for 3D optical coherence tomography (OCT) using I-JEPA self-supervised pretraining with a 2D ViT encoder. Unlike our earlier [glaucoma-specific work](/portfolio/slivit-3d-oct-glaucoma/), this aims to be a general-purpose OCT encoder applicable across multiple diseases - not just glaucoma, but also diabetic retinopathy, macular degeneration, and other ophthalmic conditions.
 
