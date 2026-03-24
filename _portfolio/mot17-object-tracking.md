@@ -1,6 +1,7 @@
 ---
 title: "MOT17 Multi-Object Tracking"
-excerpt: "YOLOv8 + ByteTrack on MOT17 pedestrian data, improving tracking accuracy by 8% over base YOLOv8."
+date: 2026-01-01
+excerpt: "Jan 2026 — YOLOv8 + ByteTrack on MOT17 pedestrian data, improving tracking accuracy by 8% over base YOLOv8."
 header:
   teaser: /assets/images/mot17-teaser.png
 sidebar:

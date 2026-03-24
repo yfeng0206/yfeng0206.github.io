@@ -1,6 +1,7 @@
 ---
 title: "Self-Driving DC Motor Car"
-excerpt: "Autonomous DC motor car with Raspberry Pi + Arduino using OpenCV for lane detection and PID-based steering control."
+date: 2021-02-01
+excerpt: "Feb – Jun 2021 — Autonomous DC motor car with Raspberry Pi + Arduino using OpenCV for lane detection and PID-based steering control."
 header:
   teaser: /assets/images/DC_Car-teaser.png
 sidebar:

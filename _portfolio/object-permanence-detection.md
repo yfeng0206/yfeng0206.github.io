@@ -1,6 +1,7 @@
 ---
 title: "Object Permanence Detection"
-excerpt: "Video analysis pipeline detecting physically impossible events using SAM2, RT-DETR, and DINOv2."
+date: 2026-02-01
+excerpt: "Feb 2026 — Video analysis pipeline detecting physically impossible events using SAM2, RT-DETR, and DINOv2."
 header:
   teaser: /assets/images/objperm-teaser.png
 sidebar:

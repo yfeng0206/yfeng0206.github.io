@@ -5,6 +5,8 @@ permalink: /about/
 
 ML Engineer at Microsoft in Seattle. Georgia Tech ECE '22.
 
+My interests are in machine learning, computer vision, and visual perception — building systems that can see, understand, and act on the world. At work I ship production ML services at scale. On the side I work on medical imaging, multi-object tracking, and robotics.
+
 ## What I Do at Microsoft
 
 **ML Engineer (Sep 2024 – Present)**
@@ -22,10 +24,14 @@ ML Engineer at Microsoft in Seattle. Georgia Tech ECE '22.
 
 ## Research Interests
 
-- **Medical AI**: Glaucoma classification on 3D OCT scans using SLIViT and I-JEPA self-supervised learning
-- **Computer Vision**: Multi-object tracking, object permanence detection with SAM2 + DINOv2
-- **Robotics**: Humanoid locomotion control (co-authoring a Science Robotics review)
+- **Medical AI**: Glaucoma classification on 3D OCT scans using SLIViT and I-JEPA self-supervised learning; working toward a foundation model for ophthalmic OCT imaging
+- **Computer Vision & Perception**: Multi-object tracking, object permanence detection with SAM2 + DINOv2, visual reasoning
+- **Robotics**: Humanoid locomotion control (co-authoring a Science Robotics review), ROS 2 control systems
 - **Embedded Systems**: Self-driving cars and gesture-controlled robots with Raspberry Pi + Arduino
+
+## Education
+
+B.S. Computer Engineering, Georgia Institute of Technology (2022)
 
 ## Skills
 
