@@ -1,0 +1,102 @@
+# Theme
+remote_theme: "mmistakes/minimal-mistakes@4.28.0"
+minimal_mistakes_skin: "default"
+
+# Site Settings
+locale: "en-US"
+title: "Gary Feng"
+title_separator: "|"
+subtitle: "ML Engineer & Robotics Researcher"
+name: "Gary Feng"
+description: "Personal portfolio — ML, computer vision, robotics, and embedded systems."
+url: "https://yfeng0206.github.io"
+baseurl: ""
+repository: "yfeng0206/yfeng0206.github.io"
+search: true
+enable_copy_code_button: true
+
+# Author Sidebar
+author:
+  name: "Gary Feng"
+  avatar: "/assets/images/bio-photo.jpg"
+  bio: "ML Engineer at Microsoft. Georgia Tech CompE '22. Building intelligent systems — from LLM agents to self-driving robots."
+  location: "Seattle, WA"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope"
+      url: "mailto:garyfeng000@gmail.com"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/yfeng0206"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/garyfeng/"
+
+# Footer
+footer:
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/yfeng0206"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/garyfeng/"
+
+# Reading Files
+include:
+  - _pages
+
+# Collections
+collections:
+  portfolio:
+    output: true
+    permalink: /:collection/:path/
+
+# Front Matter Defaults
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      share: true
+      related: true
+      toc: true
+  - scope:
+      path: "_pages"
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+  - scope:
+      path: ""
+      type: portfolio
+    values:
+      layout: single
+      author_profile: false
+      share: true
+      toc: true
+
+# Plugins
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jekyll-include-cache
+
+# Archives
+category_archive:
+  type: liquid
+  path: /categories/
+tag_archive:
+  type: liquid
+  path: /tags/
+
+# Outputting
+permalink: /:categories/:title/
+paginate: 5
+paginate_path: /page:num/
+timezone: America/Los_Angeles
