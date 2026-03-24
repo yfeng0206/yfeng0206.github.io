@@ -4,10 +4,10 @@ minimal_mistakes_skin: "dark"
 
 # Site Settings
 locale: "en-US"
-title: "Gary Feng"
+title: "Yunchu (Gary) Feng"
 title_separator: "|"
 subtitle: "ML Engineer"
-name: "Gary Feng"
+name: "Yunchu (Gary) Feng"
 description: "Personal portfolio — ML, computer vision, robotics, and embedded systems."
 url: "https://yfeng0206.github.io"
 baseurl: ""
@@ -17,7 +17,7 @@ enable_copy_code_button: true
 
 # Author Sidebar
 author:
-  name: "Gary Feng"
+  name: "Yunchu (Gary) Feng"
   avatar: "/assets/images/bio-photo.jpg"
   bio: "ML Engineer @ Microsoft | ECE Georgia Tech 2022"
   location: "Seattle, WA"
