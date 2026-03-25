@@ -1,7 +1,7 @@
 ---
 title: "I-JEPA for OCT Glaucoma Classification"
 date: 2026-03-18
-excerpt: "Mar 2026 – Present - Self-supervised pretraining with I-JEPA on Harvard FairVision OCT data. Patch-level and slice-level approaches."
+excerpt: "Mar 2026 - Present - Self-supervised pretraining with I-JEPA on Harvard FairVision OCT data. Pretraining converged; downstream probe evaluation in progress."
 header:
   teaser: /assets/images/ijepa-teaser.png
 sidebar:
@@ -39,12 +39,16 @@ Standard I-JEPA applied to individual 256x256 OCT slices. Each slice is patchifi
 
 Applied to sequences of slice features within each volume. **Result: representation collapse** - adjacent OCT slices produce highly correlated features, making masked prediction trivially solvable.
 
-## Preliminary Results
+## Results
 
-### Patch-Level Run 1 (LR=0.0005 - too high)
+### Patch-Level Pretraining
 
-The model learned well during warmup but destabilized at peak LR. OCT images are less diverse than ImageNet, producing more correlated gradients.
+- **Run 1 (LR=0.0005):** Too aggressive for OCT. Model learned during warmup but destabilized at peak LR due to correlated gradients. Best at epoch 11.
+- **Run 2 (LR=0.00025):** Steady improvement, but cut short by an early stopping bug - pre-warmup epoch recorded artificially low val_loss since EMA hadn't diverged.
+- **Run 3 (LR=0.00025, resumed):** Converged at epoch 11 (val_loss=0.1586). Healthy diagnostics throughout: cos_sim ~0.80, no representation collapse.
 
-### Patch-Level Run 2 (LR=0.00025 - in progress)
+### Downstream: Attentive Probe
 
-Reduced peak LR by half based on Run 1 findings. Training ongoing.
+Frozen ViT-B/16 encoder + attentive probe (2 transformer blocks, ~14.3M trainable params) + linear head. Features pre-computed and cached to disk for fast training (~30s/epoch).
+
+**Results pending.**

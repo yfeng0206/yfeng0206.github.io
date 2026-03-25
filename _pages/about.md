@@ -29,14 +29,6 @@ My interests are in machine learning, computer vision, and visual perception. I 
 - **Robotics**: Humanoid locomotion control (co-authoring a Science Robotics review), ROS 2 control systems
 - **Embedded Systems**: Self-driving cars and gesture-controlled robots with Raspberry Pi + Arduino
 
-## Earlier Work at Georgia Tech
-
-A lot of what I do now traces back to projects I built in school. Two that shaped how I think about perception and control:
-
-**iValet** was my senior capstone, an intelligent parking lot system that used a camera feed and image segmentation to detect which spots were open, stored the state in PostgreSQL, and served it through a React web app with path planning. It was my first time building an end-to-end CV pipeline that had to work reliably in real conditions, not just on a benchmark. Dealing with lighting changes, occlusion from other cars, and camera angles that didn't match the training data taught me more about deployment than any class did. That experience directly informed how I think about production ML systems today.
-
-**Gesture-Controlled Robot Car** was a group project for ECE 4180 where we built a robot that responded to hand gestures captured by a Pi Camera. We used OpenCV and MediaPipe on a Raspberry Pi 4 to count fingers in real time, sent commands over WiFi to an Mbed microcontroller, and drove DC motors through an H-bridge. It was a small system, but it connected computer vision to physical actuation in a tight loop. That feedback loop between perception and action is something I keep coming back to, whether it's in robotics or in building agents that observe, decide, and act.
-
 ## Education
 
 B.S. Computer Engineering, Georgia Institute of Technology (2022)
