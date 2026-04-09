@@ -5,5 +5,7 @@ main:
     url: /portfolio/
   - title: "Publications"
     url: /publications/
+  - title: "Trading"
+    url: /trading/
   - title: "Blog"
     url: /blog/

@@ -52,6 +52,7 @@ collections:
     output: true
     permalink: /:collection/:path/
     order:
+      - consensus-ai-trader.md
       - ijepa-3d-oct.md
       - slivit-3d-oct-glaucoma.md
       - object-permanence-detection.md

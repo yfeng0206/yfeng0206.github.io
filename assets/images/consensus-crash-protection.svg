@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 310" font-family="Segoe UI, Arial, sans-serif">
+  <!-- Background -->
+  <rect width="700" height="310" rx="12" fill="#0d1117"/>
+
+  <!-- Title -->
+  <text x="350" y="32" text-anchor="middle" fill="#e6edf3" font-size="16" font-weight="bold">Crash Protection: Strategy Avg During 4 Worst Crashes</text>
+  <text x="350" y="52" text-anchor="middle" fill="#8b949e" font-size="12">Average return during Dot-com, GFC, COVID, and 2022 Bear</text>
+
+  <!-- Y axis -->
+  <line x1="120" y1="75" x2="120" y2="260" stroke="#30363d" stroke-width="1"/>
+  <!-- Zero line -->
+  <line x1="120" y1="155" x2="670" y2="155" stroke="#30363d" stroke-width="1" stroke-dasharray="4"/>
+  <text x="115" y="159" text-anchor="end" fill="#8b949e" font-size="11">0%</text>
+  <text x="115" y="99" text-anchor="end" fill="#8b949e" font-size="11">+20%</text>
+  <text x="115" y="219" text-anchor="end" fill="#8b949e" font-size="11">-20%</text>
+
+  <!-- Scale: 3.0px per percentage point, zero at y=155 -->
+
+  <!-- MixLLM bar (positive +11.5%) -->
+  <rect x="145" y="120" width="70" height="35" rx="4" fill="#3fb950"/>
+  <text x="180" y="113" text-anchor="middle" fill="#3fb950" font-size="13" font-weight="bold">+11.5%</text>
+  <text x="180" y="283" text-anchor="middle" fill="#e6edf3" font-size="11">MixLLM</text>
+
+  <!-- Commodity bar (positive +7.2%) -->
+  <rect x="235" y="133" width="70" height="22" rx="4" fill="#3fb950"/>
+  <text x="270" y="126" text-anchor="middle" fill="#3fb950" font-size="13" font-weight="bold">+7.2%</text>
+  <text x="270" y="283" text-anchor="middle" fill="#e6edf3" font-size="11">Commodity</text>
+
+  <!-- Defensive bar (slightly negative -1.9%) -->
+  <rect x="325" y="155" width="70" height="6" rx="2" fill="#f0883e"/>
+  <text x="360" y="148" text-anchor="middle" fill="#f0883e" font-size="13" font-weight="bold">-1.9%</text>
+  <text x="360" y="283" text-anchor="middle" fill="#e6edf3" font-size="11">Defensive</text>
+
+  <!-- Mix bar (slightly negative -0.6%) -->
+  <rect x="415" y="155" width="70" height="2" rx="1" fill="#f0883e"/>
+  <text x="450" y="148" text-anchor="middle" fill="#f0883e" font-size="13" font-weight="bold">-0.6%</text>
+  <text x="450" y="283" text-anchor="middle" fill="#e6edf3" font-size="11">Mix</text>
+
+  <!-- SPY bar (negative -25.0%) -->
+  <rect x="505" y="155" width="70" height="75" rx="4" fill="#f85149"/>
+  <text x="540" y="241" text-anchor="middle" fill="#f85149" font-size="13" font-weight="bold">-25.0%</text>
+  <text x="540" y="283" text-anchor="middle" fill="#e6edf3" font-size="11">SPY</text>
+
+  <!-- QQQ bar (very negative -32.3%) -->
+  <rect x="595" y="155" width="70" height="97" rx="4" fill="#da3633"/>
+  <text x="630" y="261" text-anchor="middle" fill="#da3633" font-size="13" font-weight="bold">-32.3%</text>
+  <text x="630" y="283" text-anchor="middle" fill="#e6edf3" font-size="11">QQQ</text>
+</svg>

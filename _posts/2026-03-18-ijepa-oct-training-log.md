@@ -124,29 +124,79 @@ Best checkpoint: epoch 11, val_loss=0.1586, ViT-B/16 encoder.
 
 ## Downstream: Attentive Probe
 
-Using the best pretrained encoder (Run 3, epoch 11) for downstream glaucoma classification with frozen encoder + attentive probe + linear head.
+Using the best pretrained encoder for downstream glaucoma classification with attentive probe + linear head.
 
 ```
 OCT Volume (200 B-scans)
-  -> Sample 100 slices (uniform)
-  -> Frozen ViT-B/16 per slice -> mean-pool patches -> (B, 100, 768)
-  -> AttentiveProbe: [CLS] + pos embed + 2 transformer blocks -> (B, 768)
+  -> Sample 32-100 slices (uniform)
+  -> ViT-B/16 per slice -> mean-pool patches -> (B, N, 768)
+  -> AttentiveProbe: [CLS] + pos embed + 2-3 transformer blocks -> (B, 768)
   -> LinearHead: LayerNorm -> Linear(768->1)
   -> BCEWithLogitsLoss -> P(glaucoma)
 ```
 
 | Component | Architecture | Params | Trained? |
 |-----------|-------------|--------|----------|
-| Frozen encoder | ViT-B/16 (I-JEPA target encoder, epoch 11) | 86M | No |
+| Encoder | ViT-B/16 (I-JEPA target encoder) | 86M | Frozen or fine-tuned |
 | Slice pooling | Mean-pool 256 patch tokens to 1 per slice | 0 | No |
-| Attentive probe | 2 transformer blocks (768-d, 12 heads) + [CLS] + 1D pos embed | ~14.3M | Yes |
+| Attentive probe | 2-3 transformer blocks (768-d, 12 heads) + [CLS] + 1D pos embed | ~14.3M | Yes |
 | Linear head | LayerNorm(768) to Linear(768 to 1) | 769 | Yes |
 
-Features are pre-computed once with the frozen encoder and cached to disk (~3 GB), making probe training fast (~30s/epoch). Two self-attention layers are needed (vs the paper's 1) because our slice tokens are independently encoded with no inter-slice context.
+### Frozen Probe Results
 
-**Configuration:** AdamW, probe LR=1e-4, head LR=1e-3, cosine schedule with 3-epoch warmup, batch=64, patience=5, BCEWithLogitsLoss.
+Features pre-computed once and cached to disk (~3 GB), making probe training fast (~30s/epoch).
 
-**Status: results pending.**
+| Encoder Init | Pretrain Epochs | Probe Depth | Head | Test AUC |
+|:------------|:--------------:|:-----------:|:----:|:--------:|
+| ImageNet->SSL | 32 | d=3 | MLP | **0.774** |
+| Random->SSL | 11 | d=3 | Linear | 0.734 |
+| Random->SSL | 11 | d=2 | Linear | 0.733 |
+| ImageNet->SSL | 50 | d=3 | MLP | 0.706 |
+| ImageNet->SSL | 75 | d=3 | MLP | 0.695 |
+| ImageNet->SSL | 99 | d=3 | MLP | 0.685 |
+
+Key finding: **I-JEPA pretraining degrades ImageNet features over time**. Test AUC drops from 0.774 (ep32) to 0.685 (ep99). The self-supervised objective overwrites useful ImageNet features with low-level patch prediction features less relevant to glaucoma.
+
+![ImageNet Degradation](/assets/images/ijepa-imagenet-degradation.png)
+
+Frozen probe is capped at ~0.78 regardless of probe depth or training duration (100 epochs with WD=0 gave only +0.45% over 50 epochs).
+
+### Unfrozen Encoder Results (Fine-tuning)
+
+Unfreezing the encoder with differential learning rates (encoder 5e-6, probe 1e-4, head 1e-3) is the key lever. 4x T4 GPUs, batch=1/GPU with 4-step gradient accumulation, fp16 autocast.
+
+| Encoder Init | Probe Depth | Slices | Val AUC | Test AUC |
+|:------------|:-----------:|:------:|:-------:|:--------:|
+| **ImageNet->SSL ep32** | **d=3** | **32** | **0.828** | **0.829** |
+| ImageNet->SSL ep32 | d=2 | 64 | 0.832 | 0.829 |
+| ImageNet->SSL ep32 | d=2 | 32 | 0.826 | 0.828 |
+| Random->SSL ep11 | d=2 | 32 | 0.819 | -- (val only) |
+| Random->SSL ep11 | d=3 | 64 | 0.815 | -- (val only) |
+
+![Test AUC Comparison](/assets/images/ijepa-test-auc-comparison.png)
+
+**Fine-tuning gives +8.5% AUC** over frozen probe (0.734 -> 0.819 for random-init, 0.774 -> 0.829 for ImageNet-init). All unfrozen configs with ImageNet init cluster at 0.828-0.829 -- neither deeper probe (d=3 vs d=2) nor more slices (64 vs 32) help once the encoder is unfrozen.
+
+Best result: **0.829 test AUC**, closing the gap to SLIViT (0.869) to 4.0%.
+
+### Key Lessons from Downstream
+
+- Frozen probe performance is capped by encoder representation quality, not probe architecture
+- 100 slices cause OOM with unfrozen encoder on T4s; 32-64 slices are the practical limit
+- Deeper probes and more slices don't help once the encoder is fine-tuned -- the encoder is the ceiling
+- ImageNet initialization helps both frozen (+4%) and unfrozen (+1%) but the gap narrows with fine-tuning
+
+## ImageNet-Initialized Pretraining
+
+Added two pretraining runs starting from ImageNet-supervised ViT-B/16 weights instead of random initialization.
+
+### Run 4: ImageNet-Init, Gentle LR
+
+ImageNet-pretrained encoder initially collapsed (rep_diversity 0.98) because grayscale OCT images activated similar ImageNet features. Required aggressive updates (EMA=0.996, LR=0.00025) to force encoder specialization. Best checkpoint at epoch 32.
+
+### Run 5: ImageNet-Init, 100 Epochs
+
+Extended training to 100 epochs. Performance degraded after epoch 32, confirming that the SSL objective progressively overwrites ImageNet features. The sweet spot for ImageNet-initialized I-JEPA on OCT is ~30-35 epochs.
 
 ## Training Time Estimates (4x T4 GPUs)
 
@@ -155,7 +205,8 @@ Features are pre-computed once with the frozen encoder and cached to disk (~3 GB
 | Patch pretraining | 600K slices | ~71 min | 50 | ~59 hrs |
 | Slice pretraining | 6K volumes | ~3.5 min | 100 | ~6 hrs |
 | Downstream feature extraction | 10K volumes x 100 slices | N/A | 1 pass | ~50 min |
-| Downstream probe training | cached features | ~30 sec | 50 max | ~25 min |
+| Downstream frozen probe | cached features | ~30 sec | 50-100 | ~25-50 min |
+| Downstream unfrozen | 10K volumes x 32-64 slices | ~8-15 min | 25 | ~3-6 hrs |
 
 ## References
 
