@@ -7,3 +7,16 @@ vendor/
 Gemfile.lock
 *.pdf
 1696906260300.jpg
+
+# Security: never commit these
+.audit/
+.claude/
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*credentials*
+*secret*
+.DS_Store
+Thumbs.db

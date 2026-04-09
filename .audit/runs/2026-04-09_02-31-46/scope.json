@@ -1,1 +1,0 @@
-{"scope": "Navigation issue: clicking menu items does nothing. Check navigation.yml, config, pages for URL/permalink mismatches.", "started": "2026-04-09T02:31:47-07:00", "git_commit": "7a3678447343b355f2ad4ac1daf26b0fdea21cd3", "file_count": 10, "run_dir": ".audit/runs/2026-04-09_02-31-46"}

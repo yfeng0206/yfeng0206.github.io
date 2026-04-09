@@ -1,9 +1,0 @@
-_data/navigation.yml
-_pages/trading.html
-_pages/live-trading.html
-_config.yml
-_includes/head/custom.html
-.gitignore
-Gemfile
-index.html
-_pages/404.md
