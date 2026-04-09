@@ -235,13 +235,16 @@ author_profile: true
 
 <!-- ── Trade History ── -->
 <div class="lt-table-wrap">
-  <h3>Recent Trades</h3>
+  <h3>Recent Trades <span class="muted" style="font-weight:400;font-size:0.85em;" id="tradeCount"></span></h3>
   <table class="lt-table">
     <thead>
       <tr><th>Date</th><th>Action</th><th>Ticker</th><th>Shares</th><th>Price</th><th>Total</th><th>Reason</th></tr>
     </thead>
     <tbody id="tradesBody"></tbody>
   </table>
+  <div id="showMoreWrap" style="display:none;text-align:center;padding:0.8rem 0 0.3rem;">
+    <button id="showMoreBtn" style="background:none;border:1px solid #4c566a;color:#88c0d0;padding:0.4rem 1.2rem;border-radius:6px;cursor:pointer;font-size:0.85em;transition:border-color 0.2s;">Show All Trades</button>
+  </div>
 </div>
 
 <p style="font-size:0.78em;color:#4c566a;margin-top:2rem;">
@@ -423,12 +426,13 @@ async function render() {
   document.getElementById('positionsBody').innerHTML = posHtml;
   document.getElementById('posCount').textContent = '(' + d.positions.length + ')';
 
-  // Trades
-  var trHtml = '';
-  d.trades.forEach(function(t) {
+  // Trades (show 20, reveal rest on click)
+  var TRADES_LIMIT = 20;
+  var allTrades = d.trades;
+  function buildTradeRow(t) {
     var badge = t.action === 'BUY' ? 'badge-buy' : 'badge-sell';
     var total = t.shares * t.price;
-    trHtml += '<tr>' +
+    return '<tr>' +
       '<td>' + t.date + '</td>' +
       '<td><span class="' + badge + '">' + t.action + '</span></td>' +
       '<td class="ticker">' + t.ticker + '</td>' +
@@ -437,8 +441,23 @@ async function render() {
       '<td>' + fmt$(total) + '</td>' +
       '<td style="color:#6b7280;font-size:0.9em;">' + t.reason + '</td>' +
     '</tr>';
-  });
-  document.getElementById('tradesBody').innerHTML = trHtml;
+  }
+  var visibleTrades = allTrades.slice(0, TRADES_LIMIT);
+  var hiddenTrades = allTrades.slice(TRADES_LIMIT);
+  document.getElementById('tradesBody').innerHTML = visibleTrades.map(buildTradeRow).join('');
+  document.getElementById('tradeCount').textContent = '(showing ' + visibleTrades.length + ' of ' + allTrades.length + ')';
+
+  if (hiddenTrades.length > 0) {
+    var wrap = document.getElementById('showMoreWrap');
+    var btn = document.getElementById('showMoreBtn');
+    wrap.style.display = 'block';
+    btn.textContent = 'Show All ' + allTrades.length + ' Trades';
+    btn.onclick = function() {
+      document.getElementById('tradesBody').innerHTML = allTrades.map(buildTradeRow).join('');
+      document.getElementById('tradeCount').textContent = '(all ' + allTrades.length + ' trades)';
+      wrap.style.display = 'none';
+    };
+  }
 
   // Equity curve chart
   var labels = d.equity_curve.map(function(e) {
