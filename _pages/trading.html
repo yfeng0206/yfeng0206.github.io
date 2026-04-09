@@ -796,7 +796,9 @@ author_profile: true
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<p style="font-size:0.85em;color:#8892a4;">See also: <a href="/live-trading/" style="color:#88c0d0;">Live Trading Dashboard</a></p>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" integrity="sha384-vsrfeLOOY6KuIYKDlmVH5UiBmgIdB1oEf7p01YgWHuqmOHfZr374+odEv96n9tNC" crossorigin="anonymous"></script>
 <script>
 // Navigation
 function showStrategy(id) {
@@ -812,6 +814,7 @@ function showMain() {
 }
 
 // Strategy Returns Chart
+try {
 const returnsCtx = document.getElementById('returnsChart').getContext('2d');
 new Chart(returnsCtx, {
   type: 'bar',
@@ -925,4 +928,10 @@ new Chart(crashCtx, {
     }
   }
 });
+} catch(e) {
+  console.error('Chart.js not available:', e);
+  document.querySelectorAll('.chart-container').forEach(function(el) {
+    el.innerHTML = '<p style="color:#6b7280;padding:2rem;text-align:center;">Charts unavailable. Try refreshing the page.</p>';
+  });
+}
 </script>

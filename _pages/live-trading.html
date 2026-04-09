@@ -227,7 +227,7 @@ author_profile: true
   <h3>Current Positions <span class="muted" style="font-weight:400;font-size:0.85em;" id="posCount"></span></h3>
   <table class="lt-table">
     <thead>
-      <tr><th>Ticker</th><th>Shares</th><th>Avg Cost</th><th>Price</th><th>Value</th><th>P&L</th><th>%</th></tr>
+      <tr><th>Ticker</th><th>Shares</th><th>Avg Cost</th><th>Price</th><th>Value</th><th>P&amp;L</th><th>%</th></tr>
     </thead>
     <tbody id="positionsBody"></tbody>
   </table>
@@ -249,7 +249,9 @@ author_profile: true
   Not financial advice. Past performance does not predict future results.
 </p>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<p style="font-size:0.85em;color:#8892a4;">See also: <a href="/trading/" style="color:#88c0d0;">Backtest Results (25 years, 9 strategies)</a></p>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" integrity="sha384-vsrfeLOOY6KuIYKDlmVH5UiBmgIdB1oEf7p01YgWHuqmOHfZr374+odEv96n9tNC" crossorigin="anonymous"></script>
 <script>
 /*
  * ══════════════════════════════════════════════════════════════
@@ -454,6 +456,7 @@ async function render() {
   }
 
   var ctx = document.getElementById('equityChart').getContext('2d');
+  if (typeof Chart === 'undefined') { throw new Error('Chart.js not loaded'); }
   new Chart(ctx, {
     type: 'line',
     data: {
@@ -522,5 +525,9 @@ async function render() {
   });
 }
 
-render();
+render().catch(function(err) {
+  console.error('Dashboard render failed:', err);
+  document.getElementById('summaryCards').innerHTML =
+    '<div class="live-card"><div class="lc-label">Error</div><div class="lc-value" style="font-size:0.9em;color:#bf616a;">Dashboard failed to load. Check console.</div></div>';
+});
 </script>

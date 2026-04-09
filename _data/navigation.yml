@@ -1,3 +1,5 @@
+# NOTE: Minimal Mistakes v4.28.0 masthead does NOT support "children" for dropdowns.
+# All items must be flat with a url. Do not use children here (it works in sidebar nav only).
 main:
   - title: "About"
     url: /about/
