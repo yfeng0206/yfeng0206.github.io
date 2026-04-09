@@ -19,24 +19,24 @@ JSON data (inline or fetched) --> loadData() --> render() --> DOM updates via in
 ### Code Structure
 
 ```
-live-trading.html
+live-trading.html (552 lines)
   |
   |-- <style> (lines 8-199)         CSS for cards, tables, charts, allocation bar
-  |-- HTML skeleton (lines 200-250)  Empty containers with IDs (summaryCards, allocBar, etc.)
-  |-- Chart.js CDN (line 254)        Loaded with SRI hash
-  |-- <script> (lines 255-534)
+  |-- HTML skeleton (lines 200-253)  Empty containers with IDs (summaryCards, allocBar, etc.)
+  |-- Chart.js CDN (line 257)        Loaded with SRI hash
+  |-- <script> (lines 258-552)
   |     |
-  |     |-- DUMMY_DATA (lines 281-358)   The JSON schema -- this is the contract
-  |     |-- loadData() (line 360)        Currently returns DUMMY_DATA. Switch this for live.
+  |     |-- DUMMY_DATA (lines 284-351)   The JSON schema -- this is the contract
+  |     |-- loadData() (line 361)        Currently returns DUMMY_DATA. Switch this for live.
   |     |-- Helper functions             fmt$(), fmtPct(), fmtPnl(), cls()
-  |     |-- render() (lines 367-523)     Async. Calls loadData(), populates all DOM elements:
+  |     |-- render() (lines 370-545)     Async. Calls loadData(), populates all DOM elements:
   |     |     |-- Summary cards (5 cards: value, return, cash, invested, regime)
   |     |     |-- Allocation bar (stocks/bonds/gold/cash with colored segments)
   |     |     |-- Positions table (computed P&L from shares * price - shares * avg_cost)
-  |     |     |-- Trade history (shows last 20, "Show All" button reveals archive)
+  |     |     |-- Trade history (shows first 20, "Show All" button reveals full archive)
   |     |     |-- Equity curve (Chart.js line chart, portfolio vs SPY scaled baseline)
   |     |
-  |     |-- render().catch()             Error handler shows message in summaryCards
+  |     |-- render().catch() (line 547)  Error handler shows message in summaryCards
 ```
 
 ### JSON Schema (the contract)
@@ -274,7 +274,7 @@ output = {
     },
     "allocation": state.get("allocation", {"stocks": 80, "cash": 20, "bonds": 0, "gold": 0}),
     "positions": state.get("positions", []),
-    "trades": trades[-20:],  # last 20 trades
+    "trades": trades,  # send ALL trades; frontend shows first 20 with "Show All" button
     "equity_curve": [{"date": h["date"], "value": h["total_value"]} for h in history]
 }
 
