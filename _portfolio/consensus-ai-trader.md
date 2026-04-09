@@ -18,7 +18,7 @@ sidebar:
 7 AI strategies trade independently. The flagship strategies, **Mix** and **MixLLM**, read all 7 as live sensors and trade on their consensus. Free data, 93 stocks, 25 years backtested.
 
 [View on GitHub](https://github.com/yfeng0206/ConsensusAITrader){: .btn .btn--primary}
-[Trading Dashboard](/trading/){: .btn .btn--info}
+[Live Trading](/live-trading/){: .btn .btn--info}
 
 ## The Core Idea
 

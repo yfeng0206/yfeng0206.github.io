@@ -1,0 +1,1 @@
+{"scope": "Navigation and page rendering issues - why Trading/Live Trading nav links do nothing when clicked", "started": "2026-04-09T09:33:27Z", "git_commit": "7a36784", "file_count": 5, "run_dir": ".audit/runs/2026-04-09_02-33-21", "focus_files": ["_data/navigation.yml", "_pages/trading.html", "_pages/live-trading.html", "_config.yml", "_includes/head/custom.html"]}

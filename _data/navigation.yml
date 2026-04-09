@@ -7,8 +7,6 @@ main:
     url: /portfolio/
   - title: "Publications"
     url: /publications/
-  - title: "Trading"
-    url: /trading/
   - title: "Live Trading"
     url: /live-trading/
   - title: "Blog"

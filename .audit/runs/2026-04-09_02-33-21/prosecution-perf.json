@@ -1,0 +1,136 @@
+{
+  "agent": "prosecutor-C",
+  "timestamp": "2026-04-09T02:36:00-07:00",
+  "scope": "Performance, Concurrency & Timing, Silent Failures in _pages/trading.html and _pages/live-trading.html",
+  "total_findings": 9,
+  "findings": [
+    {
+      "id": "FINDING-C1",
+      "title": "Chart.js CDN failure silently breaks charts on trading.html",
+      "severity": "HIGH",
+      "confidence": "HIGH",
+      "category": "Silent Failure",
+      "cwe": "CWE-544",
+      "files": [{"path": "_pages/trading.html", "lines": "799-928"}],
+      "claim": "Charts should render and strategy navigation should work",
+      "reality": "No try/catch around Chart constructors. If Chart.js CDN is blocked, new Chart() throws ReferenceError. Charts render as empty boxes with no error message. Navigation functions survive due to hoisting but charts are dead.",
+      "impact": "Two empty chart areas with no user-visible error on corporate networks, ad-blocked environments, or CDN outages"
+    },
+    {
+      "id": "FINDING-C2",
+      "title": "Chart.js CDN failure causes unhandled promise rejection on live-trading.html",
+      "severity": "HIGH",
+      "confidence": "HIGH",
+      "category": "Silent Failure",
+      "cwe": "CWE-544",
+      "files": [{"path": "_pages/live-trading.html", "lines": "252-526"}],
+      "claim": "Live trading dashboard should render portfolio data and equity curve chart",
+      "reality": "render() is async, called at line 525 with no .catch(). Chart.js failure at line 457 throws ReferenceError inside async function, producing unhandled promise rejection. Data tables render but chart is empty.",
+      "impact": "Partial page render with dead chart section and unhandled promise rejection in console"
+    },
+    {
+      "id": "FINDING-C3",
+      "title": "Synchronous Chart.js load (201KB) blocks page rendering",
+      "severity": "MEDIUM",
+      "confidence": "HIGH",
+      "category": "Performance",
+      "cwe": "N/A",
+      "files": [
+        {"path": "_pages/trading.html", "lines": "799"},
+        {"path": "_pages/live-trading.html", "lines": "252"}
+      ],
+      "claim": "Pages should load quickly for a personal portfolio site",
+      "reality": "Chart.js (205,889 bytes) loaded synchronously without async/defer. On live-trading.html, this blocks execution of render() which populates ALL page content, not just the chart.",
+      "impact": "On slow connections, live-trading.html shows empty skeleton for 1+ seconds while Chart.js downloads"
+    },
+    {
+      "id": "FINDING-C4",
+      "title": "Google Fonts loaded as render-blocking resource in head",
+      "severity": "MEDIUM",
+      "confidence": "HIGH",
+      "category": "Performance",
+      "cwe": "N/A",
+      "files": [{"path": "_includes/head/custom.html", "lines": "1-3"}],
+      "claim": "Site should load quickly",
+      "reality": "Google Fonts CSS link in <head> is render-blocking. 9 font weights (5 Inter + 2 Fira Code) requested. display=swap mitigates FOIT but CSS itself still blocks.",
+      "impact": "First Contentful Paint delayed on all pages by font CSS download time"
+    },
+    {
+      "id": "FINDING-C5",
+      "title": "Unhandled promise rejection from render() with no user feedback",
+      "severity": "MEDIUM",
+      "confidence": "HIGH",
+      "category": "Silent Failure",
+      "cwe": "CWE-755",
+      "files": [{"path": "_pages/live-trading.html", "lines": "365-525"}],
+      "claim": "Code comments describe future remote data fetching from GitHub Gist or raw URL",
+      "reality": "render() has no try/catch, called with no .catch(). When switching from dummy data to live fetch, any network failure silently produces empty dashboard with no error message.",
+      "impact": "Future data source migration will produce silent empty dashboards on fetch failures"
+    },
+    {
+      "id": "FINDING-C6",
+      "title": "Duplicate Chart.js load without prefetch optimization",
+      "severity": "MEDIUM",
+      "confidence": "MEDIUM",
+      "category": "Performance",
+      "cwe": "N/A",
+      "files": [
+        {"path": "_pages/trading.html", "lines": "799"},
+        {"path": "_pages/live-trading.html", "lines": "252"},
+        {"path": "_includes/head/custom.html", "lines": "1-3"}
+      ],
+      "claim": "Users may navigate between Trading and Live Trading pages",
+      "reality": "Both pages load Chart.js independently. No <link rel=prefetch> on other pages. First visit to either trading page requires full 201KB download. Browser cache helps on second visit.",
+      "impact": "First-time visitors to trading pages wait for full Chart.js download with no prefetch warming"
+    },
+    {
+      "id": "FINDING-C7",
+      "title": "36KB inline page with 9 hidden detail sections always in DOM",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "category": "Performance",
+      "cwe": "N/A",
+      "files": [{"path": "_pages/trading.html", "lines": "500-797"}],
+      "claim": "Trading page shows clickable strategy overview with detail views",
+      "reality": "All 9 strategy detail sections (294 divs, 99 trs, 326 tds) are always in DOM, hidden via CSS. 36.6KB page is 16x larger than next largest page.",
+      "impact": "Negligible on modern browsers. Standard pattern for small content sets."
+    },
+    {
+      "id": "FINDING-C8",
+      "title": "Unescaped ampersand in HTML table header",
+      "severity": "LOW",
+      "confidence": "HIGH",
+      "category": "Silent Failure",
+      "cwe": "CWE-116",
+      "files": [{"path": "_pages/live-trading.html", "lines": "230"}],
+      "claim": "Positions table should display P&L column header",
+      "reality": "<th>P&L</th> uses unescaped ampersand. Should be P&amp;L. Browsers display correctly but fails HTML validation.",
+      "impact": "No visible impact. Standards compliance issue only."
+    },
+    {
+      "id": "FINDING-C9",
+      "title": "Inline scripts and styles incompatible with strict CSP",
+      "severity": "LOW",
+      "confidence": "MEDIUM",
+      "category": "Silent Failure",
+      "cwe": "CWE-693",
+      "files": [
+        {"path": "_pages/trading.html", "lines": "8-243, 800-928"},
+        {"path": "_pages/live-trading.html", "lines": "8-199, 253-526"}
+      ],
+      "claim": "Site hosted on GitHub Pages with standard security",
+      "reality": "Both pages use inline <style>, inline <script>, and 18 onclick handlers. Incompatible with strict Content Security Policy. GitHub Pages does not currently enforce CSP.",
+      "impact": "No current impact. Theoretical future breakage if CSP is enforced."
+    }
+  ],
+  "stats": {
+    "critical": 0,
+    "high": 2,
+    "medium": 4,
+    "low": 3,
+    "by_category": {
+      "Silent Failure": 6,
+      "Performance": 3
+    }
+  }
+}

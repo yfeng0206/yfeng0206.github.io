@@ -1,0 +1,13 @@
+{"file": "_pages/trading.html", "line": 799, "severity": "MEDIUM", "finding": "FINDING-3", "verdict": "FIX", "message": "Chart.js CDN loaded without error handling; wrap new Chart() calls in try/catch with fallback message"}
+{"file": "_pages/trading.html", "line": 816, "severity": "MEDIUM", "finding": "FINDING-3", "verdict": "FIX", "message": "new Chart() call with no try/catch; CDN failure produces empty chart with no user feedback"}
+{"file": "_pages/trading.html", "line": 866, "severity": "MEDIUM", "finding": "FINDING-3", "verdict": "FIX", "message": "new Chart() call with no try/catch; CDN failure produces empty chart with no user feedback"}
+{"file": "_pages/live-trading.html", "line": 525, "severity": "MEDIUM", "finding": "FINDING-4", "verdict": "FIX", "message": "render() called without .catch(); add error handling for unhandled promise rejection"}
+{"file": "_pages/live-trading.html", "line": 365, "severity": "MEDIUM", "finding": "FINDING-4", "verdict": "FIX", "message": "async render() has no try/catch; wrap body in try/catch with user-visible error message"}
+{"file": "_pages/live-trading.html", "line": 457, "severity": "MEDIUM", "finding": "FINDING-4", "verdict": "FIX", "message": "new Chart() call with no guard; CDN failure crashes render at this point"}
+{"file": "_pages/trading.html", "line": 799, "severity": "MEDIUM", "finding": "FINDING-5", "verdict": "FIX", "message": "Chart.js loaded without SRI; add integrity and crossorigin attributes"}
+{"file": "_pages/live-trading.html", "line": 252, "severity": "MEDIUM", "finding": "FINDING-5", "verdict": "FIX", "message": "Chart.js loaded without SRI; add integrity and crossorigin attributes"}
+{"file": "_pages/trading.html", "line": 1, "severity": "LOW", "finding": "FINDING-9", "verdict": "FIX", "message": "Add cross-link to Live Trading page for discoverability"}
+{"file": "_pages/live-trading.html", "line": 1, "severity": "LOW", "finding": "FINDING-9", "verdict": "FIX", "message": "Add cross-link to Trading (Backtest Results) page for discoverability"}
+{"file": "_data/navigation.yml", "line": 1, "severity": "LOW", "finding": "FINDING-10", "verdict": "FIX", "message": "Add comment warning that Minimal Mistakes masthead does NOT support children dropdown syntax"}
+{"file": "index.html", "line": 2, "severity": "LOW", "finding": "FINDING-17", "verdict": "FIX", "message": "Change layout: none to layout: null (works by accident via missing layout fallback)"}
+{"file": "_pages/live-trading.html", "line": 230, "severity": "LOW", "finding": "FINDING-20", "verdict": "FIX", "message": "Unescaped ampersand: change P&L to P&amp;L for valid HTML"}
