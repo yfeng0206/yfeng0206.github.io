@@ -1,0 +1,526 @@
+---
+title: "Live Trading"
+permalink: /live-trading/
+layout: single
+author_profile: true
+---
+
+<style>
+  /* ── WIP Banner ── */
+  .wip-banner {
+    background: #3b2e1a;
+    border: 1px solid #d08770;
+    border-radius: 8px;
+    padding: 0.8rem 1.2rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .wip-banner .wip-icon { font-size: 1.2em; }
+  .wip-banner .wip-text { color: #d8dee9; font-size: 0.9em; }
+  .wip-banner .wip-text strong { color: #d08770; }
+
+  /* ── Data source info ── */
+  .data-source {
+    font-size: 0.8em;
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .data-source a { color: #88c0d0; text-decoration: none; }
+  .data-source a:hover { text-decoration: underline; }
+
+  /* ── Summary cards ── */
+  .live-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+  .live-card {
+    background: #1e222a;
+    border: 1px solid #2e3440;
+    border-radius: 8px;
+    padding: 0.9rem 1rem;
+  }
+  .live-card .lc-label {
+    font-size: 0.75em;
+    color: #8892a4;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+  }
+  .live-card .lc-value {
+    font-size: 1.4em;
+    font-weight: 600;
+    color: #e5e9f0;
+  }
+  .live-card .lc-sub {
+    font-size: 0.82em;
+    margin-top: 0.15rem;
+  }
+  .pos { color: #a3be8c; }
+  .neg { color: #bf616a; }
+  .muted { color: #8892a4; }
+
+  /* ── Chart ── */
+  .chart-wrap {
+    background: #1e222a;
+    border: 1px solid #2e3440;
+    border-radius: 8px;
+    padding: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  .chart-wrap .cw-title {
+    font-size: 0.95em;
+    font-weight: 600;
+    color: #d8dee9;
+    margin-bottom: 0.8rem;
+  }
+  .chart-wrap canvas { max-height: 320px; }
+
+  /* ── Tables ── */
+  .lt-table-wrap {
+    background: #1e222a;
+    border: 1px solid #2e3440;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    overflow-x: auto;
+  }
+  .lt-table-wrap h3 {
+    margin: 0 0 0.8rem 0;
+    font-size: 1em;
+    color: #d8dee9;
+  }
+  .lt-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.86em;
+  }
+  .lt-table th {
+    text-align: left;
+    padding: 0.5rem 0.7rem;
+    color: #8892a4;
+    font-weight: 500;
+    font-size: 0.82em;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-bottom: 1px solid #2e3440;
+  }
+  .lt-table td {
+    padding: 0.5rem 0.7rem;
+    color: #d8dee9;
+    border-bottom: 1px solid #2e3440;
+  }
+  .lt-table tr:last-child td { border-bottom: none; }
+  .lt-table .ticker {
+    font-weight: 600;
+    color: #88c0d0;
+  }
+  .badge-buy {
+    display: inline-block;
+    background: #2d4a3e;
+    color: #a3be8c;
+    padding: 0.12rem 0.45rem;
+    border-radius: 4px;
+    font-size: 0.82em;
+    font-weight: 500;
+  }
+  .badge-sell {
+    display: inline-block;
+    background: #4a2d2d;
+    color: #bf616a;
+    padding: 0.12rem 0.45rem;
+    border-radius: 4px;
+    font-size: 0.82em;
+    font-weight: 500;
+  }
+
+  /* ── Strategy badge ── */
+  .strategy-tag {
+    display: inline-block;
+    background: #2d3a4a;
+    color: #88c0d0;
+    padding: 0.15rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.82em;
+    font-weight: 500;
+  }
+
+  /* ── Section title ── */
+  .sec-title {
+    font-size: 1.05em;
+    font-weight: 600;
+    color: #d8dee9;
+    margin-bottom: 0.8rem;
+  }
+
+  /* ── Allocation bar ── */
+  .alloc-bar {
+    display: flex;
+    border-radius: 6px;
+    overflow: hidden;
+    height: 28px;
+    margin-bottom: 0.5rem;
+    background: #2e3440;
+  }
+  .alloc-seg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72em;
+    font-weight: 600;
+    color: #e5e9f0;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: width 0.5s ease;
+  }
+  .alloc-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    font-size: 0.78em;
+    color: #8892a4;
+    margin-bottom: 1.5rem;
+  }
+  .alloc-legend span { display: flex; align-items: center; gap: 0.3rem; }
+  .alloc-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+  }
+</style>
+
+<div class="wip-banner">
+  <span class="wip-icon">&#128679;</span>
+  <span class="wip-text"><strong>Work in Progress</strong> - This page shows placeholder data. Live trading integration is under development.</span>
+</div>
+
+<div class="data-source">
+  <span>Strategy: <span class="strategy-tag">MixLLM</span></span>
+  <span>Last updated: <span id="lastUpdated">--</span></span>
+</div>
+
+<!-- ── Summary Cards ── -->
+<div class="live-summary" id="summaryCards"></div>
+
+<!-- ── Allocation Bar ── -->
+<div class="sec-title">Portfolio Allocation</div>
+<div class="alloc-bar" id="allocBar"></div>
+<div class="alloc-legend" id="allocLegend"></div>
+
+<!-- ── Equity Curve ── -->
+<div class="chart-wrap">
+  <div class="cw-title">Portfolio Value</div>
+  <canvas id="equityChart"></canvas>
+</div>
+
+<!-- ── Current Positions ── -->
+<div class="lt-table-wrap">
+  <h3>Current Positions <span class="muted" style="font-weight:400;font-size:0.85em;" id="posCount"></span></h3>
+  <table class="lt-table">
+    <thead>
+      <tr><th>Ticker</th><th>Shares</th><th>Avg Cost</th><th>Price</th><th>Value</th><th>P&L</th><th>%</th></tr>
+    </thead>
+    <tbody id="positionsBody"></tbody>
+  </table>
+</div>
+
+<!-- ── Trade History ── -->
+<div class="lt-table-wrap">
+  <h3>Recent Trades</h3>
+  <table class="lt-table">
+    <thead>
+      <tr><th>Date</th><th>Action</th><th>Ticker</th><th>Shares</th><th>Price</th><th>Total</th><th>Reason</th></tr>
+    </thead>
+    <tbody id="tradesBody"></tbody>
+  </table>
+</div>
+
+<p style="font-size:0.78em;color:#4c566a;margin-top:2rem;">
+  Powered by <a href="https://github.com/yfeng0206/ConsensusAITrader" style="color:#5e81ac;">ConsensusAITrader</a>.
+  Not financial advice. Past performance does not predict future results.
+</p>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script>
+/*
+ * ══════════════════════════════════════════════════════════════
+ *  DATA SOURCE
+ * ══════════════════════════════════════════════════════════════
+ *  Currently: inline dummy data below.
+ *
+ *  To switch to live data without redeploying this site:
+ *
+ *  Option A — GitHub Gist (recommended):
+ *    1. Create a secret gist with a JSON file (e.g. live_portfolio.json)
+ *    2. Your trading bot updates the gist via GitHub API after each trade
+ *    3. Change loadData() to fetch from:
+ *       https://gist.githubusercontent.com/<user>/<gist_id>/raw/live_portfolio.json
+ *
+ *  Option B — Raw file in ConsensusAITrader repo:
+ *    1. Trading bot commits portfolio/live_state.json to the repo
+ *    2. Fetch from:
+ *       https://raw.githubusercontent.com/yfeng0206/ConsensusAITrader/main/portfolio/live_state.json
+ *
+ *  Option C — Any static host (S3, R2, Vercel blob, etc.)
+ *
+ *  The JSON schema is defined by DUMMY_DATA below.
+ * ══════════════════════════════════════════════════════════════
+ */
+
+const DUMMY_DATA = {
+  last_updated: "2026-04-09T09:35:00-07:00",
+  strategy: "MixLLM",
+  account: {
+    starting_capital: 100000,
+    total_value: 103842,
+    cash: 18204,
+    invested: 85638,
+    day_pnl: 487,
+    total_return_pct: 3.84,
+    total_return_usd: 3842
+  },
+  regime: "AGGRESSIVE",
+  allocation: {
+    stocks: 82.5,
+    cash: 17.5,
+    bonds: 0,
+    gold: 0
+  },
+  positions: [
+    { ticker: "NVDA",  shares: 35, avg_cost: 118.20, current_price: 124.80, sector: "Semis" },
+    { ticker: "META",  shares: 15, avg_cost: 542.00, current_price: 558.30, sector: "Tech" },
+    { ticker: "AVGO",  shares: 28, avg_cost: 185.40, current_price: 191.20, sector: "Semis" },
+    { ticker: "GOOGL", shares: 50, avg_cost: 172.80, current_price: 178.40, sector: "Tech" },
+    { ticker: "AMZN",  shares: 22, avg_cost: 198.40, current_price: 205.10, sector: "Tech" },
+    { ticker: "LLY",   shares: 8,  avg_cost: 782.00, current_price: 798.50, sector: "Healthcare" },
+    { ticker: "JPM",   shares: 30, avg_cost: 208.60, current_price: 215.40, sector: "Finance" },
+    { ticker: "CRWD",  shares: 18, avg_cost: 342.10, current_price: 351.90, sector: "Software" },
+    { ticker: "XOM",   shares: 45, avg_cost: 112.30, current_price: 115.80, sector: "Energy" },
+    { ticker: "CAT",   shares: 20, avg_cost: 358.40, current_price: 365.20, sector: "Industrial" }
+  ],
+  trades: [
+    { date: "2026-04-08", action: "BUY",  ticker: "CAT",  shares: 20, price: 358.40, reason: "Regime AGGRESSIVE, industrial strength score 82" },
+    { date: "2026-04-08", action: "SELL", ticker: "DIS",  shares: 40, price: 119.80, reason: "Stop-loss triggered at -7.2%" },
+    { date: "2026-04-07", action: "BUY",  ticker: "CRWD", shares: 18, price: 342.10, reason: "Momentum crossover, cybersecurity consensus bullish" },
+    { date: "2026-04-04", action: "BUY",  ticker: "XOM",  shares: 45, price: 112.30, reason: "Commodity strategy oil signal, consensus cautious hedge" },
+    { date: "2026-04-03", action: "SELL", ticker: "NFLX", shares: 8,  price: 885.20, reason: "Rebalance, trimmed to fund energy exposure" },
+    { date: "2026-04-01", action: "BUY",  ticker: "LLY",  shares: 8,  price: 782.00, reason: "Value score 88, healthcare rotation" },
+    { date: "2026-04-01", action: "BUY",  ticker: "JPM",  shares: 30, price: 208.60, reason: "Biweekly rebalance, financials underweight" },
+    { date: "2026-03-28", action: "SELL", ticker: "TSLA", shares: 15, price: 252.40, reason: "Consensus 5/7 cautious, trimming high-beta" },
+    { date: "2026-03-28", action: "BUY",  ticker: "GOOGL",shares: 50, price: 172.80, reason: "Mean reversion entry, RSI oversold + value score 76" },
+    { date: "2026-03-25", action: "BUY",  ticker: "AMZN", shares: 22, price: 198.40, reason: "Biweekly rebalance, momentum score 84" },
+    { date: "2026-03-20", action: "BUY",  ticker: "AVGO", shares: 28, price: 185.40, reason: "Semiconductor consensus bullish, score 81" },
+    { date: "2026-03-15", action: "BUY",  ticker: "META", shares: 15, price: 542.00, reason: "Biweekly rebalance, momentum + adaptive agree" },
+    { date: "2026-03-15", action: "BUY",  ticker: "NVDA", shares: 35, price: 118.20, reason: "Biweekly rebalance, top momentum score 92" }
+  ],
+  equity_curve: [
+    { date: "2026-03-15", value: 100000 },
+    { date: "2026-03-17", value: 100180 },
+    { date: "2026-03-18", value: 100420 },
+    { date: "2026-03-19", value: 100310 },
+    { date: "2026-03-20", value: 100650 },
+    { date: "2026-03-21", value: 101020 },
+    { date: "2026-03-24", value: 100780 },
+    { date: "2026-03-25", value: 101250 },
+    { date: "2026-03-26", value: 101580 },
+    { date: "2026-03-27", value: 101340 },
+    { date: "2026-03-28", value: 101890 },
+    { date: "2026-03-31", value: 102150 },
+    { date: "2026-04-01", value: 102480 },
+    { date: "2026-04-02", value: 102310 },
+    { date: "2026-04-03", value: 102720 },
+    { date: "2026-04-04", value: 102950 },
+    { date: "2026-04-07", value: 103180 },
+    { date: "2026-04-08", value: 103355 },
+    { date: "2026-04-09", value: 103842 }
+  ]
+};
+
+/*
+ * To fetch live data instead of using DUMMY_DATA:
+ *
+ * async function loadData() {
+ *   const resp = await fetch('https://gist.githubusercontent.com/yfeng0206/<GIST_ID>/raw/live_portfolio.json');
+ *   return resp.json();
+ * }
+ */
+function loadData() { return Promise.resolve(DUMMY_DATA); }
+
+// ── Helpers ──
+function fmt$(n) { return '$' + Math.abs(n).toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0}); }
+function fmtPct(n) { return (n >= 0 ? '+' : '') + n.toFixed(2) + '%'; }
+function fmtPnl(n) { return (n >= 0 ? '+$' : '-$') + Math.abs(n).toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0}); }
+function cls(n) { return n >= 0 ? 'pos' : 'neg'; }
+
+// ── Render ──
+async function render() {
+  const d = await loadData();
+
+  // Last updated
+  const ts = new Date(d.last_updated);
+  document.getElementById('lastUpdated').textContent =
+    ts.toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'}) +
+    ' ' + ts.toLocaleTimeString('en-US', {hour:'numeric', minute:'2-digit'});
+
+  // Summary cards
+  const a = d.account;
+  const cards = [
+    { label: 'Portfolio Value', value: fmt$(a.total_value), sub: fmtPnl(a.day_pnl) + ' today', cls: cls(a.day_pnl) },
+    { label: 'Total Return', value: fmtPct(a.total_return_pct), sub: fmtPnl(a.total_return_usd) + ' on ' + fmt$(a.starting_capital), cls: cls(a.total_return_pct) },
+    { label: 'Cash', value: fmt$(a.cash), sub: (a.cash / a.total_value * 100).toFixed(1) + '% of portfolio', cls: 'muted' },
+    { label: 'Invested', value: fmt$(a.invested), sub: d.positions.length + ' positions', cls: 'muted' },
+    { label: 'Regime', value: d.regime, sub: d.strategy + ' strategy', cls: 'muted' }
+  ];
+  document.getElementById('summaryCards').innerHTML = cards.map(c =>
+    '<div class="live-card">' +
+      '<div class="lc-label">' + c.label + '</div>' +
+      '<div class="lc-value' + (c.label === 'Total Return' ? ' ' + c.cls : '') + '">' + c.value + '</div>' +
+      '<div class="lc-sub ' + c.cls + '">' + c.sub + '</div>' +
+    '</div>'
+  ).join('');
+
+  // Allocation bar
+  const al = d.allocation;
+  const allocColors = { stocks: '#88c0d0', bonds: '#5e81ac', gold: '#ebcb8b', cash: '#4c566a' };
+  var barHtml = '', legendHtml = '';
+  for (var k in al) {
+    if (al[k] > 0) {
+      barHtml += '<div class="alloc-seg" style="width:' + al[k] + '%;background:' + allocColors[k] + ';">' + (al[k] >= 8 ? al[k] + '%' : '') + '</div>';
+      legendHtml += '<span><span class="alloc-dot" style="background:' + allocColors[k] + ';"></span>' + k.charAt(0).toUpperCase() + k.slice(1) + ' ' + al[k] + '%</span>';
+    }
+  }
+  document.getElementById('allocBar').innerHTML = barHtml;
+  document.getElementById('allocLegend').innerHTML = legendHtml;
+
+  // Positions
+  var posHtml = '';
+  d.positions.forEach(function(p) {
+    var val = p.shares * p.current_price;
+    var cost = p.shares * p.avg_cost;
+    var pnl = val - cost;
+    var pnlPct = (pnl / cost * 100);
+    posHtml += '<tr>' +
+      '<td class="ticker">' + p.ticker + '</td>' +
+      '<td>' + p.shares + '</td>' +
+      '<td>$' + p.avg_cost.toFixed(2) + '</td>' +
+      '<td>$' + p.current_price.toFixed(2) + '</td>' +
+      '<td>' + fmt$(val) + '</td>' +
+      '<td class="' + cls(pnl) + '">' + fmtPnl(pnl) + '</td>' +
+      '<td class="' + cls(pnlPct) + '">' + fmtPct(pnlPct) + '</td>' +
+    '</tr>';
+  });
+  document.getElementById('positionsBody').innerHTML = posHtml;
+  document.getElementById('posCount').textContent = '(' + d.positions.length + ')';
+
+  // Trades
+  var trHtml = '';
+  d.trades.forEach(function(t) {
+    var badge = t.action === 'BUY' ? 'badge-buy' : 'badge-sell';
+    var total = t.shares * t.price;
+    trHtml += '<tr>' +
+      '<td>' + t.date + '</td>' +
+      '<td><span class="' + badge + '">' + t.action + '</span></td>' +
+      '<td class="ticker">' + t.ticker + '</td>' +
+      '<td>' + t.shares + '</td>' +
+      '<td>$' + t.price.toFixed(2) + '</td>' +
+      '<td>' + fmt$(total) + '</td>' +
+      '<td style="color:#6b7280;font-size:0.9em;">' + t.reason + '</td>' +
+    '</tr>';
+  });
+  document.getElementById('tradesBody').innerHTML = trHtml;
+
+  // Equity curve chart
+  var labels = d.equity_curve.map(function(e) {
+    var dt = new Date(e.date + 'T12:00:00');
+    return dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  });
+  var values = d.equity_curve.map(function(e) { return e.value; });
+
+  // SPY baseline (approximate, scaled to same start)
+  var spyReturns = [0, 0.12, 0.25, -0.08, 0.35, 0.28, -0.15, 0.32, 0.45, -0.18, 0.22, 0.38, 0.15, -0.25, 0.30, 0.18, 0.42, 0.20, 0.35];
+  var spyValues = [100000];
+  for (var i = 1; i < values.length; i++) {
+    var r = (i < spyReturns.length) ? spyReturns[i] : ((Math.random() - 0.4) * 0.5);
+    spyValues.push(Math.round(spyValues[i-1] * (1 + r / 100)));
+  }
+
+  var ctx = document.getElementById('equityChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Portfolio',
+          data: values,
+          borderColor: '#88c0d0',
+          backgroundColor: 'rgba(136, 192, 208, 0.08)',
+          fill: true,
+          borderWidth: 2.5,
+          pointRadius: 0,
+          pointHitRadius: 10,
+          tension: 0.3
+        },
+        {
+          label: 'SPY (scaled)',
+          data: spyValues,
+          borderColor: '#4c566a',
+          borderWidth: 1.5,
+          borderDash: [6, 3],
+          pointRadius: 0,
+          pointHitRadius: 10,
+          tension: 0.3
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: {
+          labels: { color: '#d8dee9', usePointStyle: true, pointStyle: 'line', padding: 20, font: { size: 12 } }
+        },
+        tooltip: {
+          backgroundColor: '#2e3440',
+          titleColor: '#d8dee9',
+          bodyColor: '#d8dee9',
+          borderColor: '#4c566a',
+          borderWidth: 1,
+          padding: 10,
+          callbacks: {
+            label: function(context) {
+              return context.dataset.label + ': $' + context.parsed.y.toLocaleString();
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          ticks: { color: '#6b7280', maxRotation: 0, autoSkip: true, maxTicksLimit: 8, font: { size: 11 } },
+          grid: { color: 'rgba(78, 86, 102, 0.2)' }
+        },
+        y: {
+          ticks: {
+            color: '#6b7280',
+            font: { size: 11 },
+            callback: function(v) { return '$' + (v / 1000).toFixed(0) + 'k'; }
+          },
+          grid: { color: 'rgba(78, 86, 102, 0.2)' }
+        }
+      }
+    }
+  });
+}
+
+render();
+</script>

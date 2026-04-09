@@ -6,6 +6,10 @@ main:
   - title: "Publications"
     url: /publications/
   - title: "Trading"
-    url: /trading/
+    children:
+      - title: "Backtest Results"
+        url: /trading/
+      - title: "Live Trading"
+        url: /live-trading/
   - title: "Blog"
     url: /blog/
