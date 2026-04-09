@@ -33,7 +33,7 @@ live-trading.html
   |     |     |-- Summary cards (5 cards: value, return, cash, invested, regime)
   |     |     |-- Allocation bar (stocks/bonds/gold/cash with colored segments)
   |     |     |-- Positions table (computed P&L from shares * price - shares * avg_cost)
-  |     |     |-- Trade history table (BUY/SELL badges with reason text)
+  |     |     |-- Trade history (shows last 20, "Show All" button reveals archive)
   |     |     |-- Equity curve (Chart.js line chart, portfolio vs SPY scaled baseline)
   |     |
   |     |-- render().catch()             Error handler shows message in summaryCards
@@ -93,6 +93,7 @@ This is the shape of data that `render()` expects. When you switch to live data,
 - `positions[].current_price` -- P&L is computed client-side: `(shares * current_price) - (shares * avg_cost)`
 - `trades[].action` -- must be `"BUY"` or `"SELL"` (controls badge color)
 - `trades[].reason` -- free text, shown in gray; describes why the trade was made
+- `trades[]` -- send ALL trades in the array. The page shows the first 20 and hides the rest behind a "Show All X Trades" button. No need to truncate server-side.
 - `equity_curve` -- one entry per trading day; drives the Chart.js line chart
 - `allocation` -- percentages that must sum to 100; only non-zero values render in the bar
 
