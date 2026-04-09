@@ -198,9 +198,9 @@ author_profile: true
   }
 </style>
 
-<div class="wip-banner">
-  <span class="wip-icon">&#128679;</span>
-  <span class="wip-text"><strong>Work in Progress</strong> - This page shows placeholder data. Live trading integration is under development.</span>
+<div id="statusBanner" class="wip-banner" style="display:none;">
+  <span class="wip-icon">&#9679;</span>
+  <span class="wip-text" id="statusText">Loading...</span>
 </div>
 
 <div class="data-source">
@@ -358,7 +358,18 @@ const DUMMY_DATA = {
  *   return resp.json();
  * }
  */
-function loadData() { return Promise.resolve(DUMMY_DATA); }
+async function loadData() {
+  // Try live data from gist first
+  try {
+    const resp = await fetch('https://gist.githubusercontent.com/yfeng0206/c1c88dc455cb02dbdbf70514f0c53bf9/raw/live_portfolio.json?t=' + Date.now());
+    if (resp.ok) {
+      const data = await resp.json();
+      if (data && data.account) return data;
+    }
+  } catch (e) { console.warn('Gist fetch failed, using fallback:', e); }
+  // Fallback to dummy data
+  return DUMMY_DATA;
+}
 
 // ── Helpers ──
 function fmt$(n) { return '$' + Math.abs(n).toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0}); }
@@ -466,12 +477,20 @@ async function render() {
   });
   var values = d.equity_curve.map(function(e) { return e.value; });
 
-  // SPY baseline (approximate, scaled to same start)
-  var spyReturns = [0, 0.12, 0.25, -0.08, 0.35, 0.28, -0.15, 0.32, 0.45, -0.18, 0.22, 0.38, 0.15, -0.25, 0.30, 0.18, 0.42, 0.20, 0.35];
-  var spyValues = [100000];
-  for (var i = 1; i < values.length; i++) {
-    var r = (i < spyReturns.length) ? spyReturns[i] : ((Math.random() - 0.4) * 0.5);
-    spyValues.push(Math.round(spyValues[i-1] * (1 + r / 100)));
+  // SPY baseline — use real data from JSON if available, otherwise approximate
+  var spyValues = [];
+  if (d.spy_curve && d.spy_curve.length > 0) {
+    var spyMap = {};
+    d.spy_curve.forEach(function(s) { spyMap[s.date] = s.value; });
+    spyValues = d.equity_curve.map(function(e) { return spyMap[e.date] || null; });
+  } else {
+    // Fallback: approximate (for dummy data only)
+    var spyReturns = [0, 0.12, 0.25, -0.08, 0.35, 0.28, -0.15, 0.32, 0.45, -0.18, 0.22, 0.38, 0.15, -0.25, 0.30, 0.18, 0.42, 0.20, 0.35];
+    spyValues = [100000];
+    for (var i = 1; i < values.length; i++) {
+      var r = (i < spyReturns.length) ? spyReturns[i] : ((Math.random() - 0.4) * 0.5);
+      spyValues.push(Math.round(spyValues[i-1] * (1 + r / 100)));
+    }
   }
 
   var ctx = document.getElementById('equityChart').getContext('2d');
