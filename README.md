@@ -235,51 +235,128 @@ The trading bot (`eval/daily_loop.py`) produces these files per strategy in `run
 
 **Example export script (`scripts/export_live_state.py`):**
 ```python
-import json, csv, sys
+#!/usr/bin/env python3
+"""Export live portfolio state to dashboard JSON.
+
+Usage:
+  # After running daily_loop.py in live mode:
+  python export_live_state.py > /tmp/live_portfolio.json
+  gh gist edit <GIST_ID> -f live_portfolio.json /tmp/live_portfolio.json
+
+  # Or pipe directly:
+  python export_live_state.py | gh gist edit <GIST_ID> -f live_portfolio.json -
+"""
+import json, sys
+from datetime import datetime
 from pathlib import Path
 
-run_dir = Path("runs/live")  # or latest run
-strategy = "MixLLM"
-port_dir = run_dir / "portfolios" / strategy
+# --- Config ---
+STRATEGY = "MixLLM"
+STARTING_CAPITAL = 100000
+STATE_FILE = Path("portfolio/live_state.json")  # saved by save_strategies_state()
 
-state = json.loads((port_dir / "state.json").read_text())
-history = json.loads((port_dir / "history.json").read_text())
+# --- Load saved state (from save_strategies_state() in daily_loop.py) ---
+# The engine writes this via:
+#   state = save_strategies_state(strategies, last_date)
+#   json.dump(state, open("portfolio/live_state.json", "w"))
+raw = json.loads(STATE_FILE.read_text())
+ss = raw["strategies"][STRATEGY]
 
-# Read transactions
+# --- Compute values ---
+# Positions have: ticker, shares, avg_cost, current_price (added by engine at save time)
+positions = ss.get("positions", [])
+invested = sum(p["shares"] * p.get("current_price", p["avg_cost"]) for p in positions)
+cash = ss["cash"]
+total_value = invested + cash
+total_return_pct = round((total_value - STARTING_CAPITAL) / STARTING_CAPITAL * 100, 2)
+stocks_pct = round(invested / total_value * 100, 1) if total_value > 0 else 0
+
+# --- Compute day P&L from portfolio history ---
+history = ss.get("portfolio_history", [])
+day_pnl = 0
+if len(history) >= 2:
+    day_pnl = round(history[-1].get("total_value", total_value) - history[-2].get("total_value", total_value), 2)
+
+# --- Build trades from transactions ---
+# Engine transactions have: date, action, ticker, shares, price, total, pnl, pnl_pct, cash_after
 trades = []
-with open(port_dir / "transactions.csv") as f:
-    for row in csv.DictReader(f):
-        trades.append({
-            "date": row["date"],
-            "action": row["action"],
-            "ticker": row["ticker"],
-            "shares": int(row["shares"]),
-            "price": float(row["price"]),
-            "reason": row.get("reason", "")
-        })
+for t in ss.get("transactions", []):
+    trades.append({
+        "date": t["date"],
+        "action": t["action"],
+        "ticker": t["ticker"],
+        "shares": int(t["shares"]),
+        "price": float(t["price"]),
+        "reason": t.get("reason", t.get("notes", ""))
+    })
 
-# Build dashboard JSON
+# --- Build output ---
 output = {
-    "last_updated": state.get("timestamp", ""),
-    "strategy": strategy,
-    "regime": state.get("regime", "UNKNOWN"),
+    "last_updated": datetime.now().isoformat(),
+    "strategy": STRATEGY,
+    "regime": ss.get("detected_regime", ss.get("_last_regime", "UNKNOWN")),
     "account": {
-        "starting_capital": 100000,
-        "total_value": state["final_value"],
-        "cash": state.get("cash", 0),
-        "invested": state["final_value"] - state.get("cash", 0),
-        "day_pnl": state.get("day_pnl", 0),
-        "total_return_pct": state["total_return_pct"],
-        "total_return_usd": state["final_value"] - 100000
+        "starting_capital": STARTING_CAPITAL,
+        "total_value": round(total_value, 2),
+        "cash": round(cash, 2),
+        "invested": round(invested, 2),
+        "day_pnl": day_pnl,
+        "total_return_pct": total_return_pct,
+        "total_return_usd": round(total_value - STARTING_CAPITAL, 2)
     },
-    "allocation": state.get("allocation", {"stocks": 80, "cash": 20, "bonds": 0, "gold": 0}),
-    "positions": state.get("positions", []),
+    "allocation": {
+        "stocks": stocks_pct,
+        "cash": round(100 - stocks_pct, 1),
+        "bonds": 0,
+        "gold": 0
+    },
+    "positions": positions,
     "trades": trades,  # send ALL trades; frontend shows first 20 with "Show All" button
-    "equity_curve": [{"date": h["date"], "value": h["total_value"]} for h in history]
+    "equity_curve": [{"date": h["date"], "value": h.get("total_value", 0)} for h in history]
 }
 
 json.dump(output, sys.stdout, indent=2)
 ```
+
+### What's needed in ConsensusAITrader repo to connect
+
+The engine (`eval/daily_loop.py`) already has `save_strategies_state()` and `live_mode=True`
+but these are NOT exposed via CLI yet. To go live:
+
+1. **Add CLI flag** to `daily_loop.py`:
+   ```python
+   parser.add_argument("--live-mode", action="store_true")
+   parser.add_argument("--resume-from", type=str, help="Path to saved state JSON")
+   ```
+
+2. **Save state after each run** in `daily_loop.py main()`:
+   ```python
+   if args.live_mode:
+       state = save_strategies_state(strategies, end_date)
+       Path("portfolio/live_state.json").write_text(json.dumps(state, indent=2))
+   ```
+
+3. **Add `current_price` to positions at save time** (currently positions only have
+   `ticker`, `shares`, `avg_cost` -- the export script needs `current_price` too):
+   ```python
+   # In save_strategies_state(), after building positions:
+   for p in ss["positions"]:
+       p["current_price"] = latest_prices.get(p["ticker"], p["avg_cost"])
+   ```
+
+4. **Add the export script** as `scripts/export_live_state.py` (the script above)
+
+5. **Daily workflow:**
+   ```bash
+   # Evening after market close:
+   cd ConsensusAITrader
+   python eval/daily_loop.py --live-mode --resume-from portfolio/live_state.json \
+     --period custom --start 2026-04-01 --end today
+   
+   # Export and push to gist:
+   python scripts/export_live_state.py > /tmp/live_portfolio.json
+   gh gist edit <GIST_ID> -f live_portfolio.json /tmp/live_portfolio.json
+   ```
 
 ---
 
