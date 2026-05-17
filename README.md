@@ -13,7 +13,6 @@ _pages/
   404.md
 
 _portfolio/
-  consensus-ai-trader.md  <-- ConsensusAITrader backtest results
   ijepa-3d-oct.md         <-- I-JEPA OCT foundation model project
   slivit-3d-oct-glaucoma.md
   object-permanence-detection.md
