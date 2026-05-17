@@ -17,6 +17,8 @@ Self-supervised pretraining using [I-JEPA](https://github.com/facebookresearch/i
 
 [GitHub Repo](https://github.com/yfeng0206/I-JEPTA_3D_OCT){: .btn .btn--primary}
 
+> **Update (May 2026).** The production encoder used in our current results is **random-init I-JEPA ViT-B/16 trained 100 epochs** on 600K OCT slices, not the ImageNet→SSL ep32 checkpoint discussed below. With LLRD γ=0.5 fine-tuning, all three slice-aggregation probes (AttentiveProbe d=1, CrossAttnPool, MeanPool) reach **0.886-0.888 Test AUC**, tied within 0.001 — a finding that probe architecture is noise once the encoder is fine-tuned. Headline results, the 2x3 probe-architecture ablation with bootstrap CI, and the interpretability analysis (window occlusion, OD/OS mirror test, fp16 fix) live on the [project page](/portfolio/ijepa-3d-oct/) and the [I-JEPTA_3D_OCT repo](https://github.com/yfeng0206/I-JEPTA_3D_OCT). The sections below remain useful as the early-phase training log: Run 1 LR=0.0005 instability, Run 2 early-stop bug, Run 3 convergence, the slice-level collapse, and the original ImageNet-init experiments.
+
 ## Motivation
 
 Our SLIViT experiments reached 0.869 test AUC using a ConvNeXt feature extractor pretrained on Kermany OCT and a ViT integrator trained on 6K labeled volumes. Two bottlenecks limited further improvement:
