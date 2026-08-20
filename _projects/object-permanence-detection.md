@@ -6,7 +6,7 @@ order: 2
 group: "Applied and engineering work"
 teaser: /assets/images/objperm-teaser.png
 redirect_from:
-  - /projects/object-permanence-detection/
+  - /portfolio/object-permanence-detection/
 links:
   - title: "GitHub"
     url: "https://github.com/yfeng0206/object-permanence-detection"

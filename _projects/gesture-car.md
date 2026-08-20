@@ -6,7 +6,7 @@ order: 7
 group: "Earlier work (2021-2022, undergraduate)"
 teaser: /assets/images/gesture-car-teaser.jpg
 redirect_from:
-  - /projects/gesture-car/
+  - /portfolio/gesture-car/
 links:
   - title: "GitHub"
     url: "https://github.com/yfeng0206/Gesture-Car"

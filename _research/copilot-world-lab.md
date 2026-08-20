@@ -7,7 +7,7 @@ teaser: /assets/images/sel-world.gif
 order: 2
 featured: true
 redirect_from:
-  - /research/copilot-world-lab/
+  - /portfolio/copilot-world-lab/
 links:
   - title: "GitHub"
     url: "https://github.com/yfeng0206/CopilotWorldLab"

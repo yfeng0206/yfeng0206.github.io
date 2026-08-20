@@ -1,0 +1,4 @@
+# Every file in this repository requires review from the owner.
+# Combined with a branch protection rule on `main` that requires
+# code owner review, this prevents anyone else's change from landing.
+*       @yfeng0206

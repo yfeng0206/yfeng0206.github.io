@@ -6,7 +6,7 @@ order: 8
 group: "Earlier work (2021-2022, undergraduate)"
 teaser: /assets/images/DC_Car-teaser.png
 redirect_from:
-  - /projects/self-driving-car/
+  - /portfolio/self-driving-car/
 links:
   - title: "GitHub"
     url: "https://github.com/yfeng0206/Self-Driving-Motor-Car-Guide"

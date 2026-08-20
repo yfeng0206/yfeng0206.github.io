@@ -8,7 +8,7 @@ teaser: /assets/images/sel-oct.jpg
 order: 1
 featured: true
 redirect_from:
-  - /research/ijepa-3d-oct/
+  - /portfolio/ijepa-3d-oct/
 links:
   - title: "GitHub"
     url: "https://github.com/yfeng0206/I-JEPA_3D_OCT"

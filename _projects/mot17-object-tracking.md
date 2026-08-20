@@ -6,7 +6,7 @@ order: 3
 group: "Applied and engineering work"
 teaser: /assets/images/mot17-teaser.png
 redirect_from:
-  - /projects/mot17-object-tracking/
+  - /portfolio/mot17-object-tracking/
 links:
   - title: "GitHub"
     url: "https://github.com/yfeng0206/MOT17-Object-Detection-and-Tacking"

@@ -6,7 +6,7 @@ order: 1
 group: "Applied and engineering work"
 teaser: /assets/images/slivit-teaser.png
 redirect_from:
-  - /projects/slivit-3d-oct-glaucoma/
+  - /portfolio/slivit-3d-oct-glaucoma/
 links:
   - title: "GitHub"
     url: "https://github.com/yfeng0206/SliViT_3D_OCT_Glaucoma"

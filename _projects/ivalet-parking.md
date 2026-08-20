@@ -7,7 +7,7 @@ group: "Earlier work (2021-2022, undergraduate)"
 collaborators: "with Kelin Yu, Faiza Yousuf, Wei Xiong Toh"
 teaser: /assets/images/ivalet-teaser.png
 redirect_from:
-  - /projects/ivalet-parking/
+  - /portfolio/ivalet-parking/
 links:
   - title: "Project page"
     url: "https://eceseniordesign2022spring.ece.gatech.edu/sd22p37/"
