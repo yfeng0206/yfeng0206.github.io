@@ -10,8 +10,8 @@ author_profile: false
 [About me](/about/){: .btn .btn--inverse}
 
 <div class="resume-viewer">
-  <object class="resume-frame" data="/assets/resume/gary-feng-resume.pdf" type="application/pdf">
-    <iframe class="resume-frame" src="/assets/resume/gary-feng-resume.pdf" title="Gary Feng resume"></iframe>
+  <object class="resume-frame" data="/assets/resume/gary-feng-resume.pdf#view=Fit" type="application/pdf">
+    <iframe src="/assets/resume/gary-feng-resume.pdf#view=Fit" title="Gary Feng resume"></iframe>
   </object>
 </div>
 
