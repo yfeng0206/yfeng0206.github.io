@@ -53,7 +53,7 @@ Y. Gu, G. Shi, F. Shi, I-C. Chang, Y-J. Wang, Q. Cheng, Z. Olkin, I. Lopez-Sanch
 ## Research
 
 ### I-JEPA for 3D OCT, Computer Vision
-*Feb 2026 - Ongoing* | with Wai Tak Lau (PhD), Columbia | [Project page](/portfolio/ijepa-3d-oct/)
+*Feb 2026 - Ongoing* | with WT Lau (PhD), Columbia | [Project page](/portfolio/ijepa-3d-oct/)
 
 - Self-supervised pretrained ViT-B/16 via I-JEPA on 600K OCT B-scans for glaucoma classification
 - Proposed anatomy-shaped connected mask targets reaching **0.8947 test AUC**, beating random-masking I-JEPA (0.8878) at every probe and training regime (frozen +0.011, p<0.0005)

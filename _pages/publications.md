@@ -23,7 +23,7 @@ A review of humanoid locomotion control, tracing the field from model-based foun
 
 **I-JEPA Foundation Model for 3D OCT Medical Imaging** *(Feb 2026 – Present)*
 
-With Wai Tak Lau (PhD), Columbia.
+With WT Lau (PhD), Columbia.
 
 I-JEPA self-supervised pretraining on Harvard FairVision OCT, evaluated on binary glaucoma classification. Our anatomy-shaped masking reaches **0.8947 Test AUC**, beating random-masking I-JEPA (0.8878) at every probe and training regime (frozen +0.011, p<0.0005). The contribution is target *shape*: connected, tissue-shaped mask targets, isolated against both a matched-area random control and a MIRAGE-placed rectangle-envelope baseline. Includes a full 2x3 probe-architecture ablation with paired-bootstrap CI and an occlusion-attribution interpretability study.
 
