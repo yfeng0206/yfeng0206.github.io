@@ -9,3 +9,5 @@ main:
     url: /publications/
   - title: "Blog"
     url: /blog/
+  - title: "Resume"
+    url: /resume/

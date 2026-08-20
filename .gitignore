@@ -6,6 +6,8 @@ vendor/
 .bundle/
 Gemfile.lock
 *.pdf
+# ...except the published resume, which must ship with the site
+!assets/resume/gary-feng-resume.pdf
 1696906260300.jpg
 
 # Security: never commit these

@@ -31,6 +31,12 @@ author:
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/garyfeng/"
+    - label: "Google Scholar"
+      icon: "fas fa-fw fa-graduation-cap"
+      url: "https://scholar.google.com/citations?user=ofH9ujMAAAAJ&hl=en"
+    - label: "Resume (PDF)"
+      icon: "fas fa-fw fa-file-pdf"
+      url: "/assets/resume/gary-feng-resume.pdf"
 
 # Footer
 footer:
@@ -41,6 +47,9 @@ footer:
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/garyfeng/"
+    - label: "Google Scholar"
+      icon: "fas fa-fw fa-graduation-cap"
+      url: "https://scholar.google.com/citations?user=ofH9ujMAAAAJ&hl=en"
 
 # Reading Files
 include:
@@ -51,14 +60,9 @@ collections:
   portfolio:
     output: true
     permalink: /:collection/:path/
-    order:
-      - ijepa-3d-oct.md
-      - slivit-3d-oct-glaucoma.md
-      - object-permanence-detection.md
-      - mot17-object-tracking.md
-      - ivalet-parking.md
-      - gesture-car.md
-      - self-driving-car.md
+# Portfolio ordering is by the `date` in each item's front matter,
+# newest first (see _pages/portfolio-archive.md). Minimal Mistakes has
+# no `collections.*.order` key, so do not add one here.
 
 # Front Matter Defaults
 defaults:

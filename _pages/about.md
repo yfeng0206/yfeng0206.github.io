@@ -5,7 +5,16 @@ permalink: /about/
 
 ML Engineer at Microsoft in Seattle. Georgia Tech ECE '22.
 
-My interests are in machine learning, computer vision, and visual perception. I like building systems that can see, understand, and act on the world. At work I ship production ML services at scale. On the side I work on medical imaging, multi-object tracking, and robotics.
+My interests are in machine learning, computer vision, and visual perception. I like building systems that can see, understand, and act on the world. At work I ship production ML services at scale. On the side I work on medical imaging, latent world models for robot manipulation, multi-object tracking, and robotics.
+
+[Resume (PDF)](/assets/resume/gary-feng-resume.pdf){: .btn .btn--primary}
+[Google Scholar](https://scholar.google.com/citations?user=ofH9ujMAAAAJ&hl=en){: .btn .btn--info}
+
+## Recent
+
+- **Published in *Science Robotics*** (Aug 2026): ["Evolution of Humanoid Locomotion Control"](https://doi.org/10.1126/scirobotics.aed3973), a review of humanoid locomotion control from model-based foundations to learning-based approaches. Vol. 11, no. 117
+- **Anatomy-shaped masking for OCT I-JEPA** reaches 0.8947 test AUC, beating random-masking I-JEPA at every probe and regime. [Writeup](/research/anatomy-guided-masking-oct/)
+- **CopilotWorldLab**: V-JEPA 2-AC as a coarse manipulation controller, benchmarked over 500 fixed rollouts in MuJoCo. [Writeup](/research/reproducing-vjepa2-ac/)
 
 ## What I Do at Microsoft
 
@@ -24,9 +33,10 @@ My interests are in machine learning, computer vision, and visual perception. I 
 
 ## Research Interests
 
-- **Medical AI**: Glaucoma classification on 3D OCT scans using SLIViT and I-JEPA self-supervised learning; working toward a foundation model for ophthalmic OCT imaging
+- **Medical AI**: Glaucoma classification on 3D OCT scans using SLIViT and I-JEPA self-supervised learning; anatomy-shaped mask targets that beat stock random masking; working toward a foundation model for ophthalmic OCT imaging
+- **World Models & Robot Learning**: V-JEPA 2-AC as a coarse manipulation controller, using the model's own predictive energy as a competence gate for handoff to classical control
 - **Computer Vision & Perception**: Multi-object tracking, object permanence detection with SAM2 + DINOv2, visual reasoning
-- **Robotics**: Humanoid locomotion control (co-authoring a Science Robotics review), ROS 2 control systems
+- **Robotics**: Humanoid locomotion control (*Science Robotics* review, 2026), ROS 2 control systems
 - **Embedded Systems**: Self-driving cars and gesture-controlled robots with Raspberry Pi + Arduino
 
 ## Education
@@ -35,4 +45,4 @@ B.S. Computer Engineering, Georgia Institute of Technology (2022)
 
 ## Skills
 
-C/C++, C#, Python, Azure, Kubernetes, Docker, LlamaIndex, Unix, SQL, ROS 2, IoT, PyTorch, Azure ML
+C/C++, C#, Python, Azure, Kubernetes, Docker, LlamaIndex, Unix, SQL, ROS 2, MuJoCo, IoT, PyTorch, Azure ML

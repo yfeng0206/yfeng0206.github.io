@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<!--
+  Print source for the downloadable resume PDF.
+  Regenerate with:
+    & "C:\Program Files\Google\Chrome\Application\chrome.exe" --headless --disable-gpu `
+      --print-to-pdf="assets\resume\gary-feng-resume.pdf" --no-pdf-header-footer `
+      "file:///<abs-path>/assets/resume/gary-feng-resume.html"
+  Keep in sync with _pages/resume.md.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Gary (Yunchu) Feng - Resume</title>
+<style>
+  @page { size: Letter; margin: 0.5in 0.6in; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Inter", "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 9.4pt;
+    line-height: 1.4;
+    color: #1a1a1a;
+    margin: 0;
+  }
+  header { text-align: center; margin-bottom: 10px; }
+  h1 { font-size: 19pt; margin: 0 0 3px; letter-spacing: -0.02em; font-weight: 700; }
+  .tagline { font-size: 9.6pt; color: #444; margin-bottom: 4px; }
+  .contact { font-size: 8.8pt; color: #333; }
+  .contact a { color: #0b5cad; text-decoration: none; }
+  .contact span.sep { color: #aaa; margin: 0 5px; }
+  h2 {
+    font-size: 10pt; text-transform: uppercase; letter-spacing: 0.07em;
+    border-bottom: 1.1px solid #333; padding-bottom: 2px;
+    margin: 12px 0 6px; font-weight: 700;
+  }
+  .row { display: flex; justify-content: space-between; align-items: baseline; }
+  .role { font-weight: 600; font-size: 9.8pt; }
+  .org { font-weight: 600; font-size: 9.8pt; }
+  .meta { font-size: 8.8pt; color: #555; white-space: nowrap; padding-left: 10px; }
+  .sub { font-size: 8.9pt; color: #555; font-style: italic; margin-bottom: 2px; }
+  ul { margin: 3px 0 7px; padding-left: 16px; }
+  li { margin-bottom: 2.5px; }
+  .entry { margin-bottom: 8px; }
+  .pub { margin-bottom: 6px; }
+  .authors { font-size: 8.9pt; color: #333; }
+  .skills p { margin: 3px 0; }
+  a { color: #0b5cad; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Gary (Yunchu) Feng</h1>
+  <div class="tagline">Machine Learning Engineer &middot; Computer Vision, Self-Supervised Learning, Robotics</div>
+  <div class="contact">
+    Seattle, WA
+    <span class="sep">|</span><a href="mailto:garyfeng000@gmail.com">garyfeng000@gmail.com</a>
+    <span class="sep">|</span><a href="https://yfeng0206.github.io">yfeng0206.github.io</a>
+    <span class="sep">|</span><a href="https://github.com/yfeng0206">github.com/yfeng0206</a>
+    <span class="sep">|</span><a href="https://www.linkedin.com/in/garyfeng/">linkedin.com/in/garyfeng</a>
+    <span class="sep">|</span><a href="https://scholar.google.com/citations?user=ofH9ujMAAAAJ&amp;hl=en">Google Scholar</a>
+  </div>
+</header>
+
+<h2>Education</h2>
+<div class="entry">
+  <div class="row">
+    <span class="org">Georgia Institute of Technology</span>
+    <span class="meta">May 2022</span>
+  </div>
+  <div class="sub">B.S. Computer Engineering, Atlanta, GA</div>
+</div>
+
+<h2>Experience</h2>
+
+<div class="entry">
+  <div class="row">
+    <span class="role">Machine Learning Engineer</span>
+    <span class="meta">Sep 2024 &ndash; Present</span>
+  </div>
+  <div class="sub">Microsoft</div>
+  <ul>
+    <li>Shipped a cross-encoder reranking service delivering <strong>+12% CTR</strong> in A/B test, serving 500 RPS at 90 ms p50.</li>
+    <li>Launched a news-intelligence agent that ingests daily sources, clusters and dedupes events, and generates ranked summaries.</li>
+    <li>Built ScoreCard Agent, an automated A/B experiment health analyzer running 25+ statistical checks (SRM, guardrails, Simpson's paradox, novelty effects) that produces SHIP/NO-SHIP verdicts with full audit trails.</li>
+    <li>Deployed a personality-based evaluation harness using Prometheus-2 (7B LLM) to score Copilot suggestion pills at scale, improving offline/online alignment by 8%.</li>
+    <li>Developed retrieval-augmented generation systems integrating BM25 keyword search with vector search via LlamaIndex.</li>
+    <li>Distilled large language models, optimizing Phi-2 into a BERT-based model for accelerated inference and domain specialization.</li>
+    <li>Designed data pipelines in Azure ML for scalable, secure model training and deployment.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="row">
+    <span class="role">Software Engineer</span>
+    <span class="meta">Jul 2022 &ndash; Sep 2024</span>
+  </div>
+  <div class="sub">Microsoft</div>
+  <ul>
+    <li>Designed and maintained a Kubernetes-based forecasting service (GA product) serving <strong>15,000+ clients</strong>, including Dynamics 365 CRM and Microsoft 365 Support Center.</li>
+    <li>Built a multi-region recommendation platform on Azure and Docker handling <strong>20,000+ daily active users</strong>.</li>
+    <li>Led a cross-functional team with data scientists and a partner dev team to refine model outputs using A/B insights.</li>
+    <li>Provided on-call support, diagnosing and resolving production incidents to maintain uninterrupted service.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="row">
+    <span class="role">Software Engineer</span>
+    <span class="meta">May 2020 &ndash; Aug 2020</span>
+  </div>
+  <div class="sub">Skeena Bioenergy Ltd., Vancouver, BC</div>
+  <ul>
+    <li>Developed a computer vision application for automated PDF-to-SQL data migration, streamlining internal data processing.</li>
+    <li>Created interactive Power BI dashboards from operational production data and built Python automation scripts for the internal toolset.</li>
+  </ul>
+</div>
+
+<h2>Publications</h2>
+<div class="pub">
+  <div class="row">
+    <span class="role">Evolution of Humanoid Locomotion Control</span>
+    <span class="meta">Science Robotics, 2026</span>
+  </div>
+  <div class="authors">
+    Y. Gu, G. Shi, F. Shi, I-C. Chang, Y-J. Wang, Q. Cheng, Z. Olkin, I. Lopez-Sanchez,
+    <strong>Y. Feng</strong>, J. Zhang, A. D. Ames, H. Su, K. Sreenath.
+    <em>Science Robotics</em> 11(117).
+    <a href="https://doi.org/10.1126/scirobotics.aed3973">doi:10.1126/scirobotics.aed3973</a>
+  </div>
+</div>
+
+<h2>Research Projects</h2>
+
+<div class="entry">
+  <div class="row">
+    <span class="role">Anatomy-shaped Masking for OCT I-JEPA</span>
+    <span class="meta">Mar 2026 &ndash; Present</span>
+  </div>
+  <ul>
+    <li>Self-supervised I-JEPA pretraining of ViT-B/16 on 600K retinal OCT slices for glaucoma classification on Harvard FairVision.</li>
+    <li>Proposed anatomy-shaped connected mask targets reaching <strong>0.8947 test AUC</strong>, beating random-masking I-JEPA (0.8878) at every probe and training regime (frozen +0.011, p&lt;0.0005).</li>
+    <li>Isolated target shape from target area with a matched-budget random control and a MIRAGE-placed rectangle-envelope baseline; ran a 2x3 probe-architecture ablation with paired-bootstrap confidence intervals.</li>
+    <li>Released pretrained encoders on Hugging Face; documented two metric traps (validation loss and representation diversity both rank masking strategies incorrectly).</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="row">
+    <span class="role">CopilotWorldLab &ndash; Latent World Models for Manipulation</span>
+    <span class="meta">Jul 2026 &ndash; Present</span>
+  </div>
+  <ul>
+    <li>Reproduced V-JEPA 2-AC as a frozen coarse manipulation controller planning to goal images via CEM model-predictive control in MuJoCo.</li>
+    <li>Built a reproducible 500-rollout benchmark (5 tasks x 2 objects x 50 fixed scenarios) scored from hidden simulator state, after robosuite and ManiSkill both proved unrunnable on the target platform.</li>
+    <li>Diagnosed a CUDA allocator cliff causing a 4.6x planning slowdown at high CEM sample counts; fixed by batch chunking with numerically identical output.</li>
+    <li>Investigating the model's own predictive energy as a competence gate for handoff to a classical visual servo.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="row">
+    <span class="role">SLIViT for 3D OCT Glaucoma Classification</span>
+    <span class="meta">Mar &ndash; Apr 2026</span>
+  </div>
+  <ul>
+    <li>Reproduced the SLIViT ConvNeXt + ViT architecture for binary glaucoma classification on 10K OCT volumes, reaching 0.869 test AUC.</li>
+    <li>Trained with 4-GPU DDP and fp16; showed 32 slices per volume matches 64 at a fraction of the cost.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="row">
+    <span class="role">Object Permanence Detection</span>
+    <span class="meta">Feb 2026</span>
+  </div>
+  <ul>
+    <li>Built a video pipeline detecting physically impossible events using SAM2 mask propagation, RT-DETR detection, and DINOv2 re-identification.</li>
+    <li>Generated narrative event logs consumable by an LLM for violation detection across occlusion, containment, and disappearance.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="row">
+    <span class="role">MOT17 Multi-Object Tracking</span>
+    <span class="meta">Jan 2026</span>
+  </div>
+  <ul>
+    <li>Trained YOLOv8 with ByteTrack on MOT17 pedestrian data, improving tracking accuracy 8% over base YOLOv8.</li>
+  </ul>
+</div>
+
+<h2>Earlier Engineering Projects</h2>
+<div class="entry">
+  <ul>
+    <li><strong>iValet, Intelligent Parking Management</strong> (Georgia Tech ECE 4872 senior design, 2022) &ndash; camera-based vacancy detection with image segmentation, PostgreSQL state tracking, and a React UI with path planning. Advised by Dr. Patricio Vela.</li>
+    <li><strong>Gesture-Controlled Robot Car</strong> (ECE 4180, 2021) &ndash; OpenCV and MediaPipe finger detection on Raspberry Pi 4, commands sent over WiFi to an Mbed LPC1768 driving DC motors through an H-bridge.</li>
+    <li><strong>Self-Driving DC Motor Car</strong> (2021) &ndash; OpenCV lane detection with Canny edges and Hough transform, PID steering control across a Raspberry Pi 4 and Arduino with a custom-soldered H-bridge.</li>
+  </ul>
+</div>
+
+<h2>Skills</h2>
+<div class="skills">
+  <p><strong>Languages:</strong> Python, C/C++, C#, SQL</p>
+  <p><strong>ML &amp; CV:</strong> PyTorch, self-supervised learning (I-JEPA, V-JEPA), vision transformers, LLM distillation, RAG, LlamaIndex, A/B experimentation</p>
+  <p><strong>Infrastructure:</strong> Azure, Azure ML, Kubernetes, Docker, distributed training (DDP), Unix</p>
+  <p><strong>Robotics &amp; Embedded:</strong> ROS 2, MuJoCo, Raspberry Pi, Arduino, Mbed, IoT</p>
+</div>
+
+</body>
+</html>
