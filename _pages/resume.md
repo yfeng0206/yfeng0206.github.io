@@ -9,17 +9,9 @@ author_profile: false
 [Google Scholar](https://scholar.google.com/citations?user=ofH9ujMAAAAJ&hl=en){: .btn .btn--info}
 [About me](/about/){: .btn .btn--inverse}
 
-<div class="resume-desktop">
-  <div class="resume-viewer">
-    <object class="resume-frame" data="/assets/resume/gary-feng-resume.pdf#view=Fit" type="application/pdf">
-      <iframe src="/assets/resume/gary-feng-resume.pdf#view=Fit" title="Gary Feng resume"></iframe>
-    </object>
-  </div>
-  <p class="resume-note">Not seeing it? <a href="/assets/resume/gary-feng-resume.pdf">Open the PDF directly</a>.</p>
-</div>
+<a class="resume-page" href="/assets/resume/gary-feng-resume.pdf" title="Open the full PDF">
+  <img src="/assets/resume/gary-feng-resume.png" width="1700" height="2200"
+       alt="Resume of Gary Feng, one page: education at the University of Pennsylvania and Georgia Tech, machine learning and software engineering roles at Microsoft and Skeena Bioenergy, a Science Robotics publication, I-JEPA OCT research, and projects including CopilotWorldLab, MOT17 tracking, and ROS 2.">
+</a>
 
-<div class="resume-fallback">
-  <p><strong>Your browser cannot display the PDF inline.</strong></p>
-  <p><a class="btn btn--primary" href="/assets/resume/gary-feng-resume.pdf">Open the resume PDF</a></p>
-  <p>A summary of the same material is on the <a href="/about/">about page</a>.</p>
-</div>
+<p class="resume-note">Click the page to open the full PDF, or use the download button above.</p>

@@ -58,36 +58,44 @@ assets/resume/         <-- Resume print source (HTML) + generated PDF
 ## Resume
 
 There is now a **single source of truth** for resume content:
-`assets/resume/gary-feng-resume.html`, the print source that generates the PDF.
+`assets/resume/gary-feng-resume.html`, the print source. It generates both the PDF
+and the page image.
 
-- `_pages/resume.md` embeds that PDF inline (`<object>` with an `<iframe>` fallback).
-  It contains no resume text of its own, so it cannot drift.
+- `_pages/resume.md` shows the rendered page image linked to the PDF. It contains no
+  resume text of its own, so it cannot drift.
 - `_pages/about.md` carries a deliberately condensed summary and links to `/resume/`.
   Do not paste full resume bullets back into it.
 - The upstream master is Gary's `Resume 2026.docx`. The site version adds the published
   Science Robotics citation and CopilotWorldLab, and **omits the phone number** because
   the PDF is served publicly.
 
-Regenerate the PDF after editing the HTML (it is tuned to fit exactly one page):
+**Do not embed the PDF with `<object>`/`<iframe>`.** It was tried and reverted: Chrome's
+"Download PDFs instead of automatically opening them" setting makes the embed render
+nothing, and because the resource technically loaded, it never falls through to the
+element's fallback content. The visitor just sees an empty box. A rendered image always
+displays, including on mobile.
+
+Regenerate both artifacts after editing the HTML (it is tuned to fit exactly one page):
 
 ```powershell
-$pdf = "C:\Users\Gary\yfeng0206.github.io\assets\resume\gary-feng-resume.pdf"
+$base = "C:\Users\Gary\yfeng0206.github.io\assets\resume\gary-feng-resume"
 & "C:\Program Files\Google\Chrome\Application\chrome.exe" --headless --disable-gpu `
-  --print-to-pdf="$pdf" --no-pdf-header-footer `
+  --print-to-pdf="$base.pdf" --no-pdf-header-footer `
   "file:///C:/Users/Gary/yfeng0206.github.io/assets/resume/gary-feng-resume.html"
+
+python -c "import pymupdf; from PIL import Image; d=pymupdf.open(r'$base.pdf'); d[0].get_pixmap(dpi=200).save(r'$base.raw.png'); Image.open(r'$base.raw.png').convert('P', palette=Image.ADAPTIVE, colors=64).save(r'$base.png', optimize=True)"
 ```
 
 **Use an absolute `--print-to-pdf` path.** With a relative path Chrome headless
 silently writes nothing and still exits 0, so the committed PDF goes stale while the
-HTML moves on. Always verify the output afterwards:
+HTML moves on. Always verify afterwards:
 
 ```powershell
 python -c "import pymupdf; d=pymupdf.open(r'assets\resume\gary-feng-resume.pdf'); print(len(d)); print(d[0].get_text()[:200])"
 ```
 
-Inline-viewer styles live in `assets/css/main.scss` (`.resume-viewer`, `.resume-frame`,
-`.resume-fallback`). The viewer is hidden below 768px because mobile browsers do not
-render embedded PDFs reliably; the fallback link shows instead.
+Note that headless Chrome cannot rasterise PDFs, so screenshotting `/resume/` or a PDF
+URL always yields a blank frame. Verify the PDF with pymupdf text extraction instead.
 
 `.gitignore` ignores `*.pdf` globally with an explicit negation for
 `assets/resume/gary-feng-resume.pdf`. Keep that negation if the filename ever changes,

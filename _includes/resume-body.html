@@ -1,0 +1,129 @@
+<div class="resume-paper">
+
+  <header class="r-header">
+    <h1 class="r-name">Gary Feng</h1>
+    <div class="r-contact">
+      Seattle, WA
+      <span class="r-sep">|</span><a href="mailto:garyfeng000@gmail.com">garyfeng000@gmail.com</a>
+      <span class="r-sep">|</span><a href="https://yfeng0206.github.io">yfeng0206.github.io</a>
+      <span class="r-sep">|</span><a href="https://github.com/yfeng0206">github.com/yfeng0206</a>
+      <span class="r-sep">|</span><a href="https://www.linkedin.com/in/garyfeng/">linkedin.com/in/garyfeng</a>
+      <span class="r-sep">|</span><a href="https://scholar.google.com/citations?user=ofH9ujMAAAAJ&amp;hl=en">Scholar</a>
+    </div>
+  </header>
+
+  <h2 class="r-sec">Education</h2>
+  <div class="r-entry">
+    <div class="r-row"><span class="r-role">University of Pennsylvania</span><span class="r-meta">Ongoing (part-time)</span></div>
+    <div class="r-sub">M.S.E. Artificial Intelligence</div>
+    <div class="r-row r-gap"><span class="r-role">Georgia Institute of Technology</span><span class="r-meta">May 2022</span></div>
+    <div class="r-sub">B.S. Computer Engineering</div>
+  </div>
+
+  <h2 class="r-sec">Experience</h2>
+
+  <div class="r-entry">
+    <div class="r-row"><span class="r-role">Machine Learning Engineer</span><span class="r-meta">Sep 2024 - Present</span></div>
+    <div class="r-sub">Microsoft, Seattle, WA</div>
+    <ul>
+      <li>Shipped cross-encoder reranking service; <strong>+12% CTR</strong> via A/B test, serving 500 RPS at 90 ms</li>
+      <li>Launched news-intelligence agent ingesting daily sources; clustered and deduped events; generated ranked summaries and prompts</li>
+      <li>Deployed a personality-based eval harness using Prometheus-2 (7B LLM) to score Copilot suggestion-pill at scale, improving offline/online alignment by 8% using Azure ML</li>
+      <li>Developed advanced RAG systems integrating BM25 and vector search with LlamaIndex, improving retrieval accuracy using GPT-4.5-distilled evaluation metrics</li>
+      <li>Designed and managed robust data pipelines in Azure ML, ensuring scalability, security, and performance for model training and deployment</li>
+    </ul>
+  </div>
+
+  <div class="r-entry">
+    <div class="r-row"><span class="r-role">Software Engineer</span><span class="r-meta">Jul 2022 - Sep 2024</span></div>
+    <div class="r-sub">Microsoft, Seattle, WA</div>
+    <ul>
+      <li>Designed and maintained a Kubernetes-based forecasting service (GA product) serving <strong>15,000+ clients</strong>, including Dynamics 365 CRM and Microsoft 365 Support Center</li>
+      <li>Built multi-region recommendation platform (Azure, Docker) accommodating 20k+ daily clicks</li>
+      <li>Led a cross-functional team to refine model outputs using A/B insights; aligned delivery with business goals</li>
+      <li>Provided critical on-call support, diagnosing issues and deploying solutions to maintain service</li>
+    </ul>
+  </div>
+
+  <div class="r-entry">
+    <div class="r-row"><span class="r-role">Software Engineer</span><span class="r-meta">May 2020 - Aug 2020</span></div>
+    <div class="r-sub">Skeena Bioenergy Ltd., Vancouver, BC, Canada</div>
+    <ul>
+      <li>Developed a computer vision app for automated PDF-to-SQL migration, streamlining internal data processing</li>
+      <li>Created interactive and insightful dashboards in Power BI using operational production data</li>
+    </ul>
+  </div>
+
+  <h2 class="r-sec">Publications</h2>
+  <div class="r-entry">
+    <div class="r-row"><span class="r-role">Evolution of Humanoid Locomotion Control</span><span class="r-meta">Science Robotics, Aug 2026</span></div>
+    <div class="r-sub">with Prof. Hao Su, NYU &middot; May 2025 - Oct 2025</div>
+    <div class="r-authors">
+      Y. Gu, G. Shi, F. Shi, I-C. Chang, Y-J. Wang, Q. Cheng, Z. Olkin, I. Lopez-Sanchez,
+      <strong>Y. Feng</strong>, J. Zhang, A. D. Ames, H. Su, K. Sreenath.
+      <em>Science Robotics</em> 11(117).
+      <a href="https://doi.org/10.1126/scirobotics.aed3973">doi:10.1126/scirobotics.aed3973</a>
+    </div>
+    <ul>
+      <li>Co-authored a survey on humanoid locomotion control systems, synthesizing recent research in balance control, motion planning, and optimization across classical algorithms (MPC) and learning-based approaches</li>
+    </ul>
+  </div>
+
+  <h2 class="r-sec">Research</h2>
+  <div class="r-entry">
+    <div class="r-row"><span class="r-role">I-JEPA for 3D OCT, Computer Vision</span><span class="r-meta">Feb 2026 - Ongoing</span></div>
+    <div class="r-sub">with WT Lau (PhD), Columbia</div>
+    <ul>
+      <li>Self-supervised pretrained ViT-B/16 via I-JEPA on 600K OCT B-scans for glaucoma classification</li>
+      <li>Proposed anatomy-shaped connected mask targets reaching <strong>0.8947 test AUC</strong>, beating random-masking I-JEPA (0.8878) at every probe and training regime (frozen +0.011, p&lt;0.0005)</li>
+      <li>Ablated 3 probe heads (Attentive, CrossAttn, Mean) with paired-bootstrap confidence intervals; validated interpretability via occlusion attribution</li>
+      <li>Released pretrained encoders on Hugging Face</li>
+    </ul>
+  </div>
+
+  <h2 class="r-sec">Projects</h2>
+
+  <div class="r-entry">
+    <div class="r-row"><span class="r-role">CopilotWorldLab, Latent World Models for Manipulation</span><span class="r-meta">Jul 2026 - Ongoing</span></div>
+    <ul>
+      <li>Reproduced V-JEPA 2-AC as a frozen coarse manipulation controller planning to goal images via CEM model-predictive control in MuJoCo</li>
+      <li>Built a reproducible 500-rollout benchmark (5 tasks x 2 objects x 50 fixed scenarios) scored from hidden simulator state</li>
+    </ul>
+  </div>
+
+  <div class="r-entry">
+    <div class="r-row"><span class="r-role">MOT17 Multi-Object Tracking, CV Project</span><span class="r-meta">Jan 2026 - Feb 2026</span></div>
+    <ul>
+      <li>Trained on MOT17 data to track with YOLOv8 + ByteTrack, improving tracking accuracy by 8% compared to base YOLOv8</li>
+    </ul>
+  </div>
+
+  <div class="r-entry">
+    <div class="r-row"><span class="r-role">ROS 2 Robot, Odometry &amp; Control</span><span class="r-meta">Feb 2025 - May 2025</span></div>
+    <ul>
+      <li>Prototyped diff-drive stack in ROS 2 Jazzy: URDF, C++/Python nodes; simulated in Gazebo with RViz2</li>
+      <li>Applied localization: wheel odometry, TF2, IMU sim, EKF fusion; verified via launch and parameter configs</li>
+    </ul>
+  </div>
+
+  <div class="r-entry">
+    <div class="r-row"><span class="r-role">iValet Parking System, Senior CV Project</span><span class="r-meta">Jan 2022 - May 2022</span></div>
+    <div class="r-sub">with Kelin Yu, Faiza Yousuf, Wei Xiong Toh</div>
+    <ul>
+      <li>Built an ML-powered parking system that detects vacant spots via camera and segmentation, stores results in PostgreSQL, and guides users to spots through a web UI with path planning</li>
+    </ul>
+  </div>
+
+  <div class="r-entry">
+    <div class="r-row"><span class="r-role">Self-Driving DC Car, Embedded Project</span><span class="r-meta">Feb 2021 - Jun 2021</span></div>
+    <ul>
+      <li>Engineered an autonomous DC motor car with Raspberry Pi + Arduino; implemented roadside detection using OpenCV4 (C++) and soldered H-bridge motor control circuitry</li>
+    </ul>
+  </div>
+
+  <h2 class="r-sec">Skills</h2>
+  <div class="r-skills">
+    <p>C/C++, C#, Python, PyTorch, SQL, Azure ML, Kubernetes, Docker, RAG, CV/ML, Agents, Claude Code</p>
+  </div>
+
+</div>
