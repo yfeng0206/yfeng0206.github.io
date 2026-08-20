@@ -14,11 +14,14 @@
   <meta property="og:description" content="{{ desc }}">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
   <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
-  {%- assign ogimg = page.image | default: page.teaser | default: '/assets/images/bio-photo.jpg' -%}
+  {%- assign ogimg = page.image | default: page.teaser | default: '/assets/images/avatar.png' -%}
   <meta property="og:image" content="{{ ogimg | absolute_url }}">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="icon" href="{{ '/assets/images/bio-photo.jpg' | relative_url }}">
+  <link rel="icon" href="{{ '/assets/favicon.ico' | relative_url }}" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicon-32.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="512x512" href="{{ '/assets/images/favicon-512.png' | relative_url }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/favicon-180.png' | relative_url }}">
   <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/feed.xml' | absolute_url }}">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,7 +36,7 @@
     "name": "Yunchu (Gary) Feng",
     "alternateName": "Gary Feng",
     "url": "{{ site.url }}",
-    "image": "{{ '/assets/images/bio-photo.jpg' | absolute_url }}",
+    "image": "{{ '/assets/images/avatar.png' | absolute_url }}",
     "jobTitle": "Machine Learning Engineer",
     "worksFor": { "@type": "Organization", "name": "Microsoft" },
     "alumniOf": { "@type": "CollegeOrUniversity", "name": "Georgia Institute of Technology" },

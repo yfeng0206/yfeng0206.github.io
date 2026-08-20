@@ -1,0 +1,43 @@
+---
+layout: default
+---
+<article class="page">
+  <header class="page-head">
+    <h1 class="page-title">{{ page.title }}</h1>
+    {%- if page.subtitle %}<p class="page-sub">{{ page.subtitle }}</p>{% endif %}
+  </header>
+
+  {%- if content != '' %}<div class="prose intro">{{ content }}</div>{% endif %}
+
+  <h2 class="section-head" id="publications">Publications</h2>
+  {%- for pub in site.data.publications %}
+  <div class="work-item">
+    <img class="work-thumb" src="{{ pub.teaser | relative_url }}" alt="" loading="lazy">
+    <div>
+      <p class="work-title"><a href="{{ pub.url }}">{{ pub.title }}</a><span class="badge pub">{{ pub.venue_short }}</span></p>
+      <p class="work-meta">{{ pub.venue }} ({{ pub.year }}) &middot; {{ pub.role }}</p>
+      <p class="work-desc">{{ pub.authors | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+      <p class="work-desc">{{ pub.detail }}</p>
+      <p class="work-meta"><a href="{{ pub.url }}">doi:{{ pub.doi }}</a></p>
+    </div>
+  </div>
+  {%- endfor %}
+  <p class="more-link"><a href="https://scholar.google.com/citations?user=ofH9ujMAAAAJ&amp;hl=en">Google Scholar &rarr;</a></p>
+
+  <h2 class="section-head" id="active-research">Active research</h2>
+  <p class="section-note">Neither project is published yet. Both have public code and full writeups.</p>
+  {%- assign research = site.research | sort: "order" %}
+  {%- for item in research %}
+    {%- include work-row.html item=item %}
+  {%- endfor %}
+
+  <h2 class="section-head" id="projects">Projects</h2>
+  {%- assign projects = site.projects | sort: "order" %}
+  {%- assign groups = projects | group_by: "group" %}
+  {%- for g in groups %}
+    <h3 class="group-head">{{ g.name }}</h3>
+    {%- for item in g.items %}
+      {%- include work-row.html item=item compact=true %}
+    {%- endfor %}
+  {%- endfor %}
+</article>
