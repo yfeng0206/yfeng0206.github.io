@@ -14,7 +14,7 @@
   <meta property="og:description" content="{{ desc }}">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
   <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
-  {%- assign ogimg = page.image | default: page.teaser | default: '/assets/images/avatar.png' -%}
+  {%- assign ogimg = page.image | default: page.teaser | default: '/assets/images/bio-photo.jpg' -%}
   <meta property="og:image" content="{{ ogimg | absolute_url }}">
   <meta name="twitter:card" content="summary_large_image">
 
@@ -36,7 +36,7 @@
     "name": "Yunchu (Gary) Feng",
     "alternateName": "Gary Feng",
     "url": "{{ site.url }}",
-    "image": "{{ '/assets/images/avatar.png' | absolute_url }}",
+    "image": "{{ '/assets/images/bio-photo.jpg' | absolute_url }}",
     "jobTitle": "Machine Learning Engineer",
     "worksFor": { "@type": "Organization", "name": "Microsoft" },
     "alumniOf": { "@type": "CollegeOrUniversity", "name": "Georgia Institute of Technology" },
