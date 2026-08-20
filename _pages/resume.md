@@ -44,8 +44,11 @@ Seattle, WA. [garyfeng000@gmail.com](mailto:garyfeng000@gmail.com) | [GitHub](ht
 ## Publications
 
 **Evolution of Humanoid Locomotion Control**
-Y. Gu, G. Shi, F. Shi, I-C. Chang, Y-J. Wang, Q. Cheng, Z. Olkin, I. Lopez-Sanchez, **Y. Feng**, J. Zhang, A. D. Ames, H. Su, K. Sreenath.
-*Science Robotics* 11(117), 2026. [doi:10.1126/scirobotics.aed3973](https://doi.org/10.1126/scirobotics.aed3973)
+*Science Robotics* 11(117), Aug 2026 | with Prof. Hao Su, New York University | May 2025 - Oct 2025
+
+Y. Gu, G. Shi, F. Shi, I-C. Chang, Y-J. Wang, Q. Cheng, Z. Olkin, I. Lopez-Sanchez, **Y. Feng**, J. Zhang, A. D. Ames, H. Su, K. Sreenath. [doi:10.1126/scirobotics.aed3973](https://doi.org/10.1126/scirobotics.aed3973)
+
+- Co-authored a survey on humanoid locomotion control systems, synthesizing recent research in balance control, motion planning, and optimization across classical algorithms (MPC) and learning-based approaches
 
 ## Research
 
@@ -56,11 +59,6 @@ Y. Gu, G. Shi, F. Shi, I-C. Chang, Y-J. Wang, Q. Cheng, Z. Olkin, I. Lopez-Sanch
 - Proposed anatomy-shaped connected mask targets reaching **0.8947 test AUC**, beating random-masking I-JEPA (0.8878) at every probe and training regime (frozen +0.011, p<0.0005)
 - Ablated 3 probe heads (Attentive, CrossAttn, Mean) with paired-bootstrap confidence intervals; validated interpretability via occlusion attribution
 - Released pretrained encoders on Hugging Face
-
-### Humanoid Locomotion Survey, Robotics
-*May 2025 - Oct 2025* | with Prof. Hao Su, New York University
-
-- Co-authored a robotics survey on locomotion control systems (MPC), synthesizing recent research in balance control, motion planning, and optimization. Published in *Science Robotics* (2026)
 
 ## Projects
 
