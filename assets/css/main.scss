@@ -83,3 +83,33 @@ code {
   font-weight: 700;
   letter-spacing: -0.03em;
 }
+
+// Inline resume PDF viewer (/resume/)
+.resume-viewer {
+  margin: 1.5em 0;
+}
+
+.resume-frame {
+  display: block;
+  width: 100%;
+  aspect-ratio: 8.5 / 11;
+  min-height: 600px;
+  border: 1px solid #4a4a4a;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.resume-fallback {
+  display: none;
+  margin: 1.5em 0;
+  padding: 1.25em;
+  border: 1px solid #4a4a4a;
+  border-radius: 4px;
+}
+
+// Mobile and small viewports render embedded PDFs poorly or not at all,
+// so swap the viewer for an explicit link.
+@media screen and (max-width: 768px) {
+  .resume-viewer { display: none; }
+  .resume-fallback { display: block; }
+}

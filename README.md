@@ -57,10 +57,16 @@ assets/resume/         <-- Resume print source (HTML) + generated PDF
 
 ## Resume
 
-`_pages/resume.md` (web) and `assets/resume/gary-feng-resume.html` (print source) hold the
-same content and must be updated together. The upstream master is Gary's
-`Resume 2026.docx`; the site version adds the published Science Robotics citation and
-CopilotWorldLab, and **omits the phone number** because the PDF is served publicly.
+There is now a **single source of truth** for resume content:
+`assets/resume/gary-feng-resume.html`, the print source that generates the PDF.
+
+- `_pages/resume.md` embeds that PDF inline (`<object>` with an `<iframe>` fallback).
+  It contains no resume text of its own, so it cannot drift.
+- `_pages/about.md` carries a deliberately condensed summary and links to `/resume/`.
+  Do not paste full resume bullets back into it.
+- The upstream master is Gary's `Resume 2026.docx`. The site version adds the published
+  Science Robotics citation and CopilotWorldLab, and **omits the phone number** because
+  the PDF is served publicly.
 
 Regenerate the PDF after editing the HTML (it is tuned to fit exactly one page):
 
@@ -78,6 +84,10 @@ HTML moves on. Always verify the output afterwards:
 ```powershell
 python -c "import pymupdf; d=pymupdf.open(r'assets\resume\gary-feng-resume.pdf'); print(len(d)); print(d[0].get_text()[:200])"
 ```
+
+Inline-viewer styles live in `assets/css/main.scss` (`.resume-viewer`, `.resume-frame`,
+`.resume-fallback`). The viewer is hidden below 768px because mobile browsers do not
+render embedded PDFs reliably; the fallback link shows instead.
 
 `.gitignore` ignores `*.pdf` globally with an explicit negation for
 `assets/resume/gary-feng-resume.pdf`. Keep that negation if the filename ever changes,
