@@ -9,10 +9,13 @@ author_profile: false
 [Google Scholar](https://scholar.google.com/citations?user=ofH9ujMAAAAJ&hl=en){: .btn .btn--info}
 [About me](/about/){: .btn .btn--inverse}
 
-<div class="resume-viewer">
-  <object class="resume-frame" data="/assets/resume/gary-feng-resume.pdf#view=Fit" type="application/pdf">
-    <iframe src="/assets/resume/gary-feng-resume.pdf#view=Fit" title="Gary Feng resume"></iframe>
-  </object>
+<div class="resume-desktop">
+  <div class="resume-viewer">
+    <object class="resume-frame" data="/assets/resume/gary-feng-resume.pdf#view=Fit" type="application/pdf">
+      <iframe src="/assets/resume/gary-feng-resume.pdf#view=Fit" title="Gary Feng resume"></iframe>
+    </object>
+  </div>
+  <p class="resume-note">Not seeing it? <a href="/assets/resume/gary-feng-resume.pdf">Open the PDF directly</a>.</p>
 </div>
 
 <div class="resume-fallback">
