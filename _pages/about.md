@@ -3,7 +3,7 @@ title: "About"
 permalink: /about/
 ---
 
-ML Engineer at Microsoft in Seattle. Georgia Tech ECE '22, currently doing an M.S.E. in Artificial Intelligence at Penn part-time.
+ML Engineer at Microsoft in Seattle. Georgia Tech ECE '22, starting an M.S.E. in Robotics at Penn in 2027.
 
 My interests are in machine learning, computer vision, and visual perception. I like building systems that can see, understand, and act on the world. At work I ship production ML services at scale. On the side I work on medical imaging, latent world models for robot manipulation, multi-object tracking, and robotics.
 
@@ -41,7 +41,7 @@ Full detail, plus earlier roles and every project, is on the [resume](/resume/).
 
 ## Education
 
-M.S.E. Artificial Intelligence, University of Pennsylvania *(ongoing, part-time)*
+M.S.E. Robotics, University of Pennsylvania *(2027 - ongoing)*
 
 B.S. Computer Engineering, Georgia Institute of Technology (2022)
 
