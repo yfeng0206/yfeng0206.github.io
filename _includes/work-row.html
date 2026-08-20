@@ -1,0 +1,22 @@
+{%- assign item = include.item %}
+{%- if include.compact %}
+<div class="compact-row">
+  <span class="compact-year">{{ item.period }}</span>
+  <span class="compact-body">
+    <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+    <span class="compact-desc">{{ item.deck }}</span>
+  </span>
+</div>
+{%- else %}
+<div class="work-item">
+  {%- if item.teaser %}
+  <a href="{{ item.url | relative_url }}" tabindex="-1" aria-hidden="true"><img class="work-thumb" src="{{ item.teaser | relative_url }}" alt="" loading="lazy"></a>
+  {%- endif %}
+  <div>
+    <p class="work-title"><a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+      {%- if item.status %}<span class="badge">{{ item.status }}</span>{% endif %}</p>
+    <p class="work-meta">{{ item.period }}{% if item.collaborators %} &middot; {{ item.collaborators }}{% endif %}</p>
+    <p class="work-desc">{{ item.deck }}</p>
+  </div>
+</div>
+{%- endif %}

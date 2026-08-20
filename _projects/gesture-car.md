@@ -1,16 +1,15 @@
 ---
 title: "Gesture-Controlled Robot Car"
-date: 2021-12-14
-excerpt: "Dec 2021 - Hand gesture-controlled DC motor car using OpenCV, MediaPipe, Raspberry Pi 4, and Mbed over IoT."
-header:
-  teaser: /assets/images/gesture-car-teaser.jpg
-sidebar:
-  - title: "Tech Stack"
-    text: "C++, Python, OpenCV, MediaPipe, Raspberry Pi 4, Mbed LPC1768, ESP8266"
-  - title: "Team"
-    text: "Feng Yunchu, Faiza Yousuf, Harry Nguyen, Christine Saw"
-  - title: "Course"
-    text: "ECE 4180 (Georgia Tech)"
+deck: "Hand gesture-controlled DC motor car using OpenCV, MediaPipe, Raspberry Pi 4, and Mbed over WiFi."
+period: "Dec 2021"
+order: 7
+group: "Earlier work (2021-2022, undergraduate)"
+teaser: /assets/images/gesture-car-teaser.jpg
+redirect_from:
+  - /projects/gesture-car/
+links:
+  - title: "GitHub"
+    url: "https://github.com/yfeng0206/Gesture-Car"
 ---
 
 A hand gesture-controlled car that recognizes hand commands to perform four motions: forward, reverse, right turn, and left turn.

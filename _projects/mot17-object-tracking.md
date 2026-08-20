@@ -1,16 +1,15 @@
 ---
 title: "MOT17 Multi-Object Tracking"
-date: 2026-01-11
-excerpt: "Jan 2026 - YOLOv8 + ByteTrack on MOT17 pedestrian data, improving tracking accuracy by 8% over base YOLOv8."
-header:
-  teaser: /assets/images/mot17-teaser.png
-sidebar:
-  - title: "Tech Stack"
-    text: "Python, YOLOv8, ByteTrack, Ultralytics"
-  - title: "Dataset"
-    text: "MOT17Det"
-  - title: "Improvement"
-    text: "+8% tracking accuracy"
+deck: "YOLOv8 + ByteTrack on MOT17 pedestrian data, improving tracking accuracy by 8% over base YOLOv8."
+period: "Jan - Feb 2026"
+order: 3
+group: "Applied and engineering work"
+teaser: /assets/images/mot17-teaser.png
+redirect_from:
+  - /projects/mot17-object-tracking/
+links:
+  - title: "GitHub"
+    url: "https://github.com/yfeng0206/MOT17-Object-Detection-and-Tacking"
 ---
 
 Trained on MOT17 data to track pedestrians with YOLOv8 + ByteTrack, improving tracking accuracy by 8% compared to base YOLOv8.

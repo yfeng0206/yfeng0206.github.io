@@ -1,18 +1,25 @@
 ---
-title: "CopilotWorldLab - V-JEPA 2-AC as a Coarse Manipulation Controller"
-date: 2026-07-10
-excerpt: "Jul 2026 - Present - A latent video world model plans Franka arm motion to goal images in MuJoCo, benchmarked over 500 fixed rollouts with hidden-state success scoring."
-header:
-  teaser: /assets/images/worldlab-teaser.gif
-sidebar:
-  - title: "Tech Stack"
-    text: "Python, PyTorch, V-JEPA 2-AC, MuJoCo, CEM-MPC, Franka Panda"
+title: "Latent World Models as Coarse Manipulation Controllers"
+deck: "A frozen V-JEPA 2-AC plans Franka arm motion to goal images in MuJoCo across a fixed 500-rollout benchmark. The open question is whether the model's own predictive energy predicts its failures."
+period: "Jul 2026 - ongoing"
+status: "Phase 1 of 4"
+teaser: /assets/images/sel-world.gif
+order: 2
+featured: true
+redirect_from:
+  - /research/copilot-world-lab/
+links:
+  - title: "GitHub"
+    url: "https://github.com/yfeng0206/CopilotWorldLab"
+  - title: "Reproduction writeup"
+    url: "/writing/reproducing-vjepa2-ac/"
+facts:
+  - title: "Stack"
+    text: "PyTorch, V-JEPA 2-AC, MuJoCo, CEM-MPC, Franka Panda"
   - title: "Benchmark"
     text: "5 tasks x 2 objects x 50 fixed scenarios = 500 rollouts"
-  - title: "Best Result"
+  - title: "Best result"
     text: "reach_with_object: cup 98% / box 96% @10cm"
-  - title: "Status"
-    text: "Phase 1 (fixed-bundle benchmark)"
 ---
 
 A latent video world model ([V-JEPA 2-AC](https://arxiv.org/abs/2506.09985), Assran et al. 2025) plans coarse robot-arm motion by minimising distance to a goal image, and the model's own predictive energy is proposed as the confidence signal that hands off to a classical, vision-only precise controller. This repository is the Stage-1 simulation substrate.

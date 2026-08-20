@@ -1,16 +1,15 @@
 ---
 title: "SLIViT for Glaucoma Classification on 3D OCT"
-date: 2026-04-07
-excerpt: "Mar - Apr 2026 - Reproducing SLIViT for binary glaucoma classification on Harvard FairVision OCT data. Achieved 0.869 test AUC."
-header:
-  teaser: /assets/images/slivit-teaser.png
-sidebar:
-  - title: "Tech Stack"
-    text: "Python, PyTorch, ConvNeXt, ViT, DDP, fp16"
-  - title: "Dataset"
-    text: "Harvard FairVision - 10K OCT volumes"
-  - title: "Best Result"
-    text: "0.869 Test AUC"
+deck: "Reproducing the SLIViT ConvNeXt + ViT architecture for binary glaucoma classification on Harvard FairVision OCT data. 0.869 test AUC."
+period: "Mar - Apr 2026"
+order: 1
+group: "Applied and engineering work"
+teaser: /assets/images/slivit-teaser.png
+redirect_from:
+  - /projects/slivit-3d-oct-glaucoma/
+links:
+  - title: "GitHub"
+    url: "https://github.com/yfeng0206/SliViT_3D_OCT_Glaucoma"
 ---
 
 Reproducing the [SLIViT](https://github.com/cozygene/SLIViT) architecture for binary glaucoma classification on [Harvard FairVision](https://github.com/Harvard-Ophthalmology-AI-Lab/FairVision) OCT data.

@@ -1,18 +1,18 @@
 ---
-title: "iValet - Intelligent Parking Lot Management System"
-date: 2022-03-16
-excerpt: "Mar – Apr 2022 - ML-powered parking system that detects vacant spots via camera + segmentation, with a React web UI and path planning."
-header:
-  teaser: /assets/images/ivalet-teaser.png
-sidebar:
-  - title: "Tech Stack"
-    text: "Python, OpenCV, React, PostgreSQL, Raspberry Pi"
-  - title: "Team"
-    text: "Kelin Yu, Faiza Yousuf, Wei Xiong Toh, Yunchu Feng"
-  - title: "Advisor"
-    text: "Dr. Patricio Vela"
-  - title: "Course"
-    text: "ECE 4872 Senior Design (Georgia Tech, Spring 2022)"
+title: "iValet, Intelligent Parking Lot Management"
+deck: "ML-powered parking system that detects vacant spots via camera and segmentation, with a React web UI and path planning. Georgia Tech senior design."
+period: "Jan - May 2022"
+order: 6
+group: "Earlier work (2021-2022, undergraduate)"
+collaborators: "with Kelin Yu, Faiza Yousuf, Wei Xiong Toh"
+teaser: /assets/images/ivalet-teaser.png
+redirect_from:
+  - /projects/ivalet-parking/
+links:
+  - title: "Project page"
+    url: "https://eceseniordesign2022spring.ece.gatech.edu/sd22p37/"
+  - title: "GitHub"
+    url: "https://github.com/Robuddies/iValetUpdate"
 ---
 
 Senior capstone project at Georgia Tech, advised by Dr. Patricio Vela. Built over two semesters as part of ECE 4872.

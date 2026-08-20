@@ -1,114 +1,80 @@
-# Theme
-remote_theme: "mmistakes/minimal-mistakes@4.28.0"
-minimal_mistakes_skin: "dark"
-
-# Site Settings
-locale: "en-US"
+# ---------------------------------------------------------------
+# Site
+# ---------------------------------------------------------------
 title: "Yunchu (Gary) Feng"
-title_separator: "|"
-subtitle: "ML Engineer"
-name: "Yunchu (Gary) Feng"
-description: "Personal portfolio: ML, computer vision, robotics, and embedded systems."
+tagline: "I work on self-supervised representation learning for perception and control."
+description: "Personal site of Yunchu (Gary) Feng: machine learning engineer at Microsoft, researching self-supervised representation learning for medical imaging and robot manipulation."
 url: "https://yfeng0206.github.io"
 baseurl: ""
+locale: "en-US"
 repository: "yfeng0206/yfeng0206.github.io"
-search: true
-enable_copy_code_button: true
+timezone: America/Los_Angeles
 
-# Author Sidebar
 author:
   name: "Yunchu (Gary) Feng"
+  email: "garyfeng000@gmail.com"
   avatar: "/assets/images/bio-photo.jpg"
-  bio: "ML Engineer @ Microsoft | ECE Georgia Tech 2022"
   location: "Seattle, WA"
-  links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope"
-      url: "mailto:garyfeng000@gmail.com"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/yfeng0206"
-    - label: "LinkedIn"
-      icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/in/garyfeng/"
-    - label: "Google Scholar"
-      icon: "fas fa-fw fa-graduation-cap"
-      url: "https://scholar.google.com/citations?user=ofH9ujMAAAAJ&hl=en"
-    - label: "Resume (PDF)"
-      icon: "fas fa-fw fa-file-pdf"
-      url: "/assets/resume/gary-feng-resume.pdf"
 
-# Footer
-footer:
-  links:
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/yfeng0206"
-    - label: "LinkedIn"
-      icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/in/garyfeng/"
-    - label: "Google Scholar"
-      icon: "fas fa-fw fa-graduation-cap"
-      url: "https://scholar.google.com/citations?user=ofH9ujMAAAAJ&hl=en"
+# ---------------------------------------------------------------
+# Build
+# ---------------------------------------------------------------
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+  syntax_highlighter: rouge
 
-# Reading Files
 include:
   - _pages
 
-# Collections
-collections:
-  portfolio:
-    output: true
-    permalink: /:collection/:path/
-# Portfolio ordering is by the `date` in each item's front matter,
-# newest first (see _pages/portfolio-archive.md). Minimal Mistakes has
-# no `collections.*.order` key, so do not add one here.
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .github
 
-# Front Matter Defaults
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-redirect-from
+
+# ---------------------------------------------------------------
+# Collections
+# ---------------------------------------------------------------
+collections:
+  research:
+    output: true
+    permalink: /research/:path/
+  projects:
+    output: true
+    permalink: /projects/:path/
+
+# Posts live at /writing/<slug>/
+permalink: /writing/:title/
+
+# ---------------------------------------------------------------
+# Front matter defaults
+# ---------------------------------------------------------------
 defaults:
   - scope:
       path: ""
       type: posts
     values:
-      layout: single
-      author_profile: true
-      read_time: true
-      share: true
-      related: true
-      toc: true
+      layout: post
+  - scope:
+      path: ""
+      type: research
+    values:
+      layout: work
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: work
   - scope:
       path: "_pages"
       type: pages
     values:
-      layout: single
-      author_profile: true
-  - scope:
-      path: ""
-      type: portfolio
-    values:
-      layout: single
-      author_profile: false
-      share: true
-      toc: true
-
-# Plugins
-plugins:
-  - jekyll-paginate
-  - jekyll-sitemap
-  - jekyll-gist
-  - jekyll-feed
-  - jekyll-include-cache
-
-# Archives
-category_archive:
-  type: liquid
-  path: /categories/
-tag_archive:
-  type: liquid
-  path: /tags/
-
-# Outputting
-permalink: /:categories/:title/
-paginate: 5
-paginate_path: /page:num/
-timezone: America/Los_Angeles
+      layout: page

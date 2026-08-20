@@ -1,0 +1,22 @@
+- label: "Sep 2026"
+  text: "Starting the M.S.E. Robotics program at the University of Pennsylvania."
+
+- label: "Aug 2026"
+  text: "Anatomy-shaped masking result finalized: 0.8947 test AUC, beating random masking at every probe and regime."
+  link: /writing/anatomy-guided-masking-oct/
+  link_text: "Writeup"
+
+- label: "Aug 2026"
+  text: "Evolution of Humanoid Locomotion Control published in Science Robotics."
+  link: https://doi.org/10.1126/scirobotics.aed3973
+  link_text: "DOI"
+
+- label: "Aug 2026"
+  text: "Pretrained I-JEPA OCT encoders released on Hugging Face."
+  link: https://huggingface.co/yfeng0206/ijepa-3d-oct-checkpoints
+  link_text: "Checkpoints"
+
+- label: "Jul 2026"
+  text: "CopilotWorldLab Phase 1 complete: a 500-rollout closed-loop benchmark for V-JEPA 2-AC."
+  link: /writing/reproducing-vjepa2-ac/
+  link_text: "Writeup"

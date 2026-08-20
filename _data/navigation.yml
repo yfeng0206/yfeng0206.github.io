@@ -1,13 +1,14 @@
-# NOTE: Minimal Mistakes v4.28.0 masthead does NOT support "children" for dropdowns.
-# All items must be flat with a url. Do not use children here (it works in sidebar nav only).
+# Flat nav. Order matters.
 main:
-  - title: "About"
-    url: /about/
-  - title: "Portfolio"
-    url: /portfolio/
+  - title: "Home"
+    url: /
+  - title: "Research"
+    url: /research/
   - title: "Publications"
     url: /publications/
-  - title: "Blog"
-    url: /blog/
-  - title: "Resume"
-    url: /resume/
+  - title: "Writing"
+    url: /writing/
+  - title: "Projects"
+    url: /projects/
+  - title: "CV"
+    url: /cv/

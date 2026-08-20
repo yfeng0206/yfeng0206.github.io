@@ -1,5 +1,6 @@
 ---
 title: "Anatomy-shaped Masking for OCT I-JEPA"
+deck: "+0.007 AUC from changing mask shape rather than location, and the two metrics that almost hid it."
 date: 2026-08-14
 categories:
   - research
@@ -9,8 +10,8 @@ tags:
   - computer-vision
   - oct
   - glaucoma
-toc: true
-toc_sticky: true
+redirect_from:
+  - /research/anatomy-guided-masking-oct/
 ---
 
 I-JEPA learns by hiding parts of an image and predicting them in representation space. The masks it hides are uniformly-placed rectangles, which is a sensible default for ImageNet. On retinal OCT it is close to the worst possible choice: the retina occupies about 17.6% of the image, so most of what a random rectangle hides is vitreous and background, and most of the prediction budget is spent learning that empty space stays empty.

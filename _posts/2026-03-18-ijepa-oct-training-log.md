@@ -1,5 +1,6 @@
 ---
 title: "Training Log: I-JEPA Self-Supervised Pretraining for OCT Glaucoma"
+deck: "The early-phase training log: LR instability, an early-stop bug, and a slice-level collapse."
 date: 2026-03-18
 categories:
   - research
@@ -9,17 +10,17 @@ tags:
   - computer-vision
   - oct
   - glaucoma
-toc: true
-toc_sticky: true
+redirect_from:
+  - /research/ijepa-oct-training-log/
 ---
 
-Self-supervised pretraining using [I-JEPA](https://github.com/facebookresearch/ijepa) on [Harvard FairVision](https://github.com/Harvard-Ophthalmology-AI-Lab/FairVision) OCT data for binary glaucoma classification. Builds on our [SLIViT reproduction](/research/slivit-glaucoma-training-log/).
+Self-supervised pretraining using [I-JEPA](https://github.com/facebookresearch/ijepa) on [Harvard FairVision](https://github.com/Harvard-Ophthalmology-AI-Lab/FairVision) OCT data for binary glaucoma classification. Builds on our [SLIViT reproduction](/writing/slivit-glaucoma-training-log/).
 
 [GitHub Repo](https://github.com/yfeng0206/I-JEPA_3D_OCT){: .btn .btn--primary}
 
-> **Update (Aug 2026).** The headline result has moved on again. **Anatomy-guided masking** - biasing I-JEPA's prediction targets onto the retinal band instead of scattering them uniformly - reaches **0.8947 Test AUC**, beating the random-masking encoder below at every probe and regime (frozen +0.011, p<0.0005; fine-tune +0.008, p=0.001). The contribution is target *shape*, isolated against both a matched-area random control and a MIRAGE-placed rectangle envelope. See [Anatomy-shaped Masking for OCT I-JEPA](/research/anatomy-guided-masking-oct/) and the [project page](/portfolio/ijepa-3d-oct/).
+> **Update (Aug 2026).** The headline result has moved on again. **Anatomy-guided masking** - biasing I-JEPA's prediction targets onto the retinal band instead of scattering them uniformly - reaches **0.8947 Test AUC**, beating the random-masking encoder below at every probe and regime (frozen +0.011, p<0.0005; fine-tune +0.008, p=0.001). The contribution is target *shape*, isolated against both a matched-area random control and a MIRAGE-placed rectangle envelope. See [Anatomy-shaped Masking for OCT I-JEPA](/writing/anatomy-guided-masking-oct/) and the [project page](/research/ijepa-3d-oct/).
 
-> **Update (May 2026).** The production encoder used in our current results is **random-init I-JEPA ViT-B/16 trained 100 epochs** on 600K OCT slices, not the ImageNet→SSL ep32 checkpoint discussed below. With LLRD γ=0.5 fine-tuning, all three slice-aggregation probes (AttentiveProbe d=1, CrossAttnPool, MeanPool) reach **0.886-0.888 Test AUC**, tied within 0.001, a finding that probe architecture is noise once the encoder is fine-tuned. Headline results, the 2x3 probe-architecture ablation with bootstrap CI, and the interpretability analysis (window occlusion, OD/OS mirror test, fp16 fix) live on the [project page](/portfolio/ijepa-3d-oct/) and the [I-JEPA_3D_OCT repo](https://github.com/yfeng0206/I-JEPA_3D_OCT). The sections below remain useful as the early-phase training log: Run 1 LR=0.0005 instability, Run 2 early-stop bug, Run 3 convergence, the slice-level collapse, and the original ImageNet-init experiments.
+> **Update (May 2026).** The production encoder used in our current results is **random-init I-JEPA ViT-B/16 trained 100 epochs** on 600K OCT slices, not the ImageNet→SSL ep32 checkpoint discussed below. With LLRD γ=0.5 fine-tuning, all three slice-aggregation probes (AttentiveProbe d=1, CrossAttnPool, MeanPool) reach **0.886-0.888 Test AUC**, tied within 0.001, a finding that probe architecture is noise once the encoder is fine-tuned. Headline results, the 2x3 probe-architecture ablation with bootstrap CI, and the interpretability analysis (window occlusion, OD/OS mirror test, fp16 fix) live on the [project page](/research/ijepa-3d-oct/) and the [I-JEPA_3D_OCT repo](https://github.com/yfeng0206/I-JEPA_3D_OCT). The sections below remain useful as the early-phase training log: Run 1 LR=0.0005 instability, Run 2 early-stop bug, Run 3 convergence, the slice-level collapse, and the original ImageNet-init experiments.
 
 ## Motivation
 

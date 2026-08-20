@@ -1,0 +1,28 @@
+---
+layout: default
+---
+<article class="page">
+  <header class="page-head">
+    <p class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time>
+      {%- if page.categories.size > 0 %} &middot; {{ page.categories | join: ", " }}{% endif %}
+    </p>
+    <h1 class="page-title">{{ page.title }}</h1>
+    {%- if page.deck %}<p class="deck">{{ page.deck }}</p>{% endif %}
+  </header>
+
+  <div class="prose">
+    {{ content }}
+  </div>
+
+  {%- if page.tags.size > 0 %}
+  <p class="tag-row">
+    {%- for tag in page.tags %}<span class="pill">{{ tag }}</span>{% endfor %}
+  </p>
+  {%- endif %}
+
+  <nav class="post-nav">
+    {%- if page.previous %}<a class="pn prev" href="{{ page.previous.url | relative_url }}"><span>Previous</span>{{ page.previous.title }}</a>{% endif %}
+    {%- if page.next %}<a class="pn next" href="{{ page.next.url | relative_url }}"><span>Next</span>{{ page.next.title }}</a>{% endif %}
+  </nav>
+</article>

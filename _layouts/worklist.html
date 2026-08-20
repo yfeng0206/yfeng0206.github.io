@@ -1,0 +1,27 @@
+---
+layout: default
+---
+<article class="page">
+  <header class="page-head">
+    <h1 class="page-title">{{ page.title }}</h1>
+    {%- if page.subtitle %}<p class="page-sub">{{ page.subtitle }}</p>{% endif %}
+  </header>
+
+  {%- if content != '' %}<div class="prose intro">{{ content }}</div>{% endif %}
+
+  {%- assign items = site[page.collection_name] | sort: "order" %}
+
+  {%- if page.group_by_group %}
+    {%- assign groups = items | group_by: "group" %}
+    {%- for g in groups %}
+      <h2 class="section-head">{{ g.name }}</h2>
+      {%- for item in g.items %}
+        {%- include work-row.html item=item compact=page.compact %}
+      {%- endfor %}
+    {%- endfor %}
+  {%- else %}
+    {%- for item in items %}
+      {%- include work-row.html item=item compact=page.compact %}
+    {%- endfor %}
+  {%- endif %}
+</article>

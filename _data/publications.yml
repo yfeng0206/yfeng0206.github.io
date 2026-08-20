@@ -1,0 +1,11 @@
+- title: "Evolution of Humanoid Locomotion Control"
+  authors: "Yan Gu, Guanya Shi, Fan Shi, I-Chia Chang, Yen-Jen Wang, Qilong Cheng, Zachary Olkin, Ivan Lopez-Sanchez, **Yunchu Feng**, Jian Zhang, Aaron D. Ames, Hao Su, Koushil Sreenath"
+  venue: "Science Robotics, vol. 11, no. 117"
+  venue_short: "Science Robotics"
+  year: 2026
+  role: "contributing author, one of thirteen"
+  doi: "10.1126/scirobotics.aed3973"
+  url: "https://doi.org/10.1126/scirobotics.aed3973"
+  teaser: /assets/images/sel-scirob.png
+  summary: "A review of humanoid locomotion control from model-based foundations to learning-based approaches, with Prof. Hao Su at NYU."
+  detail: "Covers balance control, motion planning, and optimization, spanning classical algorithms such as MPC, LQR, and DCM alongside the reinforcement-learning and sim-to-real approaches that now drive bipedal and humanoid locomotion."

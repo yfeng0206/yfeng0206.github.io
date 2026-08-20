@@ -1,5 +1,6 @@
 ---
 title: "Reproducing V-JEPA 2-AC: What Broke, and What It Taught Us"
+deck: "Both standard sim suites refused to run, a 148-second planning step, and a camera ablation that found the wrong culprit."
 date: 2026-07-10
 categories:
   - research
@@ -9,8 +10,8 @@ tags:
   - v-jepa
   - manipulation
   - mujoco
-toc: true
-toc_sticky: true
+redirect_from:
+  - /research/reproducing-vjepa2-ac/
 ---
 
 The plan was simple: take V-JEPA 2-AC, a frozen latent video world model, point it at a robot arm in simulation, and measure how well it plans coarse manipulation motion toward goal images. No fine-tuning, no demonstrations, just Cross-Entropy Method search over actions minimising latent distance to a goal.
@@ -89,4 +90,4 @@ No prior art covers that combination. V-JEPA 2-AC supplies the energy and the pl
 
 The open question is whether that self-confidence signal actually predicts a failed handoff, measured as ROC AUC against a simple baseline. A negative result would be informative too, which is the main reason it is worth measuring honestly.
 
-Full project writeup on the [project page](/portfolio/copilot-world-lab/); the complete lessons list, including the Windows and CUDA environment traps, is in [`docs/lessons_learned.md`](https://github.com/yfeng0206/CopilotWorldLab/blob/main/docs/lessons_learned.md).
+Full project writeup on the [project page](/research/copilot-world-lab/); the complete lessons list, including the Windows and CUDA environment traps, is in [`docs/lessons_learned.md`](https://github.com/yfeng0206/CopilotWorldLab/blob/main/docs/lessons_learned.md).

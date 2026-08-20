@@ -1,0 +1,31 @@
+---
+layout: default
+---
+<article class="page">
+  <header class="page-head">
+    <p class="post-meta">
+      {{ page.period }}{% if page.collaborators %} &middot; {{ page.collaborators }}{% endif %}
+      {%- if page.status %} &middot; {{ page.status }}{% endif %}
+    </p>
+    <h1 class="page-title">{{ page.title }}</h1>
+    {%- if page.deck %}<p class="deck">{{ page.deck }}</p>{% endif %}
+  </header>
+
+  {%- if page.links.size > 0 %}
+  <p class="btn-row">
+    {%- for l in page.links %}<a class="btn{% if forloop.first %} btn--primary{% endif %}" href="{{ l.url }}">{{ l.title }}</a>{% endfor %}
+  </p>
+  {%- endif %}
+
+  {%- if page.facts.size > 0 %}
+  <dl class="facts">
+    {%- for f in page.facts %}
+    <div><dt>{{ f.title }}</dt><dd>{{ f.text }}</dd></div>
+    {%- endfor %}
+  </dl>
+  {%- endif %}
+
+  <div class="prose">
+    {{ content }}
+  </div>
+</article>

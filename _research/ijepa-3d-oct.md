@@ -1,25 +1,33 @@
 ---
-title: "I-JEPA for OCT Glaucoma Classification"
-date: 2026-08-14
-excerpt: "Mar 2026 - Present - I-JEPA self-supervised pretraining on Harvard FairVision OCT. Anatomy-shaped masking reaches 0.8947 test AUC, beating random-masking I-JEPA at every probe and regime."
-header:
-  teaser: /assets/images/ijepa-teaser.png
-sidebar:
-  - title: "Tech Stack"
-    text: "Python, PyTorch, ViT-B/16, I-JEPA, MIRAGE, DDP"
-  - title: "Dataset"
-    text: "Harvard FairVision - 600K OCT slices (SSL), 10K volumes (eval)"
-  - title: "Best Result"
+title: "Anatomy-shaped Masking for Self-Supervised OCT"
+deck: "Shaping I-JEPA prediction targets to retinal tissue instead of placing them at random reaches 0.8947 test AUC on glaucoma classification, against 0.8878 for random masking, and wins at every probe and training regime."
+period: "Feb 2026 - ongoing"
+collaborators: "with WT Lau (PhD), Columbia"
+status: "Phase 4 of 5"
+teaser: /assets/images/sel-oct.jpg
+order: 1
+featured: true
+redirect_from:
+  - /research/ijepa-3d-oct/
+links:
+  - title: "GitHub"
+    url: "https://github.com/yfeng0206/I-JEPA_3D_OCT"
+  - title: "Checkpoints"
+    url: "https://huggingface.co/yfeng0206/ijepa-3d-oct-checkpoints"
+  - title: "Masking writeup"
+    url: "/writing/anatomy-guided-masking-oct/"
+facts:
+  - title: "Stack"
+    text: "PyTorch, ViT-B/16, I-JEPA, MIRAGE, DDP"
+  - title: "Data"
+    text: "Harvard FairVision, 600K OCT slices (SSL), 10K volumes (eval)"
+  - title: "Best result"
     text: "0.8947 Test AUC (anatomy-shaped masking, fine-tune)"
   - title: "Contribution"
     text: "Anatomy-shaped connected mask targets"
-  - title: "Collaboration"
-    text: "with WT Lau (PhD), Columbia"
-  - title: "Status"
-    text: "Phase 4 in progress (FM baselines)"
 ---
 
-Self-supervised pretraining with [I-JEPA](https://github.com/facebookresearch/ijepa) (Assran et al., CVPR 2023) on [Harvard FairVision](https://github.com/Harvard-Ophthalmology-AI-Lab/FairVision) OCT data, evaluated via frozen probe + fine-tune on binary glaucoma classification. Builds on our [SLIViT reproduction](/portfolio/slivit-3d-oct-glaucoma/).
+Self-supervised pretraining with [I-JEPA](https://github.com/facebookresearch/ijepa) (Assran et al., CVPR 2023) on [Harvard FairVision](https://github.com/Harvard-Ophthalmology-AI-Lab/FairVision) OCT data, evaluated via frozen probe + fine-tune on binary glaucoma classification. Builds on our [SLIViT reproduction](/projects/slivit-3d-oct-glaucoma/).
 
 [View on GitHub](https://github.com/yfeng0206/I-JEPA_3D_OCT){: .btn .btn--primary}
 [Checkpoints on Hugging Face](https://huggingface.co/yfeng0206/ijepa-3d-oct-checkpoints){: .btn .btn--info}

@@ -1,14 +1,15 @@
 ---
 title: "Object Permanence Detection"
-date: 2026-02-25
-excerpt: "Feb 2026 - Video analysis pipeline detecting physically impossible events using SAM2, RT-DETR, and DINOv2."
-header:
-  teaser: /assets/images/objperm-teaser.png
-sidebar:
-  - title: "Tech Stack"
-    text: "Python, SAM2, RT-DETR, DINOv2, PyTorch"
-  - title: "Tracking"
-    text: "10 objects, 24 events detected"
+deck: "A video pipeline that detects physically impossible events using SAM2 mask propagation, RT-DETR detection, and DINOv2 re-identification."
+period: "Feb 2026"
+order: 2
+group: "Applied and engineering work"
+teaser: /assets/images/objperm-teaser.png
+redirect_from:
+  - /projects/object-permanence-detection/
+links:
+  - title: "GitHub"
+    url: "https://github.com/yfeng0206/object-permanence-detection"
 ---
 
 A video analysis pipeline that detects **object permanence anomalies** - physically impossible events like a red ball going into a cup but a yellow ball coming out.
