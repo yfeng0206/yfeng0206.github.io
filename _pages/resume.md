@@ -44,7 +44,7 @@ Seattle, WA. [garyfeng000@gmail.com](mailto:garyfeng000@gmail.com) | [GitHub](ht
 ## Publications
 
 **Evolution of Humanoid Locomotion Control**
-*Science Robotics* 11(117), Aug 2026 | with Prof. Hao Su, New York University | May 2025 - Oct 2025
+*Science Robotics* 11(117), Aug 2026 | with Prof. Hao Su, NYU | May 2025 - Oct 2025
 
 Y. Gu, G. Shi, F. Shi, I-C. Chang, Y-J. Wang, Q. Cheng, Z. Olkin, I. Lopez-Sanchez, **Y. Feng**, J. Zhang, A. D. Ames, H. Su, K. Sreenath. [doi:10.1126/scirobotics.aed3973](https://doi.org/10.1126/scirobotics.aed3973)
 
@@ -53,7 +53,7 @@ Y. Gu, G. Shi, F. Shi, I-C. Chang, Y-J. Wang, Q. Cheng, Z. Olkin, I. Lopez-Sanch
 ## Research
 
 ### I-JEPA for 3D OCT, Computer Vision
-*Feb 2026 - Ongoing* | with Wai Tak Lau (PhD), Columbia University | [Project page](/portfolio/ijepa-3d-oct/)
+*Feb 2026 - Ongoing* | with Wai Tak Lau (PhD), Columbia | [Project page](/portfolio/ijepa-3d-oct/)
 
 - Self-supervised pretrained ViT-B/16 via I-JEPA on 600K OCT B-scans for glaucoma classification
 - Proposed anatomy-shaped connected mask targets reaching **0.8947 test AUC**, beating random-masking I-JEPA (0.8878) at every probe and training regime (frozen +0.011, p<0.0005)

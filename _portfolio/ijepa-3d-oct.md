@@ -14,7 +14,7 @@ sidebar:
   - title: "Contribution"
     text: "Anatomy-shaped connected mask targets"
   - title: "Collaboration"
-    text: "with Wai Tak Lau (PhD), Columbia University"
+    text: "with Wai Tak Lau (PhD), Columbia"
   - title: "Status"
     text: "Phase 4 in progress (FM baselines)"
 ---
