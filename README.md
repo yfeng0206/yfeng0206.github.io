@@ -65,9 +65,18 @@ CopilotWorldLab, and **omits the phone number** because the PDF is served public
 Regenerate the PDF after editing the HTML (it is tuned to fit exactly one page):
 
 ```powershell
+$pdf = "C:\Users\Gary\yfeng0206.github.io\assets\resume\gary-feng-resume.pdf"
 & "C:\Program Files\Google\Chrome\Application\chrome.exe" --headless --disable-gpu `
-  --print-to-pdf="assets\resume\gary-feng-resume.pdf" --no-pdf-header-footer `
+  --print-to-pdf="$pdf" --no-pdf-header-footer `
   "file:///C:/Users/Gary/yfeng0206.github.io/assets/resume/gary-feng-resume.html"
+```
+
+**Use an absolute `--print-to-pdf` path.** With a relative path Chrome headless
+silently writes nothing and still exits 0, so the committed PDF goes stale while the
+HTML moves on. Always verify the output afterwards:
+
+```powershell
+python -c "import pymupdf; d=pymupdf.open(r'assets\resume\gary-feng-resume.pdf'); print(len(d)); print(d[0].get_text()[:200])"
 ```
 
 `.gitignore` ignores `*.pdf` globally with an explicit negation for
