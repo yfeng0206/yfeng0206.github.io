@@ -58,7 +58,11 @@ assets/resume/         <-- Resume print source (HTML) + generated PDF
 ## Resume
 
 `_pages/resume.md` (web) and `assets/resume/gary-feng-resume.html` (print source) hold the
-same content and must be updated together. Regenerate the PDF after editing the HTML:
+same content and must be updated together. The upstream master is Gary's
+`Resume 2026.docx`; the site version adds the published Science Robotics citation and
+CopilotWorldLab, and **omits the phone number** because the PDF is served publicly.
+
+Regenerate the PDF after editing the HTML (it is tuned to fit exactly one page):
 
 ```powershell
 & "C:\Program Files\Google\Chrome\Application\chrome.exe" --headless --disable-gpu `

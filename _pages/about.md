@@ -33,13 +33,15 @@ My interests are in machine learning, computer vision, and visual perception. I 
 
 ## Research Interests
 
-- **Medical AI**: Glaucoma classification on 3D OCT scans using SLIViT and I-JEPA self-supervised learning; anatomy-shaped mask targets that beat stock random masking; working toward a foundation model for ophthalmic OCT imaging
+- **Medical AI**: Glaucoma classification on 3D OCT scans using SLIViT and I-JEPA self-supervised learning; anatomy-shaped mask targets that beat stock random masking; working toward a foundation model for ophthalmic OCT imaging. With Wai Tak Lau (PhD), Columbia University
 - **World Models & Robot Learning**: V-JEPA 2-AC as a coarse manipulation controller, using the model's own predictive energy as a competence gate for handoff to classical control
 - **Computer Vision & Perception**: Multi-object tracking, object permanence detection with SAM2 + DINOv2, visual reasoning
 - **Robotics**: Humanoid locomotion control (*Science Robotics* review, 2026), ROS 2 control systems
 - **Embedded Systems**: Self-driving cars and gesture-controlled robots with Raspberry Pi + Arduino
 
 ## Education
+
+M.S.E. Artificial Intelligence, University of Pennsylvania *(ongoing, part-time)*
 
 B.S. Computer Engineering, Georgia Institute of Technology (2022)
 

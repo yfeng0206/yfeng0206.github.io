@@ -13,6 +13,8 @@ sidebar:
     text: "0.8947 Test AUC (anatomy-shaped masking, fine-tune)"
   - title: "Contribution"
     text: "Anatomy-shaped connected mask targets"
+  - title: "Collaboration"
+    text: "with Wai Tak Lau (PhD), Columbia University"
   - title: "Status"
     text: "Phase 4 in progress (FM baselines)"
 ---
