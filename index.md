@@ -13,4 +13,5 @@ I'm a machine learning engineer at Microsoft in Seattle, where I work on ranking
 agent systems. I studied Computer Engineering at Georgia Tech, and I'm starting an M.S.E. at
 UPenn in 2027.
 
-My interests are in world models, computer vision, and representation learning.
+My interests are in world models, computer vision, representation learning, robotics, and
+automation.

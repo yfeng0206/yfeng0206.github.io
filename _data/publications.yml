@@ -1,9 +1,9 @@
 - title: "Evolution of Humanoid Locomotion Control"
-  authors: "Yan Gu, Guanya Shi, Fan Shi, I-Chia Chang, Yen-Jen Wang, Qilong Cheng, Zachary Olkin, Ivan Lopez-Sanchez, **Yunchu Feng**, Jian Zhang, Aaron D. Ames, Hao Su, Koushil Sreenath"
+  authors: "Y. Gu, G. Shi, ... **Y. Feng**, ... H. Su, K. Sreenath"
   venue: "Science Robotics, vol. 11, no. 117"
   venue_short: "Science Robotics"
   year: 2026
-  role: "contributing author, one of thirteen"
+  role: "contributing author"
   doi: "10.1126/scirobotics.aed3973"
   url: "https://doi.org/10.1126/scirobotics.aed3973"
   teaser: /assets/images/sel-scirob.png
