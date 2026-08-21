@@ -12,13 +12,13 @@ layout: default
   <h2 class="section-head" id="publications">Publications</h2>
   {%- for pub in site.data.publications %}
   <div class="work-item">
-    <img class="work-thumb" src="{{ pub.teaser | relative_url }}" alt="" loading="lazy">
+    <img class="work-thumb" src="{{ pub.teaser | relative_url }}" alt="Figure 1 from the paper: three panels showing the progression from stable locomotion to agile locomotion to loco-manipulation" loading="lazy">
     <div>
       <p class="work-title"><a href="{{ pub.url }}">{{ pub.title }}</a><span class="badge pub">{{ pub.venue_short }}</span></p>
       <p class="work-meta">{{ pub.venue }} ({{ pub.year }}) &middot; {{ pub.role }}</p>
       <p class="work-desc">{{ pub.summary }}</p>
       <p class="work-detail">{{ pub.authors | markdownify | remove: '<p>' | remove: '</p>' }}</p>
-      <p class="work-meta"><a href="{{ pub.url }}">doi:{{ pub.doi }}</a></p>
+      <p class="work-meta"><a href="{{ pub.url }}">doi:{{ pub.doi }}</a>{% if pub.teaser_credit %} &middot; {{ pub.teaser_credit }}{% endif %}</p>
     </div>
   </div>
   {%- endfor %}
