@@ -1,6 +1,7 @@
 ---
 title: "Building ConsensusAITrader: 7 AI Strategies, 25 Years of Backtesting"
 deck: "Seven strategies trading independently as a sensor network, backtested across 14 market regimes."
+teaser: /assets/images/consensus-trader-teaser.svg
 date: 2026-04-08
 categories:
   - research
@@ -12,6 +13,7 @@ tags:
 redirect_from:
   - /research/consensus-ai-trader/
 ---
+
 
 A multi-strategy AI trading system where 7 coded strategies trade independently and a consensus layer (Mix/MixLLM) reads all 7 as live sensors. Backtested across 14 market regimes spanning 25 years (2000-2026) using only free data sources.
 

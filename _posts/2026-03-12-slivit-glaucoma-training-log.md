@@ -1,6 +1,7 @@
 ---
 title: "Training Log: SLIViT for Glaucoma Classification on 3D OCT"
 deck: "Reproducing SLIViT on Harvard FairVision OCT, and what the frozen-feature ceiling actually was."
+teaser: /assets/images/slivit-teaser.png
 date: 2026-03-12
 categories:
   - research
@@ -13,6 +14,7 @@ tags:
 redirect_from:
   - /research/slivit-glaucoma-training-log/
 ---
+
 
 Reproducing the [SLIViT](https://github.com/cozygene/SLIViT) architecture for binary glaucoma classification on [Harvard FairVision](https://github.com/Harvard-Ophthalmology-AI-Lab/FairVision) OCT data. This post documents the full training process, experiments, and findings.
 

@@ -1,6 +1,7 @@
 ---
 title: "Reproducing V-JEPA 2-AC: What Broke, and What It Taught Us"
 deck: "Both standard sim suites refused to run, a 148-second planning step, and a camera ablation that found the wrong culprit."
+teaser: /assets/images/sel-world.gif
 date: 2026-07-10
 categories:
   - research
@@ -13,6 +14,7 @@ tags:
 redirect_from:
   - /research/reproducing-vjepa2-ac/
 ---
+
 
 The plan was simple: take V-JEPA 2-AC, a frozen latent video world model, point it at a robot arm in simulation, and measure how well it plans coarse manipulation motion toward goal images. No fine-tuning, no demonstrations, just Cross-Entropy Method search over actions minimising latent distance to a goal.
 

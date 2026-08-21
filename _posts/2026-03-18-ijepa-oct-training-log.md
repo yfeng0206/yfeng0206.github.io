@@ -1,6 +1,7 @@
 ---
 title: "Training Log: I-JEPA Self-Supervised Pretraining for OCT Glaucoma"
 deck: "The early-phase training log: LR instability, an early-stop bug, and a slice-level collapse."
+teaser: /assets/images/ijepa-probe-ranking.png
 date: 2026-03-18
 categories:
   - research
@@ -13,6 +14,7 @@ tags:
 redirect_from:
   - /research/ijepa-oct-training-log/
 ---
+
 
 Self-supervised pretraining using [I-JEPA](https://github.com/facebookresearch/ijepa) on [Harvard FairVision](https://github.com/Harvard-Ophthalmology-AI-Lab/FairVision) OCT data for binary glaucoma classification. Builds on our [SLIViT reproduction](/writing/slivit-glaucoma-training-log/).
 

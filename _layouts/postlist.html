@@ -13,12 +13,18 @@ layout: default
   {%- for year in posts_by_year %}
   <h2 class="section-head">{{ year.name }}</h2>
     {%- for post in year.items %}
-    <div class="post-row">
-      <span class="post-row-date">{{ post.date | date: "%b %-d" }}</span>
-      <span class="post-row-body">
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        {%- if post.deck %}<span class="post-row-deck">{{ post.deck }}</span>{% endif %}
-      </span>
+    <div class="work-item">
+      {%- if post.teaser %}
+      <a href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true"><img class="work-thumb" src="{{ post.teaser | relative_url }}" alt="" loading="lazy"></a>
+      {%- endif %}
+      <div>
+        <p class="work-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></p>
+        <p class="work-meta">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %B %Y" }}</time>
+          {%- if post.categories.size > 0 %} &middot; {{ post.categories | join: ", " }}{% endif %}
+        </p>
+        {%- if post.deck %}<p class="work-desc">{{ post.deck }}</p>{% endif %}
+      </div>
     </div>
     {%- endfor %}
   {%- endfor %}
