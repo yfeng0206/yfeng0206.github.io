@@ -32,15 +32,7 @@ layout: default
 </div>
 {%- endfor %}
 
-<h2 class="section-head">Updates</h2>
-{%- for n in site.data.news limit: 5 %}
-<div class="update">
-  <span class="update-date">{{ n.label }}</span>
-  <span class="update-text">{{ n.text }}{% if n.link %} <a href="{{ n.link | relative_url }}">{{ n.link_text | default: "More" }}</a>{% endif %}</span>
-</div>
-{%- endfor %}
-
-<h2 class="section-head">Recent writing</h2>
+<h2 class="section-head">Writing</h2>
 {%- for post in site.posts limit: 3 %}
 <div class="work-item">
   {%- if post.teaser %}
