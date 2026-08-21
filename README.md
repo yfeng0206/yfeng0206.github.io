@@ -55,6 +55,17 @@ assets/resume/         <-- Resume print source (HTML) + generated PDF
   lives at `/research/<slug>/`. Cross-links must include the category segment.
 - **No personal contact details beyond email** on the public site (no phone, no street address).
 
+## Contact email
+
+The email address appears in exactly **two** places. Change both, then regenerate
+the resume PDF and page image:
+
+1. `_config.yml` -> `author.email`. This drives the homepage links row, the site
+   footer, and the CV page (which reads `{{ site.author.email }}`).
+2. `assets/resume/gary-feng-resume.html` -> the `.contact` block. This file is a
+   standalone print source and is **not** processed by Liquid, so it cannot read
+   the config value and must be edited by hand.
+
 ## Resume
 
 There is now a **single source of truth** for resume content:

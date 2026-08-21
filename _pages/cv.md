@@ -8,7 +8,7 @@ redirect_from:
 [Download PDF](/assets/resume/gary-feng-resume.pdf){: .btn .btn--primary}
 [Google Scholar](https://scholar.google.com/citations?user=ofH9ujMAAAAJ&hl=en){: .btn .btn--info}
 
-Seattle, WA &middot; [garyfeng000@gmail.com](mailto:garyfeng000@gmail.com) &middot;
+Seattle, WA &middot; [{{ site.author.email }}](mailto:{{ site.author.email }}) &middot;
 [GitHub](https://github.com/yfeng0206) &middot; [LinkedIn](https://www.linkedin.com/in/garyfeng/)
 
 ## Education
