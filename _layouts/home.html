@@ -18,23 +18,14 @@ layout: default
 
 {%- assign featured = site.research | where: "featured", true | sort: "order" %}
 {%- for item in featured %}
-<div class="work-item">
-  {%- if item.teaser %}
-  <a href="{{ item.url | relative_url }}" tabindex="-1" aria-hidden="true"><img class="work-thumb" src="{{ item.teaser | relative_url }}" alt=""></a>
-  {%- endif %}
-  <div>
-    <p class="work-title"><a href="{{ item.url | relative_url }}">{{ item.title }}</a></p>
-    <p class="work-meta">{{ item.period }}{% if item.collaborators %} &middot; {{ item.collaborators }}{% endif %}</p>
-    <p class="work-desc">{{ item.deck }}</p>
-  </div>
-</div>
+  {%- include work-row.html item=item %}
 {%- endfor %}
 
 {%- for pub in site.data.publications limit: 1 %}
 <div class="work-item">
-  <a href="{{ '/publications/' | relative_url }}" tabindex="-1" aria-hidden="true"><img class="work-thumb" src="{{ pub.teaser | relative_url }}" alt=""></a>
+  <a href="{{ '/research/#publications' | relative_url }}" tabindex="-1" aria-hidden="true"><img class="work-thumb" src="{{ pub.teaser | relative_url }}" alt=""></a>
   <div>
-    <p class="work-title"><a href="{{ '/publications/' | relative_url }}">{{ pub.title }}</a><span class="badge pub">{{ pub.venue_short }}</span></p>
+    <p class="work-title"><a href="{{ '/research/#publications' | relative_url }}">{{ pub.title }}</a><span class="badge pub">{{ pub.venue_short }}</span></p>
     <p class="work-meta">{{ pub.year }} &middot; {{ pub.role }}</p>
     <p class="work-desc">{{ pub.summary }}</p>
   </div>

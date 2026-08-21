@@ -16,8 +16,8 @@ layout: default
     <div>
       <p class="work-title"><a href="{{ pub.url }}">{{ pub.title }}</a><span class="badge pub">{{ pub.venue_short }}</span></p>
       <p class="work-meta">{{ pub.venue }} ({{ pub.year }}) &middot; {{ pub.role }}</p>
-      <p class="work-desc">{{ pub.authors | markdownify | remove: '<p>' | remove: '</p>' }}</p>
-      <p class="work-desc">{{ pub.detail }}</p>
+      <p class="work-desc">{{ pub.summary }}</p>
+      <p class="work-detail">{{ pub.authors | markdownify | remove: '<p>' | remove: '</p>' }}</p>
       <p class="work-meta"><a href="{{ pub.url }}">doi:{{ pub.doi }}</a></p>
     </div>
   </div>

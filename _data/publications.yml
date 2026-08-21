@@ -7,5 +7,5 @@
   doi: "10.1126/scirobotics.aed3973"
   url: "https://doi.org/10.1126/scirobotics.aed3973"
   teaser: /assets/images/sel-scirob.png
-  summary: "A review of humanoid locomotion control from model-based foundations to learning-based approaches, with Prof. Hao Su at NYU."
+  summary: "A survey of how robots learn to walk, from hand-written control equations through to methods that learn from experience."
   detail: "Covers balance control, motion planning, and optimization, spanning classical algorithms such as MPC, LQR, and DCM alongside the reinforcement-learning and sim-to-real approaches that now drive bipedal and humanoid locomotion."
