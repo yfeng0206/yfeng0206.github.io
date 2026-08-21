@@ -1,6 +1,7 @@
 ---
 title: "Anatomy-shaped Masking for Self-Supervised OCT"
 deck: "Shaping I-JEPA prediction targets to retinal tissue instead of placing them at random reaches 0.8947 test AUC on glaucoma classification, against 0.8878 for random masking, and wins at every probe and training regime."
+summary: "Teaching a model to read eye scans by having it study the retina itself instead of random patches of the image. It detects glaucoma more accurately than the standard approach."
 period: "Feb 2026 - ongoing"
 collaborators: "with WT Lau (PhD), Columbia"
 status: "Phase 4 of 5"

@@ -1,6 +1,7 @@
 ---
 title: "iValet, Intelligent Parking Lot Management"
 deck: "ML-powered parking system that detects vacant spots via camera and segmentation, with a React web UI and path planning. Georgia Tech senior design."
+summary: "A camera watches a parking lot, works out which spaces are free, and guides a driver to the nearest one through a web page."
 period: "Jan - May 2022"
 order: 6
 group: "Earlier work (2021-2022, undergraduate)"

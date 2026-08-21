@@ -1,6 +1,7 @@
 ---
 title: "Latent World Models as Coarse Manipulation Controllers"
 deck: "A frozen V-JEPA 2-AC plans Franka arm motion to goal images in MuJoCo across a fixed 500-rollout benchmark. The open question is whether the model's own predictive energy predicts its failures."
+summary: "Can a video model that predicts what happens next also steer a robot arm? And can it tell when it is about to fail, so a simpler controller takes over in time?"
 period: "Jul 2026 - ongoing"
 status: "Phase 1 of 4"
 teaser: /assets/images/sel-world.gif

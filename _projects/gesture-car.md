@@ -1,6 +1,7 @@
 ---
 title: "Gesture-Controlled Robot Car"
 deck: "Hand gesture-controlled DC motor car using OpenCV, MediaPipe, Raspberry Pi 4, and Mbed over WiFi."
+summary: "A small car that drives where your hand tells it to. A camera counts your fingers and sends the command over WiFi."
 period: "Dec 2021"
 order: 7
 group: "Earlier work (2021-2022, undergraduate)"

@@ -1,13 +1,10 @@
 ---
 layout: default
 ---
-<div class="hero">
-  <div class="hero-text">
-    <h1 class="hero-name">{{ site.author.name }}</h1>
-    <p class="hero-tagline">{{ site.tagline }}</p>
-  </div>
-  <img class="portrait" src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}" width="132" height="132">
-</div>
+<header class="hero">
+  <h1 class="hero-name">{{ site.author.name }}</h1>
+  <p class="hero-tagline">{{ site.tagline }}</p>
+</header>
 
 <div class="prose intro">
   {{ content }}

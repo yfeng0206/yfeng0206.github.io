@@ -1,10 +1,16 @@
 {%- assign item = include.item %}
+{%- assign blurb = item.summary | default: item.deck %}
 {%- if include.compact %}
 <div class="compact-row">
   <span class="compact-year">{{ item.period }}</span>
+  {%- if item.teaser %}
+  <a href="{{ item.url | relative_url }}" tabindex="-1" aria-hidden="true"><img class="compact-thumb" src="{{ item.teaser | relative_url }}" alt="" loading="lazy"></a>
+  {%- else %}
+  <span class="compact-thumb compact-thumb--empty" aria-hidden="true"></span>
+  {%- endif %}
   <span class="compact-body">
     <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
-    <span class="compact-desc">{{ item.deck }}</span>
+    <span class="compact-desc">{{ blurb }}</span>
   </span>
 </div>
 {%- else %}
@@ -16,7 +22,8 @@
     <p class="work-title"><a href="{{ item.url | relative_url }}">{{ item.title }}</a>
       {%- if item.status %}<span class="badge">{{ item.status }}</span>{% endif %}</p>
     <p class="work-meta">{{ item.period }}{% if item.collaborators %} &middot; {{ item.collaborators }}{% endif %}</p>
-    <p class="work-desc">{{ item.deck }}</p>
+    <p class="work-desc">{{ blurb }}</p>
+    {%- if item.summary and item.deck %}<p class="work-detail">{{ item.deck }}</p>{% endif %}
   </div>
 </div>
 {%- endif %}

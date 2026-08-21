@@ -1,6 +1,7 @@
 ---
 title: "MOT17 Multi-Object Tracking"
 deck: "YOLOv8 + ByteTrack on MOT17 pedestrian data, improving tracking accuracy by 8% over base YOLOv8."
+summary: "Following every pedestrian through a video and keeping each person's identity straight, even when they walk behind one another."
 period: "Jan - Feb 2026"
 order: 3
 group: "Applied and engineering work"

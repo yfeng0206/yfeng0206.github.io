@@ -1,6 +1,7 @@
 ---
 title: "Object Permanence Detection"
 deck: "A video pipeline that detects physically impossible events using SAM2 mask propagation, RT-DETR detection, and DINOv2 re-identification."
+summary: "Watching video to catch things that cannot physically happen, such as a red ball going into a cup and a yellow one coming out."
 period: "Feb 2026"
 order: 2
 group: "Applied and engineering work"

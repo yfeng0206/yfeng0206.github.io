@@ -1,6 +1,7 @@
 ---
 title: "SLIViT for Glaucoma Classification on 3D OCT"
 deck: "Reproducing the SLIViT ConvNeXt + ViT architecture for binary glaucoma classification on Harvard FairVision OCT data. 0.869 test AUC."
+summary: "Rebuilding a published method for spotting glaucoma in 3D eye scans, to check the published results hold up and to use as a baseline for my own work."
 period: "Mar - Apr 2026"
 order: 1
 group: "Applied and engineering work"

@@ -1,6 +1,7 @@
 ---
 title: "Self-Driving DC Motor Car"
 deck: "Autonomous DC motor car with Raspberry Pi + Arduino using OpenCV for lane detection and PID-based steering control."
+summary: "A small car that follows a road on its own by watching the lane lines through a camera and steering to stay centred."
 period: "Feb - Jun 2021"
 order: 8
 group: "Earlier work (2021-2022, undergraduate)"
