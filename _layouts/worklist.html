@@ -10,7 +10,6 @@ layout: default
   {%- if content != '' %}<div class="prose intro">{{ content }}</div>{% endif %}
 
   {%- assign items = site[page.collection_name] | sort: "order" %}
-
   {%- if page.group_by_group %}
     {%- assign groups = items | group_by: "group" %}
     {%- for g in groups %}
@@ -23,5 +22,22 @@ layout: default
     {%- for item in items %}
       {%- include work-row.html item=item compact=page.compact %}
     {%- endfor %}
+  {%- endif %}
+
+  {%- if page.show_writing %}
+  <h2 class="section-head" id="writeups">Writeups</h2>
+  <p class="section-note">Longer notes on what I actually ran and what happened.</p>
+  {%- for post in site.posts %}
+    <div class="work-item">
+      {%- if post.teaser %}
+      <a href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true"><img class="work-thumb" src="{{ post.teaser | relative_url }}" alt="" loading="lazy"></a>
+      {%- endif %}
+      <div>
+        <p class="work-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></p>
+        <p class="work-meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %Y" }}</time></p>
+        {%- if post.deck %}<p class="work-desc">{{ post.deck }}</p>{% endif %}
+      </div>
+    </div>
+  {%- endfor %}
   {%- endif %}
 </article>

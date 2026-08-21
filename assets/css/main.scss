@@ -273,3 +273,19 @@ pre code{background:none;padding:0;font-size:.8rem;white-space:pre}
   .compact-row{grid-template-columns:4.6rem 1fr;gap:.9rem}
   .compact-year{grid-column:1 / -1;margin-bottom:.1rem}
 }
+
+/* Work summary on the home page */
+.job-row{display:grid;grid-template-columns:7.5rem 1fr;gap:1.2rem;padding:.85rem 0;
+  border-bottom:1px solid var(--border);align-items:baseline}
+.job-row:last-of-type{border-bottom:0}
+.job-period{font-family:var(--font-ui);font-size:.78rem;color:var(--text-muted);letter-spacing:.02em;
+  white-space:nowrap}
+.job-role{font-family:var(--font-ui);font-size:.98rem;font-weight:600;letter-spacing:-.01em;
+  color:var(--text)}
+.job-org{font-family:var(--font-ui);font-size:.98rem;color:var(--text-secondary)}
+.job-org::before{content:", "}
+.job-note{display:block;font-size:.93rem;color:var(--text-secondary);line-height:1.5;margin-top:.2rem}
+@media (max-width:560px){
+  .job-row{grid-template-columns:1fr;gap:.15rem}
+}
+.job-body{display:block}

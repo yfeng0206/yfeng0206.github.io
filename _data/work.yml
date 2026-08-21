@@ -1,0 +1,14 @@
+- period: "2024 - now"
+  role: "Machine Learning Engineer"
+  org: "Microsoft"
+  note: "Ranking, retrieval, and agent systems in production. Cross-encoder reranking at 500 RPS, an LLM eval harness, and RAG over BM25 plus vector search."
+
+- period: "2022 - 2024"
+  role: "Software Engineer"
+  org: "Microsoft"
+  note: "A Kubernetes forecasting service used by 15,000+ clients, and a multi-region recommendation platform."
+
+- period: "2020"
+  role: "Software Engineer"
+  org: "Skeena Bioenergy"
+  note: "Computer vision for automated PDF-to-SQL migration, and Power BI dashboards on production data."

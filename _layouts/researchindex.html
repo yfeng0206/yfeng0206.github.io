@@ -30,14 +30,4 @@ layout: default
   {%- for item in research %}
     {%- include work-row.html item=item %}
   {%- endfor %}
-
-  <h2 class="section-head" id="projects">Projects</h2>
-  {%- assign projects = site.projects | sort: "order" %}
-  {%- assign groups = projects | group_by: "group" %}
-  {%- for g in groups %}
-    <h3 class="group-head">{{ g.name }}</h3>
-    {%- for item in g.items %}
-      {%- include work-row.html item=item compact=true %}
-    {%- endfor %}
-  {%- endfor %}
 </article>

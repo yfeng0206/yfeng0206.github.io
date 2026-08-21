@@ -14,35 +14,14 @@ layout: default
   <a href="mailto:{{ site.author.email }}">Email</a><span class="sep">/</span><a href="{{ '/cv/' | relative_url }}">CV</a><span class="sep">/</span><a href="https://scholar.google.com/citations?user=ofH9ujMAAAAJ&amp;hl=en">Google Scholar</a><span class="sep">/</span><a href="https://github.com/yfeng0206">GitHub</a><span class="sep">/</span><a href="https://www.linkedin.com/in/garyfeng/">LinkedIn</a>
 </p>
 
-<h2 class="section-head">Selected work</h2>
-
-{%- assign featured = site.research | where: "featured", true | sort: "order" %}
-{%- for item in featured %}
-  {%- include work-row.html item=item %}
-{%- endfor %}
-
-{%- for pub in site.data.publications limit: 1 %}
-<div class="work-item">
-  <a href="{{ '/research/#publications' | relative_url }}" tabindex="-1" aria-hidden="true"><img class="work-thumb" src="{{ pub.teaser | relative_url }}" alt=""></a>
-  <div>
-    <p class="work-title"><a href="{{ '/research/#publications' | relative_url }}">{{ pub.title }}</a><span class="badge pub">{{ pub.venue_short }}</span></p>
-    <p class="work-meta">{{ pub.year }} &middot; {{ pub.role }}</p>
-    <p class="work-desc">{{ pub.summary }}</p>
-  </div>
+<h2 class="section-head">Work</h2>
+{%- for job in site.data.work %}
+<div class="job-row">
+  <span class="job-period">{{ job.period }}</span>
+  <span class="job-body">
+    <span class="job-role">{{ job.role }}</span><span class="job-org">{{ job.org }}</span>
+    <span class="job-note">{{ job.note }}</span>
+  </span>
 </div>
 {%- endfor %}
-
-<h2 class="section-head">Writing</h2>
-{%- for post in site.posts limit: 3 %}
-<div class="work-item">
-  {%- if post.teaser %}
-  <a href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true"><img class="work-thumb" src="{{ post.teaser | relative_url }}" alt="" loading="lazy"></a>
-  {%- endif %}
-  <div>
-    <p class="work-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></p>
-    <p class="work-meta">{{ post.date | date: "%b %Y" }}</p>
-    {%- if post.deck %}<p class="work-desc">{{ post.deck }}</p>{% endif %}
-  </div>
-</div>
-{%- endfor %}
-<p class="more-link"><a href="{{ '/writing/' | relative_url }}">All writing &rarr;</a></p>
+<p class="more-link"><a href="{{ '/cv/' | relative_url }}">Full CV &rarr;</a></p>

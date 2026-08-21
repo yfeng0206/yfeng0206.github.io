@@ -1,10 +1,10 @@
-# Flat nav. Four items only.
+# Flat nav.
 main:
   - title: "Home"
     url: /
   - title: "Research"
     url: /research/
-  - title: "Writing"
-    url: /writing/
+  - title: "Project"
+    url: /projects/
   - title: "CV"
     url: /cv/
