@@ -13,5 +13,4 @@ I'm a machine learning engineer at Microsoft in Seattle, where I work on ranking
 agent systems. I studied Computer Engineering at Georgia Tech, and I'm starting a master's in
 Robotics at Penn in 2027.
 
-Outside of work I'm usually somewhere in computer vision and self-supervised learning. Right now
-that means training models on retinal eye scans and running robot arm experiments in simulation.
+My interests are in world models, computer vision, and representation learning.
