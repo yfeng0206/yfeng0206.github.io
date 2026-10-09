@@ -1,3 +1,21 @@
+- title: "Where to Predict in Retinal OCT? Anatomy-Guided Target Selection for I-JEPA"
+  authors: "**Y. Feng**, W. T. Lau"
+  venue: "NeurIPS 2026 Workshop on GenAI for Health"
+  venue_short: "NeurIPS Workshop"
+  year: 2026
+  role: "first author"
+  url: "https://openreview.net/forum?id=niWjFtDTPA"
+  link_label: "OpenReview"
+  links:
+    - title: "Project"
+      url: /research/ijepa-3d-oct/
+    - title: "Code"
+      url: "https://github.com/yfeng0206/I-JEPA_3D_OCT"
+  teaser: /assets/images/sel-oct-jepa.jpg
+  teaser_alt: "Figure 1 from the paper: an eye scan with prediction targets placed at random, a guide computed from image brightness, and targets placed on the retina using that guide"
+  teaser_credit: "Figure 1 from the paper. OCT image from OCTDL (Kulyabin et al.), CC BY 4.0."
+  summary: "A model that learns from eye scans by filling in hidden parts spots glaucoma better when those parts sit on the retina rather than anywhere in the image. A simple brightness-based guide is enough to pick them."
+
 - title: "Evolution of Humanoid Locomotion Control"
   authors: "Y. Gu, G. Shi, ... **Y. Feng**, ... H. Su, K. Sreenath"
   venue: "Science Robotics, vol. 11, no. 117"
@@ -7,6 +25,7 @@
   doi: "10.1126/scirobotics.aed3973"
   url: "https://doi.org/10.1126/scirobotics.aed3973"
   teaser: /assets/images/sel-scirob.png
+  teaser_alt: "Figure 1 from the paper: three panels showing the progression from stable locomotion to agile locomotion to loco-manipulation"
   teaser_credit: "Figure 1 from the paper. Robot images courtesy of Unitree."
   summary: "A survey of how robots learn to walk, from hand-written control equations through to methods that learn from experience."
   detail: "Covers balance control, motion planning, and optimization, spanning classical algorithms such as MPC, LQR, and DCM alongside the reinforcement-learning and sim-to-real approaches that now drive bipedal and humanoid locomotion."
