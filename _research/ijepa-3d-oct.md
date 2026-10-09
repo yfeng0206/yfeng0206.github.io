@@ -11,6 +11,8 @@ featured: true
 redirect_from:
   - /portfolio/ijepa-3d-oct/
 links:
+  - title: "Paper"
+    url: "https://openreview.net/forum?id=niWjFtDTPA"
   - title: "GitHub"
     url: "https://github.com/yfeng0206/I-JEPA_3D_OCT"
   - title: "Checkpoints"
@@ -29,6 +31,8 @@ facts:
 ---
 
 Self-supervised pretraining with [I-JEPA](https://github.com/facebookresearch/ijepa) (Assran et al., CVPR 2023) on [Harvard FairVision](https://github.com/Harvard-Ophthalmology-AI-Lab/FairVision) OCT data, evaluated via frozen probe + fine-tune on binary glaucoma classification. Builds on our [SLIViT reproduction](/projects/slivit-3d-oct-glaucoma/).
+
+A workshop paper from this project, "Where to Predict in Retinal OCT? Anatomy-Guided Target Selection for I-JEPA", appears at the [NeurIPS 2026 GenAI4Health workshop](https://openreview.net/forum?id=niWjFtDTPA).
 
 [View on GitHub](https://github.com/yfeng0206/I-JEPA_3D_OCT){: .btn .btn--primary}
 [Checkpoints on Hugging Face](https://huggingface.co/yfeng0206/ijepa-3d-oct-checkpoints){: .btn .btn--info}

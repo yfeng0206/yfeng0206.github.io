@@ -5,40 +5,42 @@
 ## Site Structure Quick Reference
 
 ```
+index.md               <-- Home: short bio, links row, Experience summary (layout: home)
 _pages/
-  about.md             <-- Bio, work experience, recent highlights
-  portfolio-archive.md <-- Grid of all portfolio items
-  publications.md      <-- Papers (published + in progress)
-  resume.md            <-- Web resume; links to the PDF
-  blog.md              <-- Blog post archive
+  research.md          <-- /research/: Publications + Active research (layout: researchindex)
+  projects.md          <-- /projects/: projects and writeups (layout: worklist)
+  cv.md                <-- /cv/: resume image linked to the PDF
   404.md
 
-_portfolio/
+_data/
+  navigation.yml       <-- Top nav bar items
+  publications.yml     <-- Papers shown under Research > Publications, newest first
+  work.yml             <-- Experience rows on the home page
+
+_research/             <-- Active research pages (/research/<name>/), sorted by `order`
+  ijepa-3d-oct.md         <-- I-JEPA OCT project (NeurIPS 2026 GenAI4Health workshop paper)
   copilot-world-lab.md    <-- V-JEPA 2-AC manipulation world model
-  ijepa-3d-oct.md         <-- I-JEPA OCT foundation model project
-  slivit-3d-oct-glaucoma.md
-  object-permanence-detection.md
-  mot17-object-tracking.md
-  ivalet-parking.md
-  gesture-car.md
-  self-driving-car.md
 
-_posts/
-  2026-08-14-anatomy-guided-masking-oct.md
-  2026-07-10-reproducing-vjepa2-ac.md
-  2026-04-08-consensus-ai-trader.md
-  2026-03-18-ijepa-oct-training-log.md
-  2026-03-12-slivit-glaucoma-training-log.md
+_projects/             <-- Project pages (/projects/<name>/)
+_posts/                <-- Writeups, served at /writing/<slug>/
 
-_data/navigation.yml   <-- Top nav bar items
-_config.yml            <-- Site config, theme settings, author sidebar links
-assets/images/         <-- All images (teasers, charts, SVGs, demo GIFs)
-assets/resume/         <-- Resume print source (HTML) + generated PDF
+_config.yml            <-- Site config and author email
+assets/images/         <-- All images (teasers, charts, demo GIFs)
+assets/resume/         <-- Resume print source (HTML) + generated PDF and page image
 ```
+
+## Publications
+
+Each entry in `_data/publications.yml` needs `title`, `authors` (wrap Gary's name in
+`**...**`), `venue`, `venue_short` (badge), `year`, `role`, `url`, `teaser` (960x600,
+panels on a light background), `teaser_alt`, and `summary` in plain words. Use `doi` when
+there is one; otherwise `link_label` names the main link (for example "OpenReview").
+Optional `links` adds extra links such as the project page or code, and `teaser_credit`
+holds figure attribution. Add new papers to the resume HTML too and regenerate the PDF.
 
 ## Theme & Build
 
-- **Theme:** Minimal Mistakes v4.28.0 (remote theme, dark skin)
+- **Theme:** custom layouts in `_layouts/` and styles in `assets/css/main.scss` (no remote theme)
 - **Build:** GitHub Pages (automatic on push to main)
 - **Fonts:** Inter + Fira Code (Google Fonts)
 - **Local preview:** `bundle install` then `bundle exec jekyll serve`
@@ -46,13 +48,9 @@ assets/resume/         <-- Resume print source (HTML) + generated PDF
 ## Conventions
 
 - **No em dashes** in site copy. Use hyphens or commas. Use `x` rather than the multiplication sign.
-- **Nav caveat:** Minimal Mistakes masthead does NOT support `children` dropdowns. All nav
-  items must be flat with a `url`.
-- **Portfolio ordering** is by the `date` in each item's front matter, newest first.
-  There is no `collections.*.order` key in Minimal Mistakes; do not add one.
-  Bump an item's `date` when its content is materially updated.
-- **Blog permalinks** are `/:categories/:title/`, so a post with `categories: [research]`
-  lives at `/research/<slug>/`. Cross-links must include the category segment.
+- **Nav** is flat: each item in `_data/navigation.yml` needs a `url`.
+- **Research ordering** uses the `order` key in each `_research/` item's front matter.
+- **Post permalinks** are `/writing/:title/`. Cross-links must use that path.
 - **No personal contact details beyond email** on the public site (no phone, no street address).
 
 ## Contact email
@@ -72,13 +70,13 @@ There is now a **single source of truth** for resume content:
 `assets/resume/gary-feng-resume.html`, the print source. It generates both the PDF
 and the page image.
 
-- `_pages/resume.md` shows the rendered page image linked to the PDF. It contains no
+- `_pages/cv.md` shows the rendered page image linked to the PDF. It contains no
   resume text of its own, so it cannot drift.
-- `_pages/about.md` carries a deliberately condensed summary and links to `/resume/`.
-  Do not paste full resume bullets back into it.
+- `index.md` and `_data/work.yml` carry a deliberately condensed summary and link to `/cv/`.
+  Do not paste full resume bullets back into them.
 - The upstream master is Gary's `Resume 2026.docx`. The site version adds the published
-  Science Robotics citation and CopilotWorldLab, and **omits the phone number** because
-  the PDF is served publicly.
+  Science Robotics citation, the NeurIPS 2026 GenAI4Health workshop paper, and
+  CopilotWorldLab, and **omits the phone number** because the PDF is served publicly.
 
 **Do not embed the PDF with `<object>`/`<iframe>`.** It was tried and reverted: Chrome's
 "Download PDFs instead of automatically opening them" setting makes the embed render
