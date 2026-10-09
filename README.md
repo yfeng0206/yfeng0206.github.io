@@ -58,7 +58,7 @@ _layouts/                default, home, page, post, work, worklist,
 _includes/work-row.html  Shared listing row (full and compact variants)
 assets/css/main.scss     The entire stylesheet
 assets/resume/           CV print source (HTML) + generated PDF and PNG
-tools/                   validate_site.py, css_audit.py
+tools/                   validate_site.py, css_audit.py (excluded from the build)
 ```
 
 ## Conventions
