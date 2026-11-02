@@ -29,6 +29,7 @@ include:
   - _pages
 
 exclude:
+  - _archive
   - README.md
   - Gemfile
   - Gemfile.lock

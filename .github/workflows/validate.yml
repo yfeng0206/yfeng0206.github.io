@@ -20,8 +20,6 @@ jobs:
         run: python tools/validate_site.py
       - name: Audit stylesheet references
         run: python tools/css_audit.py
-      - name: Check bookshelf JavaScript syntax
-        run: node --check assets/js/bookshelf.js
       - name: Build with the GitHub Pages Jekyll environment
         uses: actions/jekyll-build-pages@v1
       - name: Check rendered links and assets

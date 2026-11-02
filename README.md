@@ -49,18 +49,17 @@ _pages/
   research.md            /research/  publications + active research
   projects.md            /projects/  projects, grouped, plus Writeups
   cv.md                  /cv/        rendered CV image linked to the PDF
-  bookshelf.md           /bookshelf/ personal reading shelf
+  bookshelf.md           /bookshelf/ redirects home (archived feature)
   404.md
 _research/               2 items, full entries with teasers
 _projects/               6 items, compact rows, grouped by `group`
 _posts/                  4 writeups, surfaced on /projects/
 _data/
-  navigation.yml         Home, Research, Project, Bookshelf, CV
-  books.yml              Book metadata, current read, and personal notes
+  navigation.yml         Home, Research, Project, CV
   work.yml               Experience timeline on the home page
   publications.yml       Papers on /research/, newest first
 _layouts/                default, home, page, post, work, worklist,
-                         researchindex, postlist, bookshelf
+                         researchindex, postlist
 _includes/work-row.html  Shared listing row (full and compact variants)
 assets/css/main.scss     The entire stylesheet
 assets/resume/           CV print source (HTML) + generated PDF and PNG
@@ -147,23 +146,11 @@ changes, or the CV stops shipping.
   of opening them" setting renders nothing and does not fall through to the
   fallback, leaving an empty box. Use a rendered image, as `/cv/` does.
 
-## Bookshelf
+## Archived bookshelf
 
-Edit `_data/books.yml` to maintain `/bookshelf/`. All eight books live in one
-interactive cabinet. `status: reading` marks the current read; other entries have
-no implied completion date or rating. Each native dialog owns that book's details
-and personal note. `note_emphasis` renders a specific sentence in bold.
+The Bookshelf is archived under `_archive/bookshelf/`, which is explicitly excluded
+from the Jekyll build. Its books, personal notes, real covers, templates, script,
+and styles are preserved there. `/bookshelf/` redirects home and has no navigation
+entry. The archived covers and script are no longer published at their old paths.
 
-Cover images are real edition covers downloaded into `assets/images/books/`.
-Each entry records the ISBN, original `cover_source`, local `cover` path, image
-dimensions, and shelf proportions. Sources are Open Library's ISBN-specific cover
-service and Penguin Random House's cover service. Match and visually inspect an
-edition when replacing a cover. Cover artwork belongs to its respective owners.
-No generated or typographic substitute covers are used.
-
-`assets/js/bookshelf.js` handles the spine-to-cover entrance, Replay, cover flight,
-Escape/backdrop/close controls, focus containment and restoration, and scroll
-locking. CSS and JavaScript both respect reduced motion; Replay is hidden for that
-preference. A no-JavaScript fallback keeps each note with its own book.
-
-Keep notes in Gary's voice. Do not invent reading dates, ratings, or opinions.
+See `_archive/bookshelf/README.md` for restoration instructions.
