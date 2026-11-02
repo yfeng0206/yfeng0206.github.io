@@ -24,6 +24,10 @@ Merge the PR on GitHub. `backup-before-redesign` holds the pre-2026 site
 
 ### Checks before pushing
 
+GitHub Actions runs the source checks, a full GitHub Pages Jekyll build, and
+`tools/verify_built_site.py` on pull requests and pushes to main. The rendered
+checker resolves local links, fragments, assets, and ARIA references in `_site/`.
+
 - `tools\validate_site.py` must pass. It resolves every internal link, teaser
   and asset against real permalinks, confirms layouts and includes exist,
   checks the nav resolves, and checks each publication entry's required fields,
@@ -45,20 +49,23 @@ _pages/
   research.md            /research/  publications + active research
   projects.md            /projects/  projects, grouped, plus Writeups
   cv.md                  /cv/        rendered CV image linked to the PDF
+  bookshelf.md           /bookshelf/ personal reading shelf
   404.md
 _research/               2 items, full entries with teasers
 _projects/               6 items, compact rows, grouped by `group`
-_posts/                  5 writeups, surfaced on /projects/
+_posts/                  4 writeups, surfaced on /projects/
 _data/
-  navigation.yml         Home, Research, Project, CV
+  navigation.yml         Home, Research, Project, Bookshelf, CV
+  books.yml              Book metadata, current read, and personal notes
   work.yml               Experience timeline on the home page
   publications.yml       Papers on /research/, newest first
 _layouts/                default, home, page, post, work, worklist,
-                         researchindex, postlist
+                         researchindex, postlist, bookshelf
 _includes/work-row.html  Shared listing row (full and compact variants)
 assets/css/main.scss     The entire stylesheet
 assets/resume/           CV print source (HTML) + generated PDF and PNG
-tools/                   validate_site.py, css_audit.py (excluded from the build)
+tools/                   validate_site.py, css_audit.py, render_resume.py
+                         (excluded from the build)
 ```
 
 ## Conventions
@@ -76,6 +83,12 @@ tools/                   validate_site.py, css_audit.py (excluded from the build
   bio and experience summary; Research carries the work; the CV PDF is the
   complete record.
 
+## Research status
+
+Published research entries use `status: "Published"`. They retain their permanent
+project URL and are linked from Publications, but are omitted from Active research.
+Use `status: "Ongoing"` for current work without a public phase label.
+
 ## Publications
 
 Each entry in `_data/publications.yml` needs `title`, `authors` (wrap Gary's name
@@ -89,7 +102,7 @@ holds figure attribution. Add new papers to the CV HTML too and regenerate it.
 
 Every pre-rebuild URL is preserved with `jekyll-redirect-from`:
 `/about/` -> `/`, `/blog/` and `/writing/` -> `/projects/`, `/resume/` -> `/cv/`,
-`/portfolio/`, `/publications/` and `/projects/` -> `/research/`, each
+`/portfolio/` and `/publications/` -> `/research/`, each
 `/portfolio/<item>/` -> its new page, and old `/research/<post>/` -> `/writing/<post>/`.
 Post URLs are `/writing/<slug>/` and must not change.
 
@@ -103,29 +116,22 @@ Two places, then regenerate the CV:
 
 ## CV
 
-`assets/resume/gary-feng-resume.html` is the single source. Regenerate both
-artifacts after editing:
+`assets/resume/gary-feng-resume.html` is the content source. Regenerate both
+artifacts after editing, from any platform:
 
-```powershell
-$base = "C:\Users\Gary\yfeng0206.github.io\assets\resume\gary-feng-resume"
-& "C:\Program Files\Google\Chrome\Application\chrome.exe" --headless --disable-gpu `
-  --print-to-pdf="$base.pdf" --no-pdf-header-footer `
-  "file:///C:/Users/Gary/yfeng0206.github.io/assets/resume/gary-feng-resume.html"
-
-python -c "import pymupdf; from PIL import Image; d=pymupdf.open(r'$base.pdf'); d[0].get_pixmap(dpi=200).save(r'$base.raw.png'); Image.open(r'$base.raw.png').convert('P', palette=Image.ADAPTIVE, colors=64).save(r'$base.png', optimize=True)"
+```sh
+python -m pip install "reportlab==4.4.9" pymupdf
+python tools/render_resume.py
 ```
 
-**Use an absolute `--print-to-pdf` path.** With a relative path Chrome headless
-writes nothing and still exits 0, so the committed PDF silently goes stale.
-Verify after generating:
+The renderer reads the HTML content in document order and writes a selectable-text,
+single-column PDF plus a 200 DPI PNG. PDF typography lives in the renderer; browser
+preview styles live in the HTML. No browser installation is required. The renderer
+refuses to overwrite the exports if the resume spills onto a second page.
 
-```powershell
-python -c "import pymupdf; d=pymupdf.open(r'assets\resume\gary-feng-resume.pdf'); print(len(d)); print(d[0].get_text()[:200])"
-```
-
-Headless Chrome cannot rasterise PDFs, so screenshotting `/cv/` or a PDF URL
-always yields a blank frame. Verify with pymupdf text extraction instead.
-The CV is tuned to fit exactly one page.
+After regenerating, inspect the PNG and check PDF text extraction and hyperlinks.
+Keep the resume broad, support skill keywords with real work, and identify the
+UPenn degree as incoming (starts 2027), not ongoing or completed.
 
 `.gitignore` ignores `*.pdf` with an explicit negation for
 `assets/resume/gary-feng-resume.pdf`. Keep that negation if the filename
@@ -140,3 +146,24 @@ changes, or the CV stops shipping.
 - Do not embed a PDF with `<object>`/`<iframe>`. Chrome's "download PDFs instead
   of opening them" setting renders nothing and does not fall through to the
   fallback, leaving an empty box. Use a rendered image, as `/cv/` does.
+
+## Bookshelf
+
+Edit `_data/books.yml` to maintain `/bookshelf/`. All eight books live in one
+interactive cabinet. `status: reading` marks the current read; other entries have
+no implied completion date or rating. Each native dialog owns that book's details
+and personal note. `note_emphasis` renders a specific sentence in bold.
+
+Cover images are real edition covers downloaded into `assets/images/books/`.
+Each entry records the ISBN, original `cover_source`, local `cover` path, image
+dimensions, and shelf proportions. Sources are Open Library's ISBN-specific cover
+service and Penguin Random House's cover service. Match and visually inspect an
+edition when replacing a cover. Cover artwork belongs to its respective owners.
+No generated or typographic substitute covers are used.
+
+`assets/js/bookshelf.js` handles the spine-to-cover entrance, Replay, cover flight,
+Escape/backdrop/close controls, focus containment and restoration, and scroll
+locking. CSS and JavaScript both respect reduced motion; Replay is hidden for that
+preference. A no-JavaScript fallback keeps each note with its own book.
+
+Keep notes in Gary's voice. Do not invent reading dates, ratings, or opinions.

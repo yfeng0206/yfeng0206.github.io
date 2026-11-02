@@ -1,225 +1,111 @@
 <!DOCTYPE html>
 <!--
-  Print source for the downloadable resume PDF.
-  Content mirrors "Resume 2026.docx" (Gary's editable master) with three additions:
-  the now-published Science Robotics citation, the NeurIPS 2026 GenAI4Health workshop
-  paper, and CopilotWorldLab.
-  Phone number is intentionally omitted: this PDF is served publicly from the site.
-
-  Regenerate with:
-    & "C:\Program Files\Google\Chrome\Application\chrome.exe" --headless --disable-gpu `
-      --print-to-pdf="assets\resume\gary-feng-resume.pdf" --no-pdf-header-footer `
-      "file:///C:/Users/Gary/yfeng0206.github.io/assets/resume/gary-feng-resume.html"
-  Keep in sync with _pages/cv.md.
+  Source for the public, general-purpose resume. Regenerate the PDF and PNG after edits
+  with python tools/render_resume.py (requires reportlab and pymupdf).
+  Keep employment facts in sync with _data/work.yml and education with index.md.
+  Contact details are ordinary body text, not a repeating print header.
+  Phone number is intentionally omitted from this publicly hosted document.
 -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <title>Gary Feng - Resume</title>
 <style>
-  @page { size: Letter; margin: 0.34in 0.5in; }
+  @page { size: Letter; margin: 0.4in 0.5in; }
   * { box-sizing: border-box; }
-  body {
-    font-family: "Inter", "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size: 8.2pt; line-height: 1.18; color: #1a1a1a; margin: 0;
-  }
-  header { text-align: center; margin-bottom: 7px; }
-  h1 { font-size: 17pt; margin: 0 0 2px; letter-spacing: -0.02em; font-weight: 700; }
-  .contact { font-size: 8.2pt; color: #333; }
-  .contact a { color: #0b5cad; text-decoration: none; }
-  .contact span.sep { color: #aaa; margin: 0 4px; }
-  h2 {
-    font-size: 8.9pt; text-transform: uppercase; letter-spacing: 0.07em;
-    border-bottom: 1px solid #333; padding-bottom: 1px;
-    margin: 6px 0 3px; font-weight: 700;
-  }
-  .row { display: flex; justify-content: space-between; align-items: baseline; }
-  .role { font-weight: 600; font-size: 8.9pt; }
-  .meta { font-size: 8pt; color: #555; white-space: nowrap; padding-left: 10px; }
-  .sub { font-size: 8.1pt; color: #555; font-style: italic; margin-bottom: 1px; }
-  ul { margin: 1px 0 3px; padding-left: 13px; }
-  li { margin-bottom: 1px; }
-  .entry { margin-bottom: 3px; }
-  .authors { font-size: 8pt; color: #333; }
-  .skills p { margin: 1px 0; }
-  a { color: #0b5cad; }
+  body { font-family: Arial, Helvetica, sans-serif; font-size: 9.5pt; line-height: 1.2; color: #161616; margin: 0; }
+  .identity { margin-bottom: 6px; }
+  h1 { font-size: 19pt; margin: 0 0 3px; font-weight: 700; }
+  .contact { font-size: 8.6pt; line-height: 1.35; }
+  .summary { margin: 6px 0; }
+  h2 { font-size: 10pt; border-bottom: 1px solid #555; padding-bottom: 2px; margin: 9px 0 4px; font-weight: 700; }
+  .entry { margin-bottom: 5px; break-inside: avoid; }
+  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+  .role { font-weight: 700; }
+  .meta { font-size: 9pt; white-space: nowrap; }
+  .sub { margin: 1px 0 2px; }
+  ul { margin: 2px 0 0; padding-left: 15px; }
+  li { margin-bottom: 2px; }
+  p { margin: 2px 0; }
+  .skills p { margin: 2px 0; }
+  .publication { margin-bottom: 4px; }
+  a { color: inherit; text-decoration: underline; text-underline-offset: 1px; }
 </style>
 </head>
 <body>
-
-<header>
+<div class="identity">
   <h1>Gary Feng</h1>
-  <div class="contact">
-    Seattle, WA
-    <span class="sep">|</span><a href="mailto:yfeng26@engineering.upenn.edu">yfeng26@engineering.upenn.edu</a>
-    <span class="sep">|</span><a href="https://yfeng0206.github.io">yfeng0206.github.io</a>
-    <span class="sep">|</span><a href="https://github.com/yfeng0206">github.com/yfeng0206</a>
-    <span class="sep">|</span><a href="https://www.linkedin.com/in/garyfeng/">linkedin.com/in/garyfeng</a>
-    <span class="sep">|</span><a href="https://scholar.google.com/citations?user=ofH9ujMAAAAJ&amp;hl=en">Scholar</a>
-  </div>
-</header>
-
-<h2>Education</h2>
-<div class="entry">
-  <div class="row">
-    <span class="role">University of Pennsylvania</span>
-    <span class="meta">Ongoing</span>
-  </div>
-  <div class="sub">M.S.E. Robotics</div>
-  <div class="row" style="margin-top:4px;">
-    <span class="role">Georgia Institute of Technology</span>
-    <span class="meta">May 2022</span>
-  </div>
-  <div class="sub">B.S. Computer Engineering</div>
+  <div class="contact">Seattle, WA | <a href="mailto:yfeng26@engineering.upenn.edu">yfeng26@engineering.upenn.edu</a> | <a href="https://www.linkedin.com/in/garyfeng/">linkedin.com/in/garyfeng</a><br>
+  <a href="https://yfeng0206.github.io">yfeng0206.github.io</a> | <a href="https://github.com/yfeng0206">github.com/yfeng0206</a> | <a href="https://scholar.google.com/citations?user=ofH9ujMAAAAJ&amp;hl=en">Google Scholar</a></div>
 </div>
+<p class="summary">Machine learning and software engineer at Microsoft building production AI and cloud services, with research in computer vision and robotics.</p>
 
 <h2>Experience</h2>
-
 <div class="entry">
-  <div class="row">
-    <span class="role">Machine Learning Engineer</span>
-    <span class="meta">Sep 2024 - Present</span>
-  </div>
-  <div class="sub">Microsoft, Seattle, WA</div>
+  <div class="row"><span class="role">Machine Learning Engineer, Microsoft</span><span class="meta">Sep 2024 - Present</span></div>
+  <div class="sub">Seattle, WA</div>
   <ul>
-    <li>Shipped cross-encoder reranking service; <strong>+12% CTR</strong> via A/B test, serving 500 RPS at 90 ms</li>
-    <li>Launched news-intelligence agent ingesting daily sources; clustered and deduped events; generated ranked summaries and prompts</li>
-    <li>Deployed a personality-based eval harness using Prometheus-2 (7B LLM) to score Copilot suggestion-pill at scale, improving offline/online alignment by 8% using Azure ML</li>
-    <li>Developed advanced RAG systems integrating BM25 and vector search with LlamaIndex, improving retrieval accuracy using GPT-4.5-distilled evaluation metrics</li>
-    <li>Designed and managed robust data pipelines in Azure ML, ensuring scalability, security, and performance for model training and deployment</li>
+    <li>Shipped a cross-encoder reranking service that increased click-through rate (CTR) by <strong>12%</strong> in A/B testing, serving <strong>500 requests per second at 90 ms</strong>.</li>
+    <li>Built retrieval-augmented generation (RAG) systems with BM25, vector search, and LlamaIndex; evaluated retrieval using GPT-4.5-distilled metrics.</li>
+    <li>Deployed a large language model (LLM) evaluation harness using Prometheus-2 (7B) and Azure Machine Learning to score Copilot suggestions, improving offline/online alignment by <strong>8%</strong>.</li>
+    <li>Launched a news-intelligence agent for source ingestion, event clustering, deduplication, and ranked summaries; built Azure ML data pipelines for model training and deployment.</li>
   </ul>
 </div>
-
 <div class="entry">
-  <div class="row">
-    <span class="role">Software Engineer</span>
-    <span class="meta">Jul 2022 - Sep 2024</span>
-  </div>
-  <div class="sub">Microsoft, Seattle, WA</div>
+  <div class="row"><span class="role">Software Engineer, Microsoft</span><span class="meta">Jul 2022 - Sep 2024</span></div>
+  <div class="sub">Seattle, WA</div>
   <ul>
-    <li>Designed and maintained a Kubernetes-based forecasting service (GA product) serving <strong>15,000+ clients</strong>, including Dynamics 365 CRM and Microsoft 365 Support Center</li>
-    <li>Built multi-region recommendation platform (Azure, Docker) accommodating 20k+ daily clicks</li>
-    <li>Led a cross-functional team to refine model outputs using A/B insights; aligned delivery with business goals</li>
-    <li>Provided critical on-call support, diagnosing issues and deploying solutions to maintain service</li>
+    <li>Built and maintained a generally available Kubernetes forecasting service serving <strong>15,000+ clients</strong>, including Dynamics 365 CRM and Microsoft 365 Support Center.</li>
+    <li>Built a multi-region recommendation platform on Azure and Docker supporting <strong>20,000+ daily clicks</strong>.</li>
+    <li>Led cross-functional model improvements using A/B test results and provided production on-call support, incident diagnosis, and service fixes.</li>
   </ul>
 </div>
-
 <div class="entry">
-  <div class="row">
-    <span class="role">Software Engineer</span>
-    <span class="meta">May 2020 - Aug 2020</span>
-  </div>
-  <div class="sub">Skeena Bioenergy Ltd., Vancouver, BC, Canada</div>
+  <div class="row"><span class="role">Software Engineer, Skeena Bioenergy Ltd.</span><span class="meta">May 2020 - Aug 2020</span></div>
+  <div class="sub">Vancouver, BC, Canada</div>
+  <ul><li>Automated PDF-to-SQL data migration with computer vision and built Power BI dashboards from production data.</li></ul>
+</div>
+
+<h2>Technical Skills</h2>
+<div class="skills">
+  <p><strong>Languages:</strong> Python, C++, C, C#, SQL</p>
+  <p><strong>Machine Learning and AI:</strong> PyTorch, computer vision, self-supervised learning, vision transformers, LLM evaluation, RAG, information retrieval, search ranking, AI agents, LlamaIndex, Hugging Face</p>
+  <p><strong>Cloud and Systems:</strong> Azure, Azure Machine Learning, Kubernetes, Docker, PostgreSQL, data pipelines, model deployment, A/B testing; <strong>Robotics:</strong> ROS 2, MuJoCo, Gazebo, OpenCV</p>
+</div>
+
+<h2>Research and Projects</h2>
+<div class="entry">
+  <div class="row"><span class="role">I-JEPA for Retinal OCT, NeurIPS 2026 Workshop</span><span class="meta">2026</span></div>
   <ul>
-    <li>Developed a computer vision app for automated PDF-to-SQL migration, streamlining internal data processing</li>
-    <li>Created interactive and insightful dashboards in Power BI using operational production data</li>
+    <li>Pretrained ViT-B/16 on <strong>600,000 OCT scans</strong> with I-JEPA for glaucoma classification; anatomy-shaped masking achieved <strong>0.8947 test AUC</strong> versus 0.8878 for random masking.</li>
+    <li>Compared three probe architectures with paired-bootstrap confidence intervals and occlusion attribution; packaged pretrained encoders on Hugging Face. Collaborated with W. T. Lau, Columbia.</li>
   </ul>
+</div>
+<div class="entry">
+  <div class="row"><span class="role">CopilotWorldLab, World Models for Robot Manipulation</span><span class="meta">Jul 2026 - Present</span></div>
+  <ul>
+    <li>Reproduced V-JEPA 2-AC for goal-image robot control using model-predictive control in MuJoCo; built a reproducible <strong>500-rollout benchmark</strong> across five tasks and two objects.</li>
+  </ul>
+</div>
+<div class="entry">
+  <div class="row"><span class="role">MOT17 Multi-Object Tracking</span><span class="meta">Jan 2026 - Feb 2026</span></div>
+  <ul><li>Combined YOLOv8 and ByteTrack for pedestrian tracking, improving tracking accuracy by <strong>8%</strong> over base YOLOv8.</li></ul>
+</div>
+<div class="entry">
+  <div class="row"><span class="role">ROS 2 Robot, Localization and Control</span><span class="meta">Feb 2025 - May 2025</span></div>
+  <ul><li>Built a differential-drive stack with C++/Python nodes, URDF, Gazebo, and RViz2; fused wheel odometry and simulated IMU data with an extended Kalman filter (EKF).</li></ul>
 </div>
 
 <h2>Publications</h2>
+<div class="publication"><strong>Where to Predict in Retinal OCT? Anatomy-Guided Target Selection for I-JEPA.</strong><br>
+<strong>Y. Feng</strong>, W. T. Lau. NeurIPS 2026 Workshop on GenAI for Health (GenAI4Health). <a href="https://openreview.net/forum?id=niWjFtDTPA">OpenReview</a></div>
+<div class="publication"><strong>Evolution of Humanoid Locomotion Control.</strong><br>
+Y. Gu, G. Shi, et al., including <strong>Y. Feng</strong>. Science Robotics, 11(117), 2026. <a href="https://doi.org/10.1126/scirobotics.aed3973">doi:10.1126/scirobotics.aed3973</a></div>
+
+<h2>Education</h2>
 <div class="entry">
-  <div class="row">
-    <span class="role">Where to Predict in Retinal OCT? Anatomy-Guided Target Selection for I-JEPA</span>
-    <span class="meta">NeurIPS Workshop, Dec 2026</span>
-  </div>
-  <div class="authors">
-    <strong>Y. Feng</strong>, W. T. Lau.
-    <em>NeurIPS 2026 Workshop on GenAI for Health (GenAI4Health)</em>.
-    <a href="https://openreview.net/forum?id=niWjFtDTPA">openreview.net/forum?id=niWjFtDTPA</a>
-  </div>
+  <p><strong>University of Pennsylvania</strong> | Incoming Master of Science in Engineering (M.S.E.), Robotics | Starts 2027</p>
+  <p><strong>Georgia Institute of Technology</strong> | Bachelor of Science (B.S.), Computer Engineering | May 2022</p>
 </div>
-<div class="entry">
-  <div class="row">
-    <span class="role">Evolution of Humanoid Locomotion Control</span>
-    <span class="meta">Science Robotics, Aug 2026</span>
-  </div>
-  <div class="sub">with Prof. Hao Su, NYU &middot; May 2025 - Oct 2025</div>
-  <div class="authors">
-    Y. Gu, G. Shi, F. Shi, I-C. Chang, Y-J. Wang, Q. Cheng, Z. Olkin, I. Lopez-Sanchez,
-    <strong>Y. Feng</strong>, J. Zhang, A. D. Ames, H. Su, K. Sreenath.
-    <em>Science Robotics</em> 11(117).
-    <a href="https://doi.org/10.1126/scirobotics.aed3973">doi:10.1126/scirobotics.aed3973</a>
-  </div>
-  <ul>
-    <li>Co-authored a survey on humanoid locomotion control systems, synthesizing recent research in balance control, motion planning, and optimization across classical algorithms (MPC) and learning-based approaches</li>
-  </ul>
-</div>
-
-<h2>Research</h2>
-
-<div class="entry">
-  <div class="row">
-    <span class="role">I-JEPA for 3D OCT, Computer Vision</span>
-    <span class="meta">Feb 2026 - Ongoing</span>
-  </div>
-  <div class="sub">with WT Lau (PhD), Columbia</div>
-  <ul>
-    <li>Self-supervised pretrained ViT-B/16 via I-JEPA on 600K OCT B-scans for glaucoma classification</li>
-    <li>Proposed anatomy-shaped connected mask targets reaching <strong>0.8947 test AUC</strong>, beating random-masking I-JEPA (0.8878) at every probe and training regime (frozen +0.011, p&lt;0.0005)</li>
-    <li>Ablated 3 probe heads (Attentive, CrossAttn, Mean) with paired-bootstrap confidence intervals; validated interpretability via occlusion attribution</li>
-    <li>Released pretrained encoders on Hugging Face</li>
-  </ul>
-</div>
-
-<h2>Projects</h2>
-
-<div class="entry">
-  <div class="row">
-    <span class="role">CopilotWorldLab, Latent World Models for Manipulation</span>
-    <span class="meta">Jul 2026 - Ongoing</span>
-  </div>
-  <ul>
-    <li>Reproduced V-JEPA 2-AC as a frozen coarse manipulation controller planning to goal images via CEM model-predictive control in MuJoCo</li>
-    <li>Built a reproducible 500-rollout benchmark (5 tasks x 2 objects x 50 fixed scenarios) scored from hidden simulator state</li>
-  </ul>
-</div>
-
-<div class="entry">
-  <div class="row">
-    <span class="role">MOT17 Multi-Object Tracking, CV Project</span>
-    <span class="meta">Jan 2026 - Feb 2026</span>
-  </div>
-  <ul>
-    <li>Trained on MOT17 data to track with YOLOv8 + ByteTrack, improving tracking accuracy by 8% compared to base YOLOv8</li>
-  </ul>
-</div>
-
-<div class="entry">
-  <div class="row">
-    <span class="role">ROS 2 Robot, Odometry &amp; Control</span>
-    <span class="meta">Feb 2025 - May 2025</span>
-  </div>
-  <ul>
-    <li>Prototyped diff-drive stack in ROS 2 Jazzy: URDF, C++/Python nodes; simulated in Gazebo with RViz2</li>
-    <li>Applied localization: wheel odometry, TF2, IMU sim, EKF fusion; verified via launch and parameter configs</li>
-  </ul>
-</div>
-
-<div class="entry">
-  <div class="row">
-    <span class="role">iValet Parking System, Senior CV Project</span>
-    <span class="meta">Jan 2022 - May 2022</span>
-  </div>
-  <div class="sub">with Kelin Yu, Faiza Yousuf, Wei Xiong Toh</div>
-  <ul>
-    <li>Built an ML-powered parking system that detects vacant spots via camera and segmentation, stores results in PostgreSQL, and guides users to spots through a web UI with path planning</li>
-  </ul>
-</div>
-
-<div class="entry">
-  <div class="row">
-    <span class="role">Self-Driving DC Car, Embedded Project</span>
-    <span class="meta">Feb 2021 - Jun 2021</span>
-  </div>
-  <ul>
-    <li>Engineered an autonomous DC motor car with Raspberry Pi + Arduino; implemented roadside detection using OpenCV4 (C++) and soldered H-bridge motor control circuitry</li>
-  </ul>
-</div>
-
-<h2>Skills</h2>
-<div class="skills">
-  <p>C/C++, C#, Python, PyTorch, SQL, Azure ML, Kubernetes, Docker, RAG, CV/ML, Agents, Claude Code</p>
-</div>
-
 </body>
 </html>

@@ -1,0 +1,66 @@
+---
+layout: default
+---
+<article class="page bookshelf-page">
+  <header class="page-head">
+    <h1 class="page-title">{{ page.title }}</h1>
+    <p class="page-sub">{{ page.subtitle }}</p>
+  </header>
+
+  <div class="shelf-toolbar">
+    <p id="shelf-help">Choose a book to open it.</p>
+    <button class="shelf-replay" type="button" hidden>Replay <span aria-hidden="true">↻</span></button>
+  </div>
+  <section class="bookshelf-stage" aria-label="Personal bookshelf" aria-describedby="shelf-help">
+    <ul class="bookshelf-row">
+      {% for book in site.data.books limit:4 %}
+        {% include shelf-book.html order=forloop.index0 %}
+      {% endfor %}
+    </ul>
+    <ul class="bookshelf-row">
+      {% for book in site.data.books offset:4 %}
+        {% assign shelf_order = forloop.index0 | plus: 4 %}
+        {% include shelf-book.html order=shelf_order %}
+      {% endfor %}
+    </ul>
+  </section>
+  <p class="shelf-caption">History, philosophy, and the questions in between.</p>
+
+  {% for book in site.data.books %}
+  <dialog class="book-dialog" id="book-{{ book.slug }}" aria-labelledby="title-{{ book.slug }}">
+    <div class="book-open-sheet">
+      <button class="book-close" type="button" data-close aria-label="Close book" autofocus><span aria-hidden="true">×</span></button>
+      <div class="book-open-cover"><img src="{{ book.cover | relative_url }}" alt="Cover of {{ book.title | escape }} by {{ book.author | escape }}" width="{{ book.cover_width }}" height="{{ book.cover_height }}"></div>
+      <div class="book-open-copy">
+        <p class="book-category">{{ book.category | escape }}</p>
+        <h2 id="title-{{ book.slug }}">{{ book.title | escape }}</h2>
+        {% if book.subtitle %}<p class="book-subtitle">{{ book.subtitle | escape }}</p>{% endif %}
+        <p class="book-author">{{ book.author | escape }}</p>
+        <p class="book-status">{% if book.status == 'reading' %}Currently reading{% else %}On my shelf{% endif %}</p>
+        {% if book.note %}
+        <div class="book-personal-note">
+          <h3>{{ book.note_label | escape }}</h3>
+          <p>{{ book.note | escape }}{% if book.note_emphasis %} <strong>{{ book.note_emphasis | escape }}</strong>{% endif %}</p>
+        </div>
+        {% endif %}
+        <p class="book-source"><a href="{{ book.url | escape }}">Book details <span aria-hidden="true">↗</span></a></p>
+        <p class="book-cover-credit"><a href="{{ book.cover_source | escape }}">Cover / edition</a> · ISBN {{ book.isbn }}</p>
+        <button class="book-return" type="button" data-close>Return to shelf <span aria-hidden="true">↩</span></button>
+      </div>
+    </div>
+  </dialog>
+  {% endfor %}
+
+  <noscript>
+    <style>.bookshelf-stage,.shelf-toolbar,.shelf-caption{display:none}</style>
+    {% for book in site.data.books %}
+    <article class="book-fallback">
+      <img src="{{ book.cover | relative_url }}" alt="Cover of {{ book.title | escape }}" width="90">
+      <h2><a href="{{ book.url | escape }}">{{ book.title | escape }}</a></h2>
+      <p>{{ book.author | escape }}{% if book.status == 'reading' %} · Currently reading{% endif %}</p>
+      {% if book.note %}<p>{{ book.note | escape }}{% if book.note_emphasis %} <strong>{{ book.note_emphasis | escape }}</strong>{% endif %}</p>{% endif %}
+    </article>
+    {% endfor %}
+  </noscript>
+</article>
+<script src="{{ '/assets/js/bookshelf.js' | relative_url }}" defer></script>
