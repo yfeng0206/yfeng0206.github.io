@@ -33,6 +33,8 @@ def main():
         sys.exit('Run a Jekyll build first; _site/index.html is missing.')
     pages = {p.resolve(): Page(p) for p in BUILD.rglob('*.html')}
     errors = []
+    if (BUILD / "_archive").exists():
+        errors.append("Archived source must not be published in _site/_archive.")
     count = 0
     for path, page in pages.items():
         rel = path.relative_to(BUILD)
