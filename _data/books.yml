@@ -1,0 +1,50 @@
+# Personal bookshelf. Only an explicit status of reading means currently reading.
+# Other entries are on the shelf; no completion dates or ratings are implied.
+- title: "On the Genealogy of Morality"
+  author: "Friedrich Nietzsche"
+  category: "Philosophy"
+  status: reading
+  url: "https://www.cambridge.org/core/books/nietzsche-on-the-genealogy-of-morality-and-other-writings/411D28008065324A04A4BC0CD605EDA9"
+
+- title: "Sapiens"
+  subtitle: "A Brief History of Humankind"
+  author: "Yuval Noah Harari"
+  category: "Human history"
+  url: "https://www.ynharari.com/book/sapiens/"
+
+- title: "Guns, Germs, and Steel"
+  subtitle: "The Fates of Human Societies"
+  author: "Jared Diamond"
+  category: "Human history"
+  url: "https://www.loc.gov/item/96037068/"
+
+- title: "Principles"
+  subtitle: "Life and Work"
+  author: "Ray Dalio"
+  category: "Life and work"
+  url: "https://www.simonandschuster.com/books/Principles/Ray-Dalio/Principles/9781501124020"
+
+- title: "Inside the Third Reich"
+  author: "Albert Speer"
+  category: "Historical memoir"
+  url: "https://www.simonandschuster.com/books/Inside-the-Third-Reich/Albert-Speer/9780684829494"
+  note_id: inside-the-third-reich-note
+  note_label: "Class reading note"
+  note: "I read this for a class and found it surprisingly engaging. It helped me compare how government worked and how people thought at the time, through the perspective of someone inside the regime. I do not support authoritarian or dictatorial government."
+
+- title: "A Short History of Chinese Philosophy"
+  author: "Feng Youlan (Fung Yu-lan)"
+  category: "Philosophy"
+  url: "https://www.simonandschuster.com/books/A-Short-History-of-Chinese-Philosophy/Yu-lan-Fung/9780684836348"
+
+- title: "Why Nations Fail"
+  subtitle: "The Origins of Power, Prosperity, and Poverty"
+  author: "Daron Acemoglu and James A. Robinson"
+  category: "Political economy"
+  url: "https://www.penguinrandomhouse.com/books/205014/why-nations-fail-by-daron-acemoglu-and-james-a-robinson/"
+
+- title: "A Global History"
+  subtitle: "From Prehistory to the 21st Century"
+  author: "L. S. Stavrianos"
+  category: "World history"
+  url: "https://books.google.com/books/about/A_Global_History.html?id=C6g7PQAACAAJ"

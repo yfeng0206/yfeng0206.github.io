@@ -1,0 +1,57 @@
+---
+layout: default
+---
+<article class="page">
+  <header class="page-head">
+    <h1 class="page-title">{{ page.title }}</h1>
+    <p class="page-sub">{{ page.subtitle }}</p>
+  </header>
+
+  <section aria-labelledby="currently-reading">
+    <h2 class="section-head" id="currently-reading">Currently reading</h2>
+    {%- for book in site.data.books %}
+    {%- if book.status == 'reading' %}
+    <div class="reading-book">
+      <p class="book-category">{{ book.category | escape }}</p>
+      <h3 class="reading-title"><a href="{{ book.url | escape }}">{{ book.title | escape }}</a></h3>
+      <p class="book-author">{{ book.author | escape }}</p>
+    </div>
+    {%- endif %}
+    {%- endfor %}
+  </section>
+
+  <section aria-labelledby="on-my-shelf">
+    <h2 class="section-head" id="on-my-shelf">On my shelf</h2>
+    <ul class="book-grid">
+      {%- for book in site.data.books %}
+      {%- unless book.status == 'reading' %}
+      <li class="book-item">
+        <a class="book-cover" href="{{ book.url | escape }}">
+          <span class="book-category">{{ book.category | escape }}</span>
+          <span class="book-heading">
+            <span class="book-title">{{ book.title | escape }}</span>
+            {%- if book.subtitle %}<span class="book-subtitle">{{ book.subtitle | escape }}</span>{% endif %}
+          </span>
+          <span class="book-author">{{ book.author | escape }}</span>
+        </a>
+        {%- if book.note %}
+        <a class="book-note-link" href="#{{ book.note_id | escape }}">{{ book.note_label | escape }} &darr;</a>
+        {%- endif %}
+      </li>
+      {%- endunless %}
+      {%- endfor %}
+    </ul>
+  </section>
+
+  <section aria-labelledby="reading-notes">
+    <h2 class="section-head" id="reading-notes">Reading notes</h2>
+    {%- for book in site.data.books %}
+    {%- if book.note %}
+    <div class="book-note" id="{{ book.note_id | escape }}">
+      <h3>{{ book.title | escape }}</h3>
+      <p>{{ book.note | escape }}</p>
+    </div>
+    {%- endif %}
+    {%- endfor %}
+  </section>
+</article>

@@ -45,16 +45,18 @@ _pages/
   research.md            /research/  publications + active research
   projects.md            /projects/  projects, grouped, plus Writeups
   cv.md                  /cv/        rendered CV image linked to the PDF
+  bookshelf.md           /bookshelf/ personal reading shelf
   404.md
 _research/               2 items, full entries with teasers
 _projects/               6 items, compact rows, grouped by `group`
 _posts/                  4 writeups, surfaced on /projects/
 _data/
-  navigation.yml         Home, Research, Project, CV
+  navigation.yml         Home, Research, Project, Bookshelf, CV
+  books.yml              Book metadata, current read, and personal notes
   work.yml               Experience timeline on the home page
   publications.yml       Papers on /research/, newest first
 _layouts/                default, home, page, post, work, worklist,
-                         researchindex, postlist
+                         researchindex, postlist, bookshelf
 _includes/work-row.html  Shared listing row (full and compact variants)
 assets/css/main.scss     The entire stylesheet
 assets/resume/           CV print source (HTML) + generated PDF and PNG
@@ -140,3 +142,11 @@ changes, or the CV stops shipping.
 - Do not embed a PDF with `<object>`/`<iframe>`. Chrome's "download PDFs instead
   of opening them" setting renders nothing and does not fall through to the
   fallback, leaving an empty box. Use a rendered image, as `/cv/` does.
+
+## Bookshelf
+
+Edit `_data/books.yml` to maintain `/bookshelf/`. Set `status: reading` only for
+a current read; other entries appear under On my shelf without an implied
+completion status. Titles link to publisher or bibliographic pages. Optional
+`note`, `note_id`, and `note_label` add a personal note with a link from the book.
+Keep notes in Gary's voice and do not invent reading dates, ratings, or opinions.
