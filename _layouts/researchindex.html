@@ -29,7 +29,7 @@ layout: default
 
   <h2 class="section-head" id="active-research">Active research</h2>
   <p class="section-note">Ongoing projects, each with public code and a full writeup.</p>
-  {%- assign research = site.research | sort: "order" %}
+  {%- assign research = site.research | where_exp: "item", "item.status != 'Published'" | sort: "order" %}
   {%- for item in research %}
     {%- include work-row.html item=item %}
   {%- endfor %}

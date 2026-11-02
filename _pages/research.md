@@ -2,7 +2,7 @@
 title: "Research"
 permalink: /research/
 layout: researchindex
-subtitle: "Published work, active research, and engineering projects."
+subtitle: "Publications and ongoing research."
 redirect_from:
   - /portfolio/
   - /publications/

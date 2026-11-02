@@ -2,16 +2,16 @@
 title: "Anatomy-shaped Masking for Self-Supervised OCT"
 deck: "Shaping I-JEPA prediction targets to retinal tissue instead of placing them at random reaches 0.8947 test AUC on glaucoma classification, against 0.8878 for random masking, and wins at every probe and training regime."
 summary: "Teaching a model to read eye scans by having it study the retina itself instead of random patches of the image. It detects glaucoma more accurately than the standard approach."
-period: "Feb 2026 - ongoing"
+period: "2026"
 collaborators: "with WT Lau (PhD), Columbia"
-status: "Phase 4 of 5"
+status: "Published"
 teaser: /assets/images/sel-oct.jpg
 order: 1
 featured: true
 redirect_from:
   - /portfolio/ijepa-3d-oct/
 links:
-  - title: "Paper"
+  - title: "Paper on OpenReview"
     url: "https://openreview.net/forum?id=niWjFtDTPA"
   - title: "GitHub"
     url: "https://github.com/yfeng0206/I-JEPA_3D_OCT"
@@ -32,7 +32,7 @@ facts:
 
 Self-supervised pretraining with [I-JEPA](https://github.com/facebookresearch/ijepa) (Assran et al., CVPR 2023) on [Harvard FairVision](https://github.com/Harvard-Ophthalmology-AI-Lab/FairVision) OCT data, evaluated via frozen probe + fine-tune on binary glaucoma classification. Builds on our [SLIViT reproduction](/projects/slivit-3d-oct-glaucoma/).
 
-A workshop paper from this project, "Where to Predict in Retinal OCT? Anatomy-Guided Target Selection for I-JEPA", appears at the [NeurIPS 2026 GenAI4Health workshop](https://openreview.net/forum?id=niWjFtDTPA).
+A workshop paper from this project, ["Where to Predict in Retinal OCT? Anatomy-Guided Target Selection for I-JEPA"](https://openreview.net/forum?id=niWjFtDTPA), is published at the NeurIPS 2026 Workshop on GenAI for Health (GenAI4Health).
 
 [View on GitHub](https://github.com/yfeng0206/I-JEPA_3D_OCT){: .btn .btn--primary}
 [Checkpoints on Hugging Face](https://huggingface.co/yfeng0206/ijepa-3d-oct-checkpoints){: .btn .btn--info}

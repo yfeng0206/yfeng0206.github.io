@@ -48,7 +48,7 @@ _pages/
   404.md
 _research/               2 items, full entries with teasers
 _projects/               6 items, compact rows, grouped by `group`
-_posts/                  5 writeups, surfaced on /projects/
+_posts/                  4 writeups, surfaced on /projects/
 _data/
   navigation.yml         Home, Research, Project, CV
   work.yml               Experience timeline on the home page
@@ -58,7 +58,8 @@ _layouts/                default, home, page, post, work, worklist,
 _includes/work-row.html  Shared listing row (full and compact variants)
 assets/css/main.scss     The entire stylesheet
 assets/resume/           CV print source (HTML) + generated PDF and PNG
-tools/                   validate_site.py, css_audit.py (excluded from the build)
+tools/                   validate_site.py, css_audit.py, render_resume.py
+                         (excluded from the build)
 ```
 
 ## Conventions
@@ -76,6 +77,12 @@ tools/                   validate_site.py, css_audit.py (excluded from the build
   bio and experience summary; Research carries the work; the CV PDF is the
   complete record.
 
+## Research status
+
+Published research entries use `status: "Published"`. They retain their permanent
+project URL and are linked from Publications, but are omitted from Active research.
+Use `status: "Ongoing"` for current work without a public phase label.
+
 ## Publications
 
 Each entry in `_data/publications.yml` needs `title`, `authors` (wrap Gary's name
@@ -89,7 +96,7 @@ holds figure attribution. Add new papers to the CV HTML too and regenerate it.
 
 Every pre-rebuild URL is preserved with `jekyll-redirect-from`:
 `/about/` -> `/`, `/blog/` and `/writing/` -> `/projects/`, `/resume/` -> `/cv/`,
-`/portfolio/`, `/publications/` and `/projects/` -> `/research/`, each
+`/portfolio/` and `/publications/` -> `/research/`, each
 `/portfolio/<item>/` -> its new page, and old `/research/<post>/` -> `/writing/<post>/`.
 Post URLs are `/writing/<slug>/` and must not change.
 
@@ -103,29 +110,22 @@ Two places, then regenerate the CV:
 
 ## CV
 
-`assets/resume/gary-feng-resume.html` is the single source. Regenerate both
-artifacts after editing:
+`assets/resume/gary-feng-resume.html` is the content source. Regenerate both
+artifacts after editing, from any platform:
 
-```powershell
-$base = "C:\Users\Gary\yfeng0206.github.io\assets\resume\gary-feng-resume"
-& "C:\Program Files\Google\Chrome\Application\chrome.exe" --headless --disable-gpu `
-  --print-to-pdf="$base.pdf" --no-pdf-header-footer `
-  "file:///C:/Users/Gary/yfeng0206.github.io/assets/resume/gary-feng-resume.html"
-
-python -c "import pymupdf; from PIL import Image; d=pymupdf.open(r'$base.pdf'); d[0].get_pixmap(dpi=200).save(r'$base.raw.png'); Image.open(r'$base.raw.png').convert('P', palette=Image.ADAPTIVE, colors=64).save(r'$base.png', optimize=True)"
+```sh
+python -m pip install "reportlab==4.4.9" pymupdf
+python tools/render_resume.py
 ```
 
-**Use an absolute `--print-to-pdf` path.** With a relative path Chrome headless
-writes nothing and still exits 0, so the committed PDF silently goes stale.
-Verify after generating:
+The renderer reads the HTML content in document order and writes a selectable-text,
+single-column PDF plus a 200 DPI PNG. PDF typography lives in the renderer; browser
+preview styles live in the HTML. No browser installation is required. The renderer
+refuses to overwrite the exports if the resume spills onto a second page.
 
-```powershell
-python -c "import pymupdf; d=pymupdf.open(r'assets\resume\gary-feng-resume.pdf'); print(len(d)); print(d[0].get_text()[:200])"
-```
-
-Headless Chrome cannot rasterise PDFs, so screenshotting `/cv/` or a PDF URL
-always yields a blank frame. Verify with pymupdf text extraction instead.
-The CV is tuned to fit exactly one page.
+After regenerating, inspect the PNG and check PDF text extraction and hyperlinks.
+Keep the resume broad, support skill keywords with real work, and identify the
+UPenn degree as incoming (starts 2027), not ongoing or completed.
 
 `.gitignore` ignores `*.pdf` with an explicit negation for
 `assets/resume/gary-feng-resume.pdf`. Keep that negation if the filename
