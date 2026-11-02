@@ -24,6 +24,10 @@ Merge the PR on GitHub. `backup-before-redesign` holds the pre-2026 site
 
 ### Checks before pushing
 
+GitHub Actions runs the source checks, a full GitHub Pages Jekyll build, and
+`tools/verify_built_site.py` on pull requests and pushes to main. The rendered
+checker resolves local links, fragments, assets, and ARIA references in `_site/`.
+
 - `tools\validate_site.py` must pass. It resolves every internal link, teaser
   and asset against real permalinks, confirms layouts and includes exist,
   checks the nav resolves, and checks each publication entry's required fields,
@@ -145,8 +149,21 @@ changes, or the CV stops shipping.
 
 ## Bookshelf
 
-Edit `_data/books.yml` to maintain `/bookshelf/`. Set `status: reading` only for
-a current read; other entries appear under On my shelf without an implied
-completion status. Titles link to publisher or bibliographic pages. Optional
-`note`, `note_id`, and `note_label` add a personal note with a link from the book.
-Keep notes in Gary's voice and do not invent reading dates, ratings, or opinions.
+Edit `_data/books.yml` to maintain `/bookshelf/`. All eight books live in one
+interactive cabinet. `status: reading` marks the current read; other entries have
+no implied completion date or rating. Each native dialog owns that book's details
+and personal note. `note_emphasis` renders a specific sentence in bold.
+
+Cover images are real edition covers downloaded into `assets/images/books/`.
+Each entry records the ISBN, original `cover_source`, local `cover` path, image
+dimensions, and shelf proportions. Sources are Open Library's ISBN-specific cover
+service and Penguin Random House's cover service. Match and visually inspect an
+edition when replacing a cover. Cover artwork belongs to its respective owners.
+No generated or typographic substitute covers are used.
+
+`assets/js/bookshelf.js` handles the spine-to-cover entrance, Replay, cover flight,
+Escape/backdrop/close controls, focus containment and restoration, and scroll
+locking. CSS and JavaScript both respect reduced motion; Replay is hidden for that
+preference. A no-JavaScript fallback keeps each note with its own book.
+
+Keep notes in Gary's voice. Do not invent reading dates, ratings, or opinions.

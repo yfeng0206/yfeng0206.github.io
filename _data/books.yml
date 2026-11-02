@@ -1,50 +1,109 @@
-# Personal bookshelf. Only an explicit status of reading means currently reading.
-# Other entries are on the shelf; no completion dates or ratings are implied.
-- title: "On the Genealogy of Morality"
-  author: "Friedrich Nietzsche"
-  category: "Philosophy"
+# Cover images are local copies from the ISBN-specific cover sources below.
+# Only status: reading denotes a current read. Other books have no completion claim.
+- title: On the Genealogy of Morality
+  author: Friedrich Nietzsche
+  category: Philosophy
   status: reading
-  url: "https://www.cambridge.org/core/books/nietzsche-on-the-genealogy-of-morality-and-other-writings/411D28008065324A04A4BC0CD605EDA9"
-
-- title: "Sapiens"
-  subtitle: "A Brief History of Humankind"
-  author: "Yuval Noah Harari"
-  category: "Human history"
-  url: "https://www.ynharari.com/book/sapiens/"
-
-- title: "Guns, Germs, and Steel"
-  subtitle: "The Fates of Human Societies"
-  author: "Jared Diamond"
-  category: "Human history"
-  url: "https://www.loc.gov/item/96037068/"
-
-- title: "Principles"
-  subtitle: "Life and Work"
-  author: "Ray Dalio"
-  category: "Life and work"
-  url: "https://www.simonandschuster.com/books/Principles/Ray-Dalio/Principles/9781501124020"
-
-- title: "Inside the Third Reich"
-  author: "Albert Speer"
-  category: "Historical memoir"
-  url: "https://www.simonandschuster.com/books/Inside-the-Third-Reich/Albert-Speer/9780684829494"
+  url: https://www.cambridge.org/core/books/nietzsche-on-the-genealogy-of-morality-and-other-writings/411D28008065324A04A4BC0CD605EDA9
+  slug: nietzsche
+  cover: /assets/images/books/nietzsche.jpg
+  cover_source: https://covers.openlibrary.org/b/isbn/9780521691635-L.jpg?default=false
+  isbn: '9780521691635'
+  cover_width: 288
+  cover_height: 500
+  cover_ratio: 0.576
+  shelf_height: 182
+- title: Sapiens
+  subtitle: A Brief History of Humankind
+  author: Yuval Noah Harari
+  category: Human history
+  url: https://www.ynharari.com/book/sapiens/
+  slug: sapiens
+  cover: /assets/images/books/sapiens.jpg
+  cover_source: https://covers.openlibrary.org/b/isbn/9780062316097-L.jpg?default=false
+  isbn: '9780062316097'
+  cover_width: 316
+  cover_height: 499
+  cover_ratio: 0.6333
+  shelf_height: 172
+- title: Guns, Germs, and Steel
+  subtitle: The Fates of Human Societies
+  author: Jared Diamond
+  category: Human history
+  url: https://www.loc.gov/item/96037068/
+  slug: guns-germs-steel
+  cover: /assets/images/books/guns-germs-steel.jpg
+  cover_source: https://covers.openlibrary.org/b/isbn/9780393354324-L.jpg?default=false
+  isbn: '9780393354324'
+  cover_width: 331
+  cover_height: 500
+  cover_ratio: 0.662
+  shelf_height: 166
+- title: Principles
+  subtitle: Life and Work
+  author: Ray Dalio
+  category: Life and work
+  url: https://www.simonandschuster.com/books/Principles/Ray-Dalio/Principles/9781501124020
+  slug: principles
+  cover: /assets/images/books/principles.jpg
+  cover_source: https://covers.openlibrary.org/b/isbn/9781501124020-L.jpg?default=false
+  isbn: '9781501124020'
+  cover_width: 333
+  cover_height: 500
+  cover_ratio: 0.666
+  shelf_height: 176
+- title: Inside the Third Reich
+  author: Albert Speer
+  category: Historical memoir
+  url: https://www.simonandschuster.com/books/Inside-the-Third-Reich/Albert-Speer/9780684829494
   note_id: inside-the-third-reich-note
-  note_label: "Class reading note"
-  note: "I read this for a class and found it surprisingly engaging. It helped me compare how government worked and how people thought at the time, through the perspective of someone inside the regime. I do not support authoritarian or dictatorial government."
-
-- title: "A Short History of Chinese Philosophy"
-  author: "Feng Youlan (Fung Yu-lan)"
-  category: "Philosophy"
-  url: "https://www.simonandschuster.com/books/A-Short-History-of-Chinese-Philosophy/Yu-lan-Fung/9780684836348"
-
-- title: "Why Nations Fail"
-  subtitle: "The Origins of Power, Prosperity, and Poverty"
-  author: "Daron Acemoglu and James A. Robinson"
-  category: "Political economy"
-  url: "https://www.penguinrandomhouse.com/books/205014/why-nations-fail-by-daron-acemoglu-and-james-a-robinson/"
-
-- title: "A Global History"
-  subtitle: "From Prehistory to the 21st Century"
-  author: "L. S. Stavrianos"
-  category: "World history"
-  url: "https://books.google.com/books/about/A_Global_History.html?id=C6g7PQAACAAJ"
+  note_label: Class reading note
+  note: I read this for a class and found it surprisingly engaging. It helped me compare how government worked and
+    how people thought at the time, through the perspective of someone inside the regime.
+  slug: inside-third-reich
+  cover: /assets/images/books/inside-third-reich.jpg
+  cover_source: https://covers.openlibrary.org/b/isbn/9780684829494-L.jpg?default=false
+  isbn: '9780684829494'
+  cover_width: 305
+  cover_height: 475
+  cover_ratio: 0.6421
+  shelf_height: 168
+  note_emphasis: I do not support authoritarian or dictatorial government.
+- title: A Short History of Chinese Philosophy
+  author: Feng Youlan (Fung Yu-lan)
+  category: Philosophy
+  url: https://www.simonandschuster.com/books/A-Short-History-of-Chinese-Philosophy/Yu-lan-Fung/9780684836348
+  slug: chinese-philosophy
+  cover: /assets/images/books/chinese-philosophy.jpg
+  cover_source: https://covers.openlibrary.org/b/isbn/9780684836348-L.jpg?default=false
+  isbn: '9780684836348'
+  cover_width: 297
+  cover_height: 475
+  cover_ratio: 0.6253
+  shelf_height: 174
+- title: Why Nations Fail
+  subtitle: The Origins of Power, Prosperity, and Poverty
+  author: Daron Acemoglu and James A. Robinson
+  category: Political economy
+  url: https://www.penguinrandomhouse.com/books/205014/why-nations-fail-by-daron-acemoglu-and-james-a-robinson/
+  slug: why-nations-fail
+  cover: /assets/images/books/why-nations-fail.jpg
+  cover_source: https://images.penguinrandomhouse.com/cover/9780307719225
+  isbn: '9780307719225'
+  cover_width: 302
+  cover_height: 450
+  cover_ratio: 0.6711
+  shelf_height: 170
+- title: A Global History
+  subtitle: From Prehistory to the 21st Century
+  author: L. S. Stavrianos
+  category: World history
+  url: https://books.google.com/books/about/A_Global_History.html?id=C6g7PQAACAAJ
+  slug: global-history
+  cover: /assets/images/books/global-history.jpg
+  cover_source: https://covers.openlibrary.org/b/isbn/9780139238970-L.jpg?default=false
+  isbn: '9780139238970'
+  cover_width: 375
+  cover_height: 475
+  cover_ratio: 0.7895
+  shelf_height: 150

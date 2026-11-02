@@ -1,0 +1,11 @@
+<li class="shelf-slot">
+  <button class="shelf-trigger" type="button" data-book="{{ book.slug }}" aria-haspopup="dialog" aria-controls="book-{{ book.slug }}" aria-label="Open {{ book.title | escape }} by {{ book.author | escape }}{% if book.status == 'reading' %}, currently reading{% endif %}" style="--order:{{ include.order }};--book-height:{{ book.shelf_height }}px;--book-ratio:{{ book.cover_ratio }}">
+    <span class="shelf-book">
+      <span class="book-spine" aria-hidden="true">{{ book.title | escape }}</span>
+      <span class="book-jacket"><img src="{{ book.cover | relative_url }}" alt="" width="{{ book.cover_width }}" height="{{ book.cover_height }}" decoding="async"></span>
+      <span class="book-pages" aria-hidden="true"></span>
+    </span>
+    {% if book.status == 'reading' %}<span class="reading-ribbon" aria-hidden="true">Reading now</span>{% endif %}
+    <span class="shelf-book-label" aria-hidden="true">{{ book.title | escape }}</span>
+  </button>
+</li>
